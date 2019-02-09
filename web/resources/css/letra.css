@@ -20,3 +20,7 @@ top: 10px;
 .fondo-peligro{
     background-color: #f0506e;
 }
+
+.primera-mayuscula::first-letter {
+    text-transform: uppercase;
+}
