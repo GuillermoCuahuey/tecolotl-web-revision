@@ -13,6 +13,10 @@
             <base-name>boton</base-name>
             <var>boton</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>administracion</base-name>
+            <var>administracion</var>
+        </resource-bundle>
     </application>
   
 </faces-config>
