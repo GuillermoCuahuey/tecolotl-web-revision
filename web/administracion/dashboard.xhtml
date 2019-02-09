@@ -4,42 +4,97 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
 
 <ui:composition template="/template/dashboard.xhtml">
     <ui:define name="menu">
             <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
-                <li class="uk-nav-header">ACTIONS</li>
-                <li><a href="#"><span data-uk-icon="icon: comments" class="uk-margin-small-right"></span>Messages</a></li>
+                <li class="uk-nav-header">ACCIONES</li>
+                <li class="uk-active">
+                    <h:commandLink>
+                        <h:outputText pt:data-uk-icon="icon: table" styleClass="uk-margin-small-right"/>
+                        Escuelas
+                    </h:commandLink>
+                </li>
+                <li>
+                    <h:commandLink>
+                        <h:outputText pt:data-uk-icon="icon: table" styleClass="uk-margin-small-right"/>
+                        Catalogos
+                        <f:ajax/>
+                    </h:commandLink>
+                </li>
                 <li><a href="#"><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Friends</a></li>
-                <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Templates</a>
-                    <ul class="uk-nav-sub">
-                        <li><a title="Article" href="https://zzseba78.github.io/Kick-Off/article.html">Article</a></li>
-                        <li><a title="Album" href="https://zzseba78.github.io/Kick-Off/album.html">Album</a></li>
-                        <li><a title="Cover" href="https://zzseba78.github.io/Kick-Off/cover.html">Cover</a></li>
-                        <li><a title="Cards" href="https://zzseba78.github.io/Kick-Off/cards.html">Cards</a></li>
-                        <li><a title="News Blog" href="https://zzseba78.github.io/Kick-Off/newsBlog.html">News Blog</a></li>
-                        <li><a title="Price" href="https://zzseba78.github.io/Kick-Off/price.html">Price</a></li>
-                        <li><a title="Login" href="https://zzseba78.github.io/Kick-Off/login.html">Login</a></li>
-                        <li><a title="Login-Dark" href="https://zzseba78.github.io/Kick-Off/login-dark.html">Login - Dark</a></li>
-                    </ul>
-                </li>
-                <li><a href="#"><span data-uk-icon="icon: album" class="uk-margin-small-right"></span>Albums</a></li>
-                <li><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Featured Content</a></li>
-                <li><a href="#"><span data-uk-icon="icon: lifesaver" class="uk-margin-small-right"></span>Tips</a></li>
-                <li class="uk-parent">
-                    <a href="#"><span data-uk-icon="icon: comments" class="uk-margin-small-right"></span>Reports</a>
-                    <ul class="uk-nav-sub">
-                        <li><a href="#">Sub item</a></li>
-                        <li><a href="#">Sub item</a></li>
-                    </ul>
-                </li>
+
             </ul>
     </ui:define>
 
     <ui:define name="contenido">
-        Cnntenido de dashbosrd
+        <div class="uk-grid uk-grid-medium" data-uk-grid="">
+            <!-- panel -->
+            <div class="uk-width-1-1@s">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover">
+                    <div class="uk-card-header">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-auto"><h4>Escuelas</h4></div>
+                            <div class="uk-width-expand uk-text-right panel-icons">
+                                <a href="#" class="uk-icon-link" title="Agregar" data-uk-tooltip="" data-uk-icon="icon: plus-circle"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <h:form>
+                            <h:dataTable value="#{dashboardControlador.escuelaModeloLista}"
+                                         binding="#{dashboardControlador.htmlDataTable}"
+                                         var="escuela"
+                                         id="tabla-escuela"
+                                         first="0"
+                                         rows="5"
+                                         styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover"
+                                         footerClass="uk-background-primary"
+                                         columnClasses=",,uk-text-center,uk-text-center,uk-text-center,uk-text-center">
+
+                                <h:column headerClass="uk-background-primary uk-width-small">
+                                    <f:facet name="header"><span class="letra-titulo">CCT</span></f:facet>
+                                    #{escuela.cct}
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-background-primary">
+                                    <f:facet name="header"><span class="letra-titulo">Nombre</span></f:facet>
+                                    #{escuela.nombre}
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
+                                    <f:facet name="header"><span class="letra-titulo">Activo</span></f:facet>
+                                    #{escuela.activo}
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
+                                    <f:facet name="header"><span class="letra-titulo">Licencias</span></f:facet>
+                                    #{escuela.licecias}
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
+                                    <f:facet name="header"><span class="letra-titulo">Dias Restantes</span></f:facet>
+                                    #{escuela.diasRestantes}
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
+                                    <f:facet name="header"><span class="letra-titulo ">opciones</span></f:facet>
+                                    <span class="uk-icon-button uk-text-center" uk-icon="more-vertical"></span>
+                                </h:column>
+                                <f:facet name="footer">
+                                    Filas totales
+                                </f:facet>
+                            </h:dataTable>
+                        </h:form>
+                    </div>
+                    <div class="uk-card-footer uk-flex uk-flex-right">
+                        <button type="button" class="uk-button uk-button-primary">Agregar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /panel -->
+        </div>
+        <footer class="uk-section uk-section-small uk-text-center">
+        <hr/>
+            <p class="uk-text-small uk-text-center">Copyright 2019 - <a href="https://nahtechnology.com/">Created by Nah Technology</a></p>
+        </footer>
     </ui:define>
 </ui:composition>
 </html>

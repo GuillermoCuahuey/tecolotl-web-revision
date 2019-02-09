@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="/template/dashboard.xhtml">
+    <ui:define name="menu">
+        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
+            <li class="uk-nav-header">ACTIONS</li>
+            <li><a href="#"><span data-uk-icon="icon: comments" class="uk-margin-small-right"></span>Messages</a></li>
+            <li><a href="#"><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Friends</a></li>
+            <li class="uk-parent"><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Templates</a>
+                <ul class="uk-nav-sub">
+                    <li><h:link outcome="/administracion/dashboard" styleClass="uk-select" value="Escuelas"/> </li>
+                    <li><h:link outcome="/administracion/catalogo" value="Catalogos"/> </li>
+                    <li><a title="Cover" href="https://zzseba78.github.io/Kick-Off/cover.html">Cover</a></li>
+
+                </ul>
+            </li>
+            <li><a href="#"><span data-uk-icon="icon: album" class="uk-margin-small-right"></span>Albums</a></li>
+            <li><a href="#"><span data-uk-icon="icon: thumbnails" class="uk-margin-small-right"></span>Featured Content</a></li>
+            <li><a href="#"><span data-uk-icon="icon: lifesaver" class="uk-margin-small-right"></span>Tips</a></li>
+            <li class="uk-parent">
+                <a href="#"><span data-uk-icon="icon: comments" class="uk-margin-small-right"></span>Reports</a>
+                <ul class="uk-nav-sub">
+                    <li><a href="#">Sub item</a></li>
+                    <li><a href="#">Sub item</a></li>
+                </ul>
+            </li>
+        </ul>
+    </ui:define>
+    <ui:define name="contenido">
+
+    </ui:define>
+</ui:composition>
+</html>
