@@ -23,6 +23,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="JBoss-eap" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="JBoss 14.0.1.Final" level="application_server_libraries" />
   </component>
 </module>
