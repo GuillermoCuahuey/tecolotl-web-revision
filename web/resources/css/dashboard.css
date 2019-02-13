@@ -103,6 +103,9 @@
 	padding: 0px 20px;
 }
 .custom-logo {
+	height: 40px;
+}
+.custom-logo-escuadron {
 	height: 32px;
 }
 .profile-img {

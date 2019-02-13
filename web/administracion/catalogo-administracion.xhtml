@@ -4,7 +4,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:pa="http://xmlns.jcp.org/jsf/composite/paginacion">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pa="http://xmlns.jcp.org/jsf/composite/paginacion"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
 <ui:composition template="/template/dashboard.xhtml" >
     <ui:define name="menu">
         <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
@@ -17,8 +20,8 @@
     <ui:define name="contenido">
         <h:outputStylesheet library="css" name="tablas.css"/>
 
-            <h4 class="uk-heading-line uk-text-bold"><span>Catalogo Coordinador Profesor</span></h4>
-            <h1 class="uk-margin-top uk-margin-small-bottom uk-margin-remove-adjacent">Catalogo Coordinador Profesor</h1>
+            <h4 class="uk-heading-line uk-text-bold"><span></span></h4>
+
 
 
         <div class="uk-grid uk-grid-medium" data-uk-grid="">
@@ -28,7 +31,7 @@
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover">
                     <div class="uk-card-header">
                         <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-auto"><h4>#{administracion['catalogoadministrativo.tabla']}</h4></div>
+                            <div class="uk-width-auto"><h4>#{administracion['catalogoadministrativo.coordinatorcatalog']}</h4></div>
                             <div class="uk-width-expand uk-flex uk-flex-right">
                                 <ul class="uk-iconnav">
                                     <li>                                <a href="#" class="uk-icon-link" title="Move" data-uk-tooltip="" data-uk-icon="icon: move"></a>
@@ -46,10 +49,83 @@
                         </div>
                     </div>
                     <div class="uk-card-body">
-                        <h:form id="formulario-tabla">
-                            <h:dataTable id="tabla-tabla1"
-                                         value="#{catalogoAdministradoControlador.collectionDataModel}"
-                                         binding="#{catalogoAdministradoControlador.htmlDataTable}"
+                        <h:form id="formulario-tabla-bloqueo-coordinador">
+                            <h:dataTable id="tabla-coordinador"
+                                         value="#{catalogoAdministradoControladorCoordinador.collectionDataModel}"
+                                         binding="#{catalogoAdministradoControladorCoordinador.htmlDataTable}"
+                                         var="dato"
+                                         first="0"
+                                         rows="5"
+                                         styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover tabla-coordinado-limite"
+                                         footerClass="uk-background-primary">
+                                <h:column>
+                                    <f:facet name="header">Id</f:facet>
+                                    #{dato.id}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Nombre</f:facet>
+                                    #{dato.nombre}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">Opciones</f:facet>
+                                    <div class=" uk-inline">
+                                        <button class="uk-icon-button puntero" uk-icon="more-vertical" type="button"></button>
+                                        <div uk-dropdown="boundary:.tabla-coordinado-limite; mode: click" >
+                                            <ul class="uk-nav uk-dropdown-nav">
+                                                <li>
+                                                    <h:commandLink  pt:uk-toggle="target: #modal-editar" >
+                                                        <span uk-icon="icon: file-text" class="uk-margin-small-right uk-icon" ></span>
+                                                        <span class="uk-text-middle"><h:outputText value="Editar"/></span>
+                                                        <f:ajax/>
+                                                    </h:commandLink>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </h:column>
+                                <f:facet name="footer">
+                                    <pa:pie-tabla htmlDataTable="#{catalogoAdministradoControladorCoordinador.htmlDataTable}"/>
+                                </f:facet>
+                            </h:dataTable>
+                        </h:form>
+                    </div>
+                    <div class="uk-card-footer">
+                        <f:ajax render="formulario-tabla-bloqueo-coordinador:tabla-coordinador formulario-botones-coordinador">
+                            <h:form id="formulario-botones-coordinador">
+                                <pa:boton-minimizado htmlDataTable="#{catalogoAdministradoControladorCoordinador.htmlDataTable}"/>
+                            </h:form>
+                        </f:ajax>
+                    </div>
+                </div>
+            </div>
+            <!-- / FIN catalogo l -->
+            <!-- catalog 2 -->
+            <div class="uk-width-1-2@l">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover">
+                    <div class="uk-card-header">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-auto"><h4>#{administracion['catalogoadministrativo.teachercatalog']}</h4></div>
+                            <div class="uk-width-expand uk-flex uk-flex-right">
+                                <ul class="uk-iconnav">
+                                    <li>                                <a href="#" class="uk-icon-link" title="Move" data-uk-tooltip="" data-uk-icon="icon: move"></a>
+                                    </li>
+                                    <li><a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip="" data-uk-icon="icon: cog"></a></li>
+                                    <li>                                <a href="#" class="uk-icon-link" title="Close" data-uk-tooltip="" data-uk-icon="icon: close"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--<div class="uk-width-expand uk-text-right panel-icons">
+                                <a href="#" class="uk-icon-link" title="Move" data-uk-tooltip="" data-uk-icon="icon: move"></a>
+                                <a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip="" data-uk-icon="icon: cog"></a>
+                                <a href="#" class="uk-icon-link" title="Close" data-uk-tooltip="" data-uk-icon="icon: close"></a>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <h:form id="formulario-tabla-bloqueo-profesor">
+                            <h:dataTable id="tabla-profesor"
+                                         value="#{catalogoAdministradoControladorProfesor.collectionDataModel}"
+                                         binding="#{catalogoAdministradoControladorProfesor.htmlDataTable}"
                                          var="dato"
                                          first="0"
                                          rows="5"
@@ -64,44 +140,55 @@
                                     #{dato.nombre}
                                 </h:column>
                                 <f:facet name="footer">
-                                    <pa:pie-tabla htmlDataTable="#{catalogoAdministradoControlador.htmlDataTable}"/>
+                                    <pa:pie-tabla htmlDataTable="#{catalogoAdministradoControladorCoordinador.htmlDataTable}"/>
                                 </f:facet>
                             </h:dataTable>
                         </h:form>
                     </div>
                     <div class="uk-card-footer">
-                        <f:ajax render="formulario-tabla:tabla-tabla1 formulario-botones-tabla1">
-                            <h:form id="formulario-botones-tabla1">
-                                <pa:boton-minimizado htmlDataTable="#{catalogoAdministradoControlador.htmlDataTable}"/>
+                        <f:ajax render="formulario-tabla-bloqueo-profesor:tabla-profesor formulario-botones-profesor">
+                            <h:form id="formulario-botones-profesor">
+                                <pa:boton-minimizado htmlDataTable="#{catalogoAdministradoControladorProfesor.htmlDataTable}"/>
                             </h:form>
                         </f:ajax>
                     </div>
                 </div>
             </div>
-            <!-- / FIN catalogo l -->
-            <!-- catalog 2 -->
-            <div class="uk-width-1-2@l">
-                <div class="uk-card uk-card-default uk-card-small uk-card-hover">
-                    <div class="uk-card-header">
-                        <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-auto"><h4>Predictions Chart</h4></div>
-                            <div class="uk-width-expand uk-text-right panel-icons">
-                                <a href="#" class="uk-icon-link" title="Move" data-uk-tooltip="" data-uk-icon="icon: move"></a>
-                                <a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip="" data-uk-icon="icon: cog"></a>
-                                <a href="#" class="uk-icon-link" title="Close" data-uk-tooltip="" data-uk-icon="icon: close"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="uk-card-body">
-                        <div class="chart-container">
-                            <canvas id="chart1"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- /FIN catalogo 2 -->
-
         </div>
+
+        <!--  Modal Catalogo  -->
+    <div id="modal-editar"  uk-modal="">
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+                <div class="uk-modal-header uk-background-secondary">
+                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Editar colonia</span></p>
+                </div>
+                <div class="uk-modal-body">
+                    <h1 class="uk-modal-title uk-text-left">Editar </h1>
+                    <div class="uk-grid-small uk-grid" uk-grid="">
+                        <div class="uk-width-1-1@s uk-width-1-1@m uk-first-column"><span>Colonia</span>
+                        <div class="uk-form-controls"><input  class="uk-input" placeholder="Nuevo nombre"/>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
+                <button class="uk-button uk-button-secondary" type="button">Guardar</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var modalModalEditar;
+        document.addEventListener('DOMContentLoaded', function (evt) {
+            modalModalEditar = document.querySelector('#modal-editar');
+            UIkit.util.on('#modal-editar', 'show', function () {
+                modalModalEditar.querySelector('.uk-input').click();
+            });
+        });
+    </script>
     </ui:define>
 </ui:composition>
 </html>

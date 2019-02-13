@@ -12,7 +12,7 @@ import java.util.Collection;
 
 @RequestScoped
 @Named
-public class CatalogoAdministradoControlador extends PaginacionControlador<TablaModelo> {
+public class CatalogoAdministradoControladorCoordinador extends PaginacionControlador<TablaModelo> {
 
     @PostConstruct
     public void init() {
