@@ -29,10 +29,13 @@
                         <div class="uk-grid uk-grid-small">
                             <div class="uk-width-auto"><h4><span class="uk-text-middle">#{administracion['catalogoadministrativo.title']}</span></h4></div>
                             <div class="uk-width-expand uk-text-right panel-icons">
-                                <h:commandLink styleClass="uk-icon-button"
-                                               pt:data-uk-tooltip=""
-                                               pt:data-uk-icon="icon: plus-circle"
-                                               pt:title="Agregar"/>
+                                <h:form>
+                                    <h:commandLink styleClass="uk-icon-button  uk-icon" >
+                                        <f:ajax></f:ajax>
+                                        <h:outputText pt:uk-icon="icon: plus-circle; ratio: 1.5"/>
+                                    </h:commandLink>
+                                </h:form>
+                                <!--<a href="#" class="uk-icon-button uk-icon-link" uk-icon="twitter"></a>-->
                             </div>
                         </div>
                     </div>
