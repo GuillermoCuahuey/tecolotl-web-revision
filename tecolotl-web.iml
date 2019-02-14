@@ -9,9 +9,6 @@
         <webroots>
           <root url="file://$MODULE_DIR$/web" relative="/" />
         </webroots>
-        <sourceRoots>
-          <root url="file://$MODULE_DIR$/src" />
-        </sourceRoots>
       </configuration>
     </facet>
   </component>
@@ -23,6 +20,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="PROVIDED" name="JBoss 14.0.1.Final" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="JBoss 11" level="application_server_libraries" />
   </component>
 </module>
