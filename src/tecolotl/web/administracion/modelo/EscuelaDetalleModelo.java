@@ -5,11 +5,15 @@ public class EscuelaDetalleModelo  {
     private String nombre;
     private int licecias;
     private String codigo_postal;
+    private String colonia;
     private String municipio;
     private String estado;
     private String calle;
+    private int numero_exterior;
+    private int numero_interior;
+    private String bloqueo;
 
-    public EscuelaDetalleModelo(String cct, String nombre, int licecias, String codigo_postal, String municipio, String estado, String calle, String numero_exterior, String numero_interior, String bloqueo) {
+    public EscuelaDetalleModelo(String cct, String nombre, int licecias, String codigo_postal, String municipio, String estado, String calle, int numero_exterior, int numero_interior, String bloqueo) {
         this.cct = cct;
         this.nombre = nombre;
         this.licecias = licecias;
@@ -20,6 +24,15 @@ public class EscuelaDetalleModelo  {
         this.numero_exterior = numero_exterior;
         this.numero_interior = numero_interior;
         this.bloqueo = bloqueo;
+        this.colonia = colonia;
+    }
+
+    public String getColonia() {
+        return colonia;
+    }
+
+    public void setColonia(String colonia) {
+        this.colonia = colonia;
     }
 
     public String getCct() {
@@ -78,19 +91,19 @@ public class EscuelaDetalleModelo  {
         this.calle = calle;
     }
 
-    public String getNumero_exterior() {
+    public int getNumero_exterior() {
         return numero_exterior;
     }
 
-    public void setNumero_exterior(String numero_exterior) {
+    public void setNumero_exterior(int numero_exterior) {
         this.numero_exterior = numero_exterior;
     }
 
-    public String getNumero_interior() {
+    public int getNumero_interior() {
         return numero_interior;
     }
 
-    public void setNumero_interior(String numero_interior) {
+    public void setNumero_interior(int numero_interior) {
         this.numero_interior = numero_interior;
     }
 
@@ -101,11 +114,4 @@ public class EscuelaDetalleModelo  {
     public void setBloqueo(String bloqueo) {
         this.bloqueo = bloqueo;
     }
-
-    private String numero_exterior;
-    private String numero_interior;
-    private String bloqueo;
-
-
-
 }

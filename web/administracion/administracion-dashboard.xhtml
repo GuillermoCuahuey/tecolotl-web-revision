@@ -251,22 +251,22 @@
                                 </div>
                             </ui:fragment>
                         </div>
-                    </div>
-                    <div class="uk-modal-footer uk-flex uk-flex-right">
-                        <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
-                                         value="#{boton['cancel']}">
-                            <f:ajax render="@form" onevent="limpiaInput"/>
-                        </h:commandButton>
-                        <h:commandButton styleClass="uk-button uk-button-secondary"
-                                         value="#{boton['add']}"
-                                         rendered="#{empty escuelaDashboardControlador.escuelaDetalleDtoModelo.claveCentroTrabajo}">
-                            <f:ajax execute="@form" render="@form formulario-escuela-tabla:tabla-escuela" listener="#{escuelaDashboardControlador.agrega}" onevent="function f(data) { cierraModal(data, 'modal-escuela') }"/>
-                        </h:commandButton>
-                        <h:commandButton styleClass="uk-button uk-button-secondary"
-                                         value="#{mensaje['update']}"
-                                         rendered="#{not empty escuelaDashboardControlador.escuelaDetalleDtoModelo.claveCentroTrabajo}">
-                            <f:ajax execute="@form" render="@form formulario-escuela-tabla:tabla-escuela" listener="#{escuelaDashboardControlador.actualiza}" onevent="function f(data) { cierraModal(data, 'modal-escuela') }"/>
-                        </h:commandButton>
+                        <div class="uk-modal-footer uk-flex uk-flex-right">
+                            <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
+                                             value="#{boton['cancel']}">
+                                <f:ajax render="@form" onevent="limpiaInput"/>
+                            </h:commandButton>
+                            <h:commandButton styleClass="uk-button uk-button-secondary"
+                                             value="#{boton['add']}"
+                                             rendered="#{empty escuelaDashboardControlador.escuelaDetalleDtoModelo.claveCentroTrabajo}">
+                                <f:ajax execute="@form" render="@form formulario-escuela-tabla:tabla-escuela" listener="#{escuelaDashboardControlador.agrega}" onevent="function f(data) { cierraModal(data, 'modal-escuela') }"/>
+                            </h:commandButton>
+                            <h:commandButton styleClass="uk-button uk-button-secondary"
+                                             value="#{mensaje['update']}"
+                                             rendered="#{not empty escuelaDashboardControlador.escuelaDetalleDtoModelo.claveCentroTrabajo}">
+                                <f:ajax execute="@form" render="@form formulario-escuela-tabla:tabla-escuela" listener="#{escuelaDashboardControlador.actualiza}" onevent="function f(data) { cierraModal(data, 'modal-escuela') }"/>
+                            </h:commandButton>
+                        </div>
                     </div>
                 </h:form>
             </div>
