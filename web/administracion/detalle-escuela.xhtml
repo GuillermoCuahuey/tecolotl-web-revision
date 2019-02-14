@@ -26,15 +26,7 @@
                         <div class="uk-card-header">
                             <div class="uk-grid uk-grid-small">
                                 <div class="uk-width-auto"><h4><span class="uk-text-middle">Datos Escuela</span></h4></div>
-                                <div class="uk-width-expand uk-text-right panel-icons">
-                                    <h:form>
-                                        <h:commandLink styleClass="uk-icon-button  uk-icon" >
-                                            <f:ajax></f:ajax>
-                                            <h:outputText pt:uk-icon="icon: plus-circle; ratio: 1.5"/>
-                                        </h:commandLink>
-                                    </h:form>
-                                    <!--<a href="#" class="uk-icon-button uk-icon-link" uk-icon="twitter"></a>-->
-                                </div>
+
                             </div>
                         </div>
 
@@ -187,22 +179,22 @@
                                                     <f:facet name="header"><h:outputText styleClass="letra-titulo" value="Opciones" /></f:facet>
                                                     <div class="uk-inline  ">
                                                         <button class="uk-icon-button puntero" uk-icon="more-vertical" type="button"></button>
-                                                        <div uk-dropdown="boundary:.tabla-escuela-contacto; mode: click" >
+                                                        <div uk-dropdown="boundary:.tabla-escuela-contacto; mode: click" id="dropear" >
                                                             <ul class="uk-nav uk-dropdown-nav uk-text-left">
                                                                 <li>
-                                                                    <h:commandLink  pt:uk-toggle="target: #modal-editar"  >
+                                                                    <h:commandLink  pt:uk-toggle="target: #modal-editar" styleClass="uk-dropdown-close">
                                                                         <span uk-icon="icon: file-text" class="uk-margin-small-right uk-icon" ></span>
                                                                         <span class="uk-text-middle"><h:outputText value="Editar"/></span>
-                                                                        <f:ajax/>
+                                                                        <f:ajax />
                                                                     </h:commandLink>
                                                                 </li>
                                                                 <li>
-                                                                <h:commandLink  pt:uk-toggle="target: #modal-eliminar" >
-                                                                    <span uk-icon="icon: file-text" class="uk-margin-small-right uk-icon" ></span>
-                                                                    <span class="uk-text-middle"><h:outputText value="Eliminar"/></span>
-                                                                    <f:ajax/>
-                                                                </h:commandLink>
-                                                            </li>
+                                                                    <h:commandLink  pt:uk-toggle="target: #modal-eliminar" >
+                                                                        <span uk-icon="icon: file-text" class="uk-margin-small-right uk-icon" ></span>
+                                                                        <span class="uk-text-middle"><h:outputText value="Eliminar"/></span>
+                                                                        <f:ajax/>
+                                                                    </h:commandLink>
+                                                                </li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -257,6 +249,90 @@
                             </div>
                         </div>
                     </div>
+
+
+        <div id="modal-eliminar" uk-modal="" class="">
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+
+                <div class="uk-modal-header fondo-peligro"  >
+                    <p class="uk-h4 uk-text-center uk-text-bold" ><span class="letra-titulo">Eliminar</span></p>
+                </div>
+                <div class="uk-modal-body">
+                    <p>Esta seguro que desea Borrar al contacto: <span class="uk-text-bold">Nombre</span> </p>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-border-rounded uk-modal-close" type="button">Cancelar</button>
+                    <h:commandButton styleClass="uk-button uk-button-danger uk-border-rounded uk-margin-small-left" value="Aceptar" >
+                        <f:ajax onevent="function cerrar() { cierraModal( ) }"/>
+                    </h:commandButton>
+                </div>
+            </div>
+        </div>
+        <div id="modal-contacto" class="uk-modal" >
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close=""></button>
+                <div class="uk-modal-header">
+                    <h2 class="uk-modal-title uk-text-center">Editar Contacto</h2>
+                </div>
+                <h:form id="formulario-agregar-contacto"  styleClass="uk-form-stacked">
+                    <div class="uk-modal-body">
+
+                        <div class="uk-grid-small" uk-grid="">
+                            <div class="uk-width-1-1">
+                                <h:outputLabel styleClass="uk-form-label" value="CCT" for="modal-contacto-nombre" />
+                                <div class="uk-form-controls">
+                                    <h:inputText id="modal-contacto-nombre"  pt:placeholder="21DBA0004C" disabled="true"  styleClass="uk-input" value="#{detalleEscuelaControlador.escuelaDetalleModelos.}"/>
+                                </div>
+
+                            </div>
+                            <div class="uk-width-1-2">
+
+                            </div>
+                            <div class="uk-width-1-2">
+
+                            </div>
+                            <div class="uk-width-1-2">
+                                <h:messages showDetail="false" styleClass="uk-list uk-alert-danger uk-alert" id="mensajes-error"/>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="uk-modal-footer uk-text-right">-->
+                        <!--<button class="uk-button uk-button-default uk-modal-close uk-margin-small-right" type="button"><h:outputText value="#{mensaje['button.cancel']}"/></button>-->
+                        <!--<h:commandButton styleClass="uk-button uk-button-primary uk-border-rounded" value="#{mensaje['button.accept']}">-->
+                            <!--<f:ajax listener="#{escuelaDetalleControlador.insertar}" execute="@form" render="@form panel-contacto modal-contacto" onevent="cierraModal"/>-->
+                        <!--</h:commandButton>-->
+                    <!--</div>-->
+                </h:form>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var modalAgregar;
+            var modalEliminar;
+            document.addEventListener("DOMContentLoaded", function (evt) {
+                limpiarSelector("undefined");
+                modalAgregar = document.querySelector('#modal-contacto');
+                modalEliminar = document.querySelector('#modal-eliminar');
+                UIkit.util.on('#modal-eliminar', 'show', function () {
+                    modalEliminar.querySelector('.uk-modal-body').click();
+                });
+            });
+            function limpiarSelector(informacion) {
+                if (informacion === "undefined") {
+
+                } else {
+                    if (informacion.status == 'success') {
+
+                    }
+                }
+            }
+            function cierraModal( ) {
+                if (modalEliminar.querySelector('.uk-alert-danger') === null) {
+                    UIkit.modal(modalEliminar).hide();
+                }
+            }
+        </script>
+
 
     </ui:define>
 </ui:composition>
