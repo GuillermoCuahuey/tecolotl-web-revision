@@ -19,7 +19,7 @@ public class CatalogoAdministradoBloqueControlador extends PaginacionControlador
     public void init() {
         Collection<TablaModelo> collection = new ArrayList<>();
         for (int i=0; i < 33; i++) {
-            ((ArrayList<TablaModelo>) collection).add(new TablaModelo("nombre" + i, i));
+            ((ArrayList<TablaModelo>) collection).add(new TablaModelo("Motivo" + i, i));
         }
         getCollectionDataModel().setWrappedData(collection);
     }

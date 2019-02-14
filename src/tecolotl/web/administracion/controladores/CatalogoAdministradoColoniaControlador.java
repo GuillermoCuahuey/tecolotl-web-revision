@@ -20,7 +20,7 @@ public class CatalogoAdministradoColoniaControlador extends PaginacionControlado
     public void init() {
         Collection<TablaColonia> collection = new ArrayList<>();
         for (int i=0; i < 33; i++) {
-            ((ArrayList<TablaColonia>) collection).add(new TablaColonia("72810", "nombre" + i, "Margaritos","Pueblo",i));
+            ((ArrayList<TablaColonia>) collection).add(new TablaColonia("72810", "Colonia" + i, "Margaritos","Pueblo",i));
         }
         getCollectionDataModel().setWrappedData(collection);
     }
