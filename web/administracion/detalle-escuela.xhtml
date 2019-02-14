@@ -160,47 +160,59 @@
                                     </div>
                                 </div>
                                 <div class="uk-card-body">
-                                    <h:form id="tabla-escuela-contacto">
-                                       <div class="uk-overflow-auto">
-                                        <h:dataTable value="#{detalleEscuelaControlador.contactoModelo}"
-                                                     var="contacto"
-                                                     id="tabla-contacto"
-                                                     first="0"
-                                                     rows="5"
-                                                     styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover uk-text-center"
-                                                     headerClass="uk-button-primary uk-text-center"
-                                                     columnClasses=""   >
-                                            <h:column>
-                                                <f:facet name="header"><h:outputText styleClass="letra-titulo" value="Nombre" /></f:facet>
-                                                #{contacto.nombre}
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header"><h:outputText styleClass="letra-titulo" value="Tipo" /></f:facet>
-                                                #{contacto.tipo}
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header"><h:outputText styleClass="letra-titulo" value="Telefono" /></f:facet>
-                                                 #{contacto.telefono}
-                                            </h:column>
-                                            <h:column>
-                                                <f:facet name="header"><h:outputText styleClass="letra-titulo" value="Opciones" /></f:facet>
-                                                <span class="uk-icon-button uk-text-center" uk-icon="more-vertical"></span>
-                                            </h:column>
+                                    <div class="uk-overflow-auto">
+                                        <h:form id="formulario-tabla-contacto">
 
-                                        </h:dataTable>
-                                       </div>
-                                    </h:form>
+                                            <h:dataTable value="#{detalleEscuelaControlador.contactoModelo}"
+                                                         var="contacto"
+                                                         id="tabla-contacto"
+                                                         first="0"
+                                                         rows="5"
+                                                         styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover uk-text-center tabla-escuela-contacto"
+                                                         headerClass="uk-background-primary uk-text-center"
+                                                          columnClasses=""  >
+                                                <h:column>
+                                                    <f:facet name="header"><h:outputText styleClass="letra-titulo" value="Nombre" /></f:facet>
+                                                    #{contacto.nombre}
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header"><h:outputText styleClass="letra-titulo" value="Tipo" /></f:facet>
+                                                    #{contacto.tipo}
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header"><h:outputText styleClass="letra-titulo" value="Telefono" /></f:facet>
+                                                     #{contacto.telefono}
+                                                </h:column>
+                                                <h:column>
+                                                    <f:facet name="header"><h:outputText styleClass="letra-titulo" value="Opciones" /></f:facet>
+                                                    <div class="uk-inline  ">
+                                                        <button class="uk-icon-button puntero" uk-icon="more-vertical" type="button"></button>
+                                                        <div uk-dropdown="boundary:.tabla-escuela-contacto; mode: click" >
+                                                            <ul class="uk-nav uk-dropdown-nav uk-text-left">
+                                                                <li>
+                                                                    <h:commandLink  pt:uk-toggle="target: #modal-editar"  >
+                                                                        <span uk-icon="icon: file-text" class="uk-margin-small-right uk-icon" ></span>
+                                                                        <span class="uk-text-middle"><h:outputText value="Editar"/></span>
+                                                                        <f:ajax/>
+                                                                    </h:commandLink>
+                                                                </li>
+                                                                <li>
+                                                                <h:commandLink  pt:uk-toggle="target: #modal-eliminar" >
+                                                                    <span uk-icon="icon: file-text" class="uk-margin-small-right uk-icon" ></span>
+                                                                    <span class="uk-text-middle"><h:outputText value="Eliminar"/></span>
+                                                                    <f:ajax/>
+                                                                </h:commandLink>
+                                                            </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </h:column>
 
-                                </div>
-                                <div class="uk-card-footer">
-                                    <div class="uk-flex uk-flex-right uk-margin-small-top ">
-                                        <button class="uk-button uk-button-primary"  uk-toggle="target: #modal-agregar-contacto" >
-                                            <span >Agregar</span>
-                                            <span class="uk-margin-small-left " uk-icon="icon: plus-circle"></span>
-                                        </button>
+                                            </h:dataTable>
+
+                                        </h:form>
                                     </div>
                                 </div>
-
                              </div>
 
 
