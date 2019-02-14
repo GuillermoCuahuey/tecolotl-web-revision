@@ -5,22 +5,30 @@ import tecolotl.web.controlador.PaginacionControlador;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @RequestScoped
 @Named
-public class CatalogoAdministradoControladorCoordinador extends PaginacionControlador<TablaModelo> {
+public class CatalogoAdministradoBloqueControlador extends PaginacionControlador<TablaModelo> {
+
+    private TablaModelo tablaModelo;
 
     @PostConstruct
     public void init() {
         Collection<TablaModelo> collection = new ArrayList<>();
         for (int i=0; i < 33; i++) {
-            ((ArrayList<TablaModelo>) collection).add(new TablaModelo("nombre", i));
+            ((ArrayList<TablaModelo>) collection).add(new TablaModelo("nombre" + i, i));
         }
         getCollectionDataModel().setWrappedData(collection);
     }
 
+    public TablaModelo getTablaModelo() {
+        return tablaModelo;
+    }
+
+    public void setTablaModelo(TablaModelo tablaModelo) {
+        this.tablaModelo = tablaModelo;
+    }
 }

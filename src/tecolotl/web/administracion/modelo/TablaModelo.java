@@ -3,7 +3,7 @@ package tecolotl.web.administracion.modelo;
 public class TablaModelo {
 
     private String nombre;
-    private int id;
+    private Integer id;
 
     public TablaModelo() {
     }
@@ -21,11 +21,11 @@ public class TablaModelo {
         this.nombre = nombre;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 }

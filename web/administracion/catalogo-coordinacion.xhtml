@@ -26,17 +26,17 @@
 
         <div class="uk-grid uk-grid-medium" data-uk-grid="">
 
-            <!-- catalogo Motivo Bloqueo -->
+            <!-- catalogo 1 -->
             <div class="uk-width-1-2@l">
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover">
                     <div class="uk-card-header">
                         <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-auto"><h4>#{administracion['catalogoadministrativo.administrator.bloc.catalog']}</h4></div>
+                            <div class="uk-width-auto"><h4>#{administracion['catalogocoordinador.coordinatorcatalog']}</h4></div>
                             <div class="uk-width-expand uk-flex uk-flex-right">
-                                <h:form id="formulario-nuevo-bloqueo-catalogo">
+                                <h:form id="formulario-nuevo-catalogo-profesor">
                                 <ul class="uk-iconnav">
                                     <li>
-                                        <h:commandLink pt:uk-toggle="target: #modal-bloqueo-catalogo">
+                                        <h:commandLink pt:uk-toggle="target: #modal-coordinador">
                                             <span class="uk-icon-link" title="#{boton['add']}" data-uk-tooltip="" data-uk-icon="icon: plus-circle; ratio: 1.5">
                                             </span>
                                             <f:ajax/>
@@ -50,10 +50,10 @@
                         </div>
                     </div>
                     <div class="uk-card-body">
-                        <h:form id="formulario-tabla-motivo-bloqueo">
-                            <h:dataTable id="tabla-motivo-bloqueo"
-                                         value="#{catalogoAdministradoBloqueControlador.collectionDataModel}"
-                                         binding="#{catalogoAdministradoBloqueControlador.htmlDataTable}"
+                        <h:form id="formulario-tabla-bloqueo-coordinador">
+                            <h:dataTable id="tabla-coordinador"
+                                         value="#{catalogoAdministradoCoordinadorControlador.collectionDataModel}"
+                                         binding="#{catalogoAdministradoCoordinadorControlador.htmlDataTable}"
                                          var="dato"
                                          first="0"
                                          rows="5"
@@ -61,41 +61,41 @@
                                          footerClass="uk-background-primary"
                                          columnClasses=",uk-text-center">
                                 <h:column headerClass="uk-background-primary uk-background-primary">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.blocking.reason.table.header.name']}</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogocoordinador.coordinator.block.table.header.name']}</span></f:facet>
                                     #{dato.nombre}
                                 </h:column>
                                 <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.blocking.reason.table.header.editar']}</span></f:facet>
-                                    <h:commandLink   pt:uk-toggle="target: #modal-editar">
+                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogocoordinador.coordinator.block.table.header.edit']}</span></f:facet>
+                                    <h:commandLink   pt:uk-toggle="target: #modal-coordinador">
                                         <button class="uk-icon-button puntero" uk-icon="file-text" type="button"></button>
                                         <f:ajax/>
                                     </h:commandLink>
                                 </h:column>
                                 <f:facet name="footer">
-                                    <pa:pie-tabla htmlDataTable="#{catalogoAdministradoBloqueControlador.htmlDataTable}"/>
+                                    <pa:pie-tabla htmlDataTable="#{catalogoAdministradoCoordinadorControlador.htmlDataTable}"/>
                                 </f:facet>
                             </h:dataTable>
                         </h:form>
                     </div>
                     <div class="uk-card-footer">
-                        <f:ajax render="formulario-tabla-motivo-bloqueo:tabla-motivo-bloqueo formulario-botones-bloqueo">
-                            <h:form id="formulario-botones-bloqueo">
-                                <pa:boton-minimizado htmlDataTable="#{catalogoAdministradoBloqueControlador.htmlDataTable}"/>
+                        <f:ajax render="formulario-tabla-bloqueo-coordinador:tabla-coordinador formulario-botones-coordinador">
+                            <h:form id="formulario-botones-coordinador">
+                                <pa:boton-minimizado htmlDataTable="#{catalogoAdministradoCoordinadorControlador.htmlDataTable}"/>
                             </h:form>
                         </f:ajax>
                     </div>
                 </div>
             </div>
             <!-- / FIN catalogo l -->
-            <!-- catalog tipo contacto -->
+            <!-- catalog 2 -->
             <div class="uk-width-1-2@l">
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover">
                     <div class="uk-card-header">
                         <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-auto"><h4>#{administracion['catalogoadministrativo.administrator.contact.catalog']}</h4></div>
+                            <div class="uk-width-auto"><h4>#{administracion['catalogocoordinador.teachercatalog']}</h4></div>
                             <div class="uk-width-expand uk-flex uk-flex-right">
                                 <div class="uk-width-expand uk-flex uk-flex-right">
-                                    <h:form id="formulario-nuevo-tipo-contacto">
+                                    <h:form id="formulario-nuevo-catalogo-coordinador2">
                                         <ul class="uk-iconnav">
                                             <li>
                                                 <h:commandLink pt:uk-toggle="target: #modal-profesor">
@@ -110,10 +110,10 @@
                         </div>
                     </div>
                     <div class="uk-card-body">
-                        <h:form id="formulario-tabla-tipo-bloqueo">
-                            <h:dataTable id="tabla-tipo-bloqueo"
-                                         value="#{catalogoAdministradoContactoControlador.collectionDataModel}"
-                                         binding="#{catalogoAdministradoContactoControlador.htmlDataTable}"
+                        <h:form id="formulario-tabla-bloqueo-profesor">
+                            <h:dataTable id="tabla-profesor"
+                                         value="#{catalogoAdministradoProfesorControlador.collectionDataModel}"
+                                         binding="#{catalogoAdministradoProfesorControlador.htmlDataTable}"
                                          var="dato"
                                          first="0"
                                          rows="5"
@@ -122,90 +122,12 @@
                                          columnClasses=",uk-text-center">
 
                                 <h:column headerClass="uk-background-primary uk-background-primary">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.contact.table.header.name']}</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogocoordinador.teacher.block.table.header.name']}</span></f:facet>
                                     #{dato.nombre}
                                 </h:column>
                                 <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
 
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.contact.table.header.edit']}</span></f:facet>
-                                    <h:commandLink   pt:uk-toggle="target: #modal-tipo-contacto">
-                                        <button class="uk-icon-button puntero" uk-icon="file-text" type="button"></button>
-                                        <f:ajax/>
-                                    </h:commandLink>
-                                </h:column>
-                                <f:facet name="footer">
-                                    <pa:pie-tabla htmlDataTable="#{catalogoAdministradoContactoControlador.htmlDataTable}"/>
-                                </f:facet>
-                            </h:dataTable>
-                        </h:form>
-                    </div>
-                    <div class="uk-card-footer">
-                        <f:ajax render="formulario-tabla-tipo-bloqueo:tabla-tipo-bloqueo formulario-botones-tipo-bloqueo">
-                            <h:form id="formulario-botones-tipo-bloqueo">
-                                <pa:boton-minimizado htmlDataTable="#{catalogoAdministradoContactoControlador.htmlDataTable}"/>
-                            </h:form>
-                        </f:ajax>
-                    </div>
-                </div>
-            </div>
-            <!-- /FIN catalogo 2 -->
-            <!-- catalog colonias -->
-            <div class="uk-width-1-1l">
-                <div class="uk-card uk-card-default uk-card-small uk-card-hover">
-                    <div class="uk-card-header">
-                        <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-auto"><h4>#{administracion['catalogoadministrativo.administrator.colony.catalog']}</h4></div>
-                            <div class="uk-width-expand uk-flex uk-flex-right">
-                                <div class="uk-width-expand uk-flex uk-flex-right">
-                                    <h:form id="formulario-nuevo-catalogo-colonia">
-                                        <ul class="uk-iconnav">
-                                            <li>
-                                                <h:commandLink pt:uk-toggle="target: #modal-profesor">
-                                                    <span class="uk-icon-link" title="#{boton['add']}" data-uk-tooltip="" data-uk-icon="icon: plus-circle; ratio: 1.5"></span>
-                                                    <f:ajax/>
-                                                </h:commandLink>
-                                            </li>
-                                        </ul>
-                                    </h:form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="uk-card-body">
-                        <h:form id="formulario-tabla-colonia">
-                            <h:dataTable id="tabla-colonia"
-                                         value="#{catalogoAdministradoColoniaControlador.collectionDataModel}"
-                                         binding="#{catalogoAdministradoColoniaControlador.htmlDataTable}"
-                                         var="dato"
-                                         first="0"
-                                         rows="5"
-                                         styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover"
-                                         footerClass="uk-background-primary"
-                                         columnClasses="uk-text-center,,,uk-text-center,uk-text-center">
-
-                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.colony.table.header.code.zip']}</span></f:facet>
-                                    #{dato.codigopostal}
-                                </h:column>
-
-                                <h:column headerClass="uk-background-primary uk-background-primary">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.colony.table.header.name']}</span></f:facet>
-                                    #{dato.nombre}
-                                </h:column>
-
-                                <h:column headerClass="uk-background-primary uk-background-primary">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.colony.table.header.municipality']}</span></f:facet>
-                                    #{dato.municipio}
-                                </h:column>
-
-                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.colony.table.header.estate']}</span></f:facet>
-                                    #{dato.estado}
-                                </h:column>
-
-                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
-
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.colony.table.header.options']}</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogocoordinador.teacher.block.table.header.edit']}</span></f:facet>
                                     <h:commandLink   pt:uk-toggle="target: #modal-profesor">
                                         <button class="uk-icon-button puntero" uk-icon="file-text" type="button"></button>
                                         <f:ajax/>
@@ -218,15 +140,15 @@
                         </h:form>
                     </div>
                     <div class="uk-card-footer">
-                        <f:ajax render="formulario-tabla-colonia:tabla-colonia formulario-botones-colonia">
-                            <h:form id="formulario-colonia">
-                                <pa:boton-minimizado htmlDataTable="#{catalogoAdministradoColoniaControlador.htmlDataTable}"/>
+                        <f:ajax render="formulario-tabla-bloqueo-profesor:tabla-profesor formulario-botones-profesor">
+                            <h:form id="formulario-botones-profesor">
+                                <pa:boton-minimizado htmlDataTable="#{catalogoAdministradoProfesorControlador.htmlDataTable}"/>
                             </h:form>
                         </f:ajax>
                     </div>
                 </div>
             </div>
-            <!-- /FIN colonias -->
+            <!-- /FIN catalogo 2 -->
         </div>
 
         <!--  Modal Motivo Coordinador  -->
@@ -235,8 +157,8 @@
                 <h:form id="formulario-modal-editar" styleClass="uk-form-stacked">
                 <div class="uk-modal-header uk-background-secondary">
                     <p class="uk-h4 uk-text-center uk-text-bold">
-                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogoadministrativo.modal.editar']}" rendered="#{not empty catalogoAdministradoCoordinadorControlador.tablaModelo.id}"/>
-                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogoadministrativo.modal.new']}" rendered="#{empty catalogoAdministradoCoordinadorControlador.tablaModelo.id}"/>
+                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.editar']}" rendered="#{not empty catalogoAdministradoCoordinadorControlador.tablaModelo.id}"/>
+                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.new']}" rendered="#{empty catalogoAdministradoCoordinadorControlador.tablaModelo.id}"/>
                     </p>
                 </div>
                 <div class="uk-modal-body">
@@ -279,8 +201,8 @@
                 <h:form id="formulario-modal-profesor" styleClass="uk-form-stacked">
                     <div class="uk-modal-header uk-background-secondary">
                         <p class="uk-h4 uk-text-center uk-text-bold">
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogoadministrativo.modal.editar']}" rendered="#{not empty catalogoAdministradoProfesorControlador.tablaModelo.id}"/>
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogoadministrativo.modal.new']}" rendered="#{empty catalogoAdministradoProfesorControlador.tablaModelo.id}"/>
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.editar']}" rendered="#{not empty catalogoAdministradoProfesorControlador.tablaModelo.id}"/>
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.new']}" rendered="#{empty catalogoAdministradoProfesorControlador.tablaModelo.id}"/>
                         </p>
                     </div>
                     <div class="uk-modal-body">
