@@ -20,7 +20,7 @@ public class CatalogoAdministradoDetalleProfesorControlador extends PaginacionCo
     public void init() {
         Collection<TablaProfesores> collection = new ArrayList<>();
         for (int i=0; i < 33; i++) {
-            ((ArrayList<TablaProfesores>) collection).add(new TablaProfesores("nombre" + i,"8"+i,"2" +i,"4"+i,i));
+            ((ArrayList<TablaProfesores>) collection).add(new TablaProfesores("Mario Mauricio Bustillo Díaz" + i,"8"+i,"2" +i,"4"+i,i));
         }
         getCollectionDataModel().setWrappedData(collection);
     }
