@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:pa="http://xmlns.jcp.org/jsf/composite/paginacion">
+
+<ui:composition template="/template/dashboard.xhtml">
+    <ui:define name="menu">
+        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
+            <li class="uk-nav-header">ACCIONES</li>
+            <li><a href="#"><span data-uk-icon="icon: table" class="uk-margin-small-right"></span>Escuelas</a></li>
+            <li><a href="#"><span data-uk-icon="icon: database" class="uk-margin-small-right"></span>Catalogos</a></li>
+            <li><a href="#"><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Friends</a></li>
+        </ul>
+    </ui:define>
+    <ui:define name="contenido">
+        <h:outputStylesheet library="css" name="tablas.css"/>
+        <div uk-grid="">
+            <div class="uk-width-1-1@s ">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover">
+                    <div class="uk-card-header">
+                        <div class="uk-grid uk-grid-small" uk-grid="">
+                            <div class="uk-width-auto"><h4><span class="uk-text-middle">Detalle Coordinador</span></h4></div>
+                            <div class="uk-width-expand uk-text-right panel-icons">
+                                <h:form>
+                                    <h:commandLink styleClass="uk-icon-button  uk-icon" >
+                                        <f:ajax></f:ajax>
+                                        <h:outputText pt:uk-icon="icon: plus-circle; ratio: 1.5"/>
+                                    </h:commandLink>
+                                </h:form>
+                                <!--<a href="#" class="uk-icon-button uk-icon-link" uk-icon="twitter"></a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <h:form id="formulario-coordinador">
+                            <h:dataTable
+                                    value="#{coordinadorControlador.collectionDataModel}"
+                                    binding="#{coordinadorControlador.htmlDataTable}"
+                                    var="coordinador"
+                                    id="tabla-coordinador"
+                                    first="0"
+                                    rows="5"
+                                    styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover uk-text-center tabla-coordinador-dropdown"
+                                    headerClass="uk-background-primary uk-text-center"
+                                    footerClass="uk-background-primary uk-text-left"
+                                    columnClasses=",,uk-text-center,uk-text-center,uk-text-center,uk-text-center">
+                                <h:column>
+                                    <f:facet name="header"><span class="letra-titulo">Nick Name</span></f:facet>
+                                    #{coordinador.nickname}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><span class="letra-titulo">Nombre</span></f:facet>
+                                    #{coordinador.nombre}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><span class="letra-titulo">Correo Electronico</span></f:facet>
+                                    #{coordinador.email}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><span class="letra-titulo">Estatus</span></f:facet>
+                                    <h:outputText rendered="#{coordinador.activo}" pt:uk-icon="check"/>
+                                    <h:outputText rendered="#{not coordinador.activo}" pt:uk-icon="ban"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><span class="letra-titulo">Licencias</span></f:facet>
+                                    #{coordinador.licecias}
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><span class="letra-titulo">Opciones</span></f:facet>
+                                    <div class="uk-inline  ">
+                                        <button class="uk-icon-button puntero" uk-icon="more-vertical" type="button"></button>
+                                        <div uk-dropdown="boundary:.tabla-coordinador-dropdown; mode: click" id="dropear" >
+                                            <ul class="uk-nav uk-dropdown-nav uk-text-left">
+                                                <li>
+                                                    <h:commandLink   pt:uk-toggle="target: #modal-editar-coord">
+                                                        <span uk-icon="icon: file-text" class="uk-margin-small-right uk-icon" ></span>
+                                                        <span class="uk-text-middle"><h:outputText value="Editar"/></span>
+                                                        <f:ajax />
+                                                    </h:commandLink>
+                                                </li>
+                                                <li>
+                                                    <h:commandLink  pt:uk-toggle="target: #modal-eliminar" >
+                                                        <span uk-icon="icon: file-text" class="uk-margin-small-right uk-icon" ></span>
+                                                        <span class="uk-text-middle"><h:outputText value="Eliminar"/></span>
+                                                        <f:ajax/>
+                                                    </h:commandLink>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </h:column>
+                                <f:facet name="footer">
+                                    <pa:pie-tabla htmlDataTable="#{coordinadorControlador.htmlDataTable}"/>
+                                </f:facet>
+                            </h:dataTable>
+                        </h:form>
+
+                    </div>
+
+                    <div class="uk-card-footer">
+                        <f:ajax render="formulario-coordinador:tabla-coordinador formulario-paginacion-coordinador"
+                                onevent="limpiaSelect">
+                            <h:form id="formulario-paginacion-coordinador">
+                                <div  styleClass="" pt:uk-grid="">
+                                    <div class="uk-panel uk-flex uk-flex-left uk-width-1-1@s uk-width-1-2@m">
+                                        <pa:boton htmlDataTable="#{coordinadorControlador.htmlDataTable}"/>
+                                    </div>
+                                </div>
+                                <div class="uk-panel uk-flex uk-flex-right@m uk-flex-center@s uk-width-1-1@s uk-width-1-2@m">
+                                    <h:commandButton disabled="true"
+                                                     styleClass="uk-button uk-button-primary uk-margin-small-right"
+                                                     value="limpar">
+                                    </h:commandButton>
+                                </div>
+                            </h:form>
+                        </f:ajax>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-eliminar"  uk-modal="">
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+
+                <div class="uk-modal-header fondo-peligro"  >
+                    <p class="uk-h4 uk-text-center uk-text-bold" ><span class="letra-titulo">Eliminar</span></p>
+                </div>
+                <div class="uk-modal-body">
+                    <p>Esta seguro que desea Borrar al contacto: <span class="uk-text-bold">Mr. Martin</span> </p>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-border-rounded uk-modal-close" type="button">Cancelar</button>
+                    <h:commandButton styleClass="uk-button uk-button-danger  uk-margin-small-left" value="Aceptar" >
+                        <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalEliminar' ) }"/>
+                    </h:commandButton>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-editar-coord" class="uk-modal-container" uk-modal="">
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+                <div class="uk-modal-header uk-background-secondary">
+                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Editar Nombre de Coordinador</span></p>
+                </div>
+                <div class="uk-modal-body">
+                    <div class="uk-grid-small uk-grid" >
+                        <h:form pt:uk-grid="">
+                            <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
+                                <h:outputLabel styleClass="uk-form-label" value="Nombre" for="name" />
+                                <div class="uk-form-controls">
+                                    <h:inputText id="name"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input" value="Jaime "/>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
+                                <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="apellido-paterno" />
+                                <div class="uk-form-controls">
+                                    <h:inputText id="apellido-paterno"  pt:placeholder="Apellido paterno" disabled="false"  styleClass="uk-input" value="Martinez"/>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
+                                <h:outputLabel styleClass="uk-form-label" value="Apellido Materno" for="apellido-materno" />
+                                <div class="uk-form-controls">
+                                    <h:inputText id="apellido-materno"  pt:placeholder="Apellido paterno" disabled="false"  styleClass="uk-input" value="Sanchez"/>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
+                                <h:outputLabel styleClass="uk-form-label" value="Nick Name" for="nick" />
+                                <div class="uk-form-controls">
+                                    <h:inputText id="nick"  pt:placeholder="Nick Name" disabled="false"  styleClass="uk-input" value="Mr. Martin"/>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
+                                <h:outputLabel styleClass="uk-form-label" value="Email" for="email" />
+                                <div class="uk-form-controls">
+                                    <h:inputText id="email"  pt:placeholder="Correo" disabled="false"  styleClass="uk-input" value="correo@gmail.com"/>
+                                </div>
+                            </div>
+
+                        </h:form>
+                    </div>
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                    <h:commandButton styleClass="uk-button uk-button-secondary  uk-margin-small-left" value="Aceptar" >
+                        <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalModificar') }"/>
+                    </h:commandButton>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            var modalEliminar;
+            var modalModificar
+            document.addEventListener("DOMContentLoaded", function (evt) {
+                limpiaSelect("undefined");
+                // modalAgregar = document.querySelector('#modal-contacto');
+                modalEliminar = document.querySelector('#modal-eliminar');
+                modalModificar = document.querySelector('#modal-editar-coord');
+                UIkit.util.on('#modal-eliminar', 'show', function () {
+                    modalEliminar.querySelector('.uk-modal-body').click();
+                });
+                UIkit.util.on('#modal-editar-coord', 'show', function () {
+                    modalModificar.querySelector('.uk-modal-body').click();
+                });
+            });
+            document.addEventListener('DOMContentLoaded', function (evt) {
+                limpiaSelect();
+            });
+
+            function limpiaSelect(data) {
+                if (typeof data === 'undefined') {
+                    document.querySelectorAll('.uk-select').forEach(
+                        function (value) { value.removeAttribute('size'); }
+                    )
+                } else {
+                    if (data.status === 'success') {
+                        document.querySelectorAll('.uk-select').forEach(
+                            function (value) { value.removeAttribute('size'); }
+                        )
+                    }
+                }
+            }
+
+            function cierraModal(data,modal) {
+                if (data.status === "success"){
+                    switch (modal) {
+                        case "modalEliminar":
+                            if (modalEliminar.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalEliminar).hide();
+                            }
+                            break;
+                        case "modalModificar":
+                            if (modalModificar.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalModificar).hide();
+                            }
+                            break;
+
+                        default: console.error("error")
+                    }
+                }
+
+
+            }
+        </script>
+    </ui:define>
+
+
+
+</ui:composition>
+
+
+
+
+
+
+
+</html>

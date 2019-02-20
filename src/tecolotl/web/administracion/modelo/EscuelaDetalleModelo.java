@@ -13,7 +13,7 @@ public class EscuelaDetalleModelo  {
     private int numero_interior;
     private String bloqueo;
 
-    public EscuelaDetalleModelo(String cct, String nombre, int licecias, String codigo_postal, String municipio, String estado, String calle, int numero_exterior, int numero_interior, String bloqueo) {
+    public EscuelaDetalleModelo(String cct, String nombre, int licecias, String codigo_postal, String municipio, String estado, String calle, int numero_exterior, int numero_interior, String bloqueo,String colonia) {
         this.cct = cct;
         this.nombre = nombre;
         this.licecias = licecias;
