@@ -29,7 +29,7 @@
             <!-- catalogo Motivo Bloqueo -->
             <div class="uk-width-1-2@l">
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover">
-                    <div class="uk-card-header">
+                    <div class="uk-card-header uk-margin-medium-bottom">
                         <div class="uk-grid uk-grid-small">
                             <div class="uk-width-auto uk-text-capitalize"><h4 class="uk-text-capitalize">#{administracion['catalogoadministrativo.administrator.bloc.catalog']}</h4></div>
                             <div class="uk-width-expand uk-flex uk-flex-right">
@@ -89,7 +89,7 @@
             <!-- / FIN catalogo l -->
             <!-- catalog tipo contacto -->
             <div class="uk-width-1-2@l">
-                <div class="uk-card uk-card-default uk-card-small uk-card-hover">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-medium-bottom">
                     <div class="uk-card-header">
                         <div class="uk-grid uk-grid-small">
                             <div class="uk-width-auto uk-text-capitalize"><h4 class="uk-text-capitalize">#{administracion['catalogoadministrativo.administrator.contact.catalog']}</h4></div>
@@ -150,9 +150,9 @@
             </div>
             <!-- /FIN catalogo 2 -->
             <!-- catalog colonias -->
-            <div class="uk-width-1-1l">
-                <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-large-bottom">
-                    <div class="uk-card-header">
+            <div class="uk-width-1-1l uk-margin-large-bottom">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-medium-bottom">
+                    <div class="uk-card-header ">
                         <div class="uk-grid uk-grid-small">
                             <div class="uk-width-auto uk-text-capitalize"><h4 class="uk-text-capitalize">#{administracion['catalogoadministrativo.administrator.colony.catalog']}</h4></div>
                             <div class="uk-width-expand uk-flex uk-flex-right">
@@ -212,7 +212,7 @@
                                     </h:commandLink>
                                 </h:column>
                                 <f:facet name="footer">
-                                    <pa:pie-tabla htmlDataTable="#{catalogoAdministradoCoordinadorControlador.htmlDataTable}"/>
+                                    <pa:pie-tabla htmlDataTable="#{catalogoAdministradoColoniaControlador.htmlDataTable}"/>
                                 </f:facet>
                             </h:dataTable>
                         </h:form>
@@ -220,7 +220,7 @@
                     <div class="uk-card-footer">
                         <div class="uk-grid uk-grid-small">
                             <div class="uk-width-auto uk-text-capitalize">
-                                <f:ajax render="formulario-tabla-colonia:tabla-colonia formulario-botones-colonia">
+                                <f:ajax render="formulario-tabla-colonia:tabla-colonia formulario-colonia">
                                     <h:form id="formulario-colonia" styleClass="uk-form-horizontal">
                                         <pa:boton-minimizado htmlDataTable="#{catalogoAdministradoColoniaControlador.htmlDataTable}"/>
                                     </h:form>
