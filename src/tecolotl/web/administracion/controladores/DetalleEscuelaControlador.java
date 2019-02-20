@@ -26,7 +26,7 @@ public class DetalleEscuelaControlador  {
             contactoModelo.add(new ContactoModelo("Juan Pancracio Filomeno","Coordinador","2226967841"));
         }
         for (int i=0; i<=2;i++) {
-            licenciasModelo.add(new LicenciasModelo(i+1,"21DBA0004C",i*25));
+            licenciasModelo.add(new LicenciasModelo(i+1,"21DBA0004C",i*i-i));
         }
     }
 

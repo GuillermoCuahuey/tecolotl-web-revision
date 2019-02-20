@@ -21,7 +21,7 @@
         <h:outputStylesheet library="css" name="tablas.css"/>
         <div uk-grid="">
             <div class="uk-width-1-1@s ">
-                <div class="uk-card uk-card-default uk-card-small uk-card-hover">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-medium-bottom">
                     <div class="uk-card-header">
                         <div class="uk-grid uk-grid-small" uk-grid="">
                             <div class="uk-width-auto"><h4><span class="uk-text-middle">Detalle Coordinador</span></h4></div>
@@ -78,15 +78,29 @@
                                             <ul class="uk-nav uk-dropdown-nav uk-text-left">
                                                 <li>
                                                     <h:commandLink   pt:uk-toggle="target: #modal-editar-coord">
-                                                        <span uk-icon="icon: file-text" class="uk-margin-small-right uk-icon" ></span>
+                                                        <span uk-icon="icon: file-edit" class="uk-margin-small-right uk-icon" ></span>
                                                         <span class="uk-text-middle"><h:outputText value="Editar"/></span>
                                                         <f:ajax />
                                                     </h:commandLink>
                                                 </li>
                                                 <li>
                                                     <h:commandLink  pt:uk-toggle="target: #modal-eliminar" >
-                                                        <span uk-icon="icon: file-text" class="uk-margin-small-right uk-icon" ></span>
+                                                        <span uk-icon="icon: trash" class="uk-margin-small-right uk-icon" ></span>
                                                         <span class="uk-text-middle"><h:outputText value="Eliminar"/></span>
+                                                        <f:ajax/>
+                                                    </h:commandLink>
+                                                </li>
+                                                <li>
+                                                    <h:commandLink  pt:uk-toggle="target: #modal-asignar-licencia" >
+                                                        <span uk-icon="icon: plus-circle" class="uk-margin-small-right uk-icon" ></span>
+                                                        <span class="uk-text-middle"><h:outputText value="Licencia"/></span>
+                                                        <f:ajax/>
+                                                    </h:commandLink>
+                                                </li>
+                                                <li>
+                                                    <h:commandLink  pt:uk-toggle="target: #modal-bloqueo" >
+                                                        <span uk-icon="icon: ban" class="uk-margin-small-right uk-icon" ></span>
+                                                        <span class="uk-text-middle"><h:outputText value="Bloqueo"/></span>
                                                         <f:ajax/>
                                                     </h:commandLink>
                                                 </li>
@@ -113,7 +127,7 @@
                                 </div>
                                 <div class="uk-panel uk-flex uk-flex-right@m uk-flex-center@s uk-width-1-1@s uk-width-1-2@m">
                                     <h:commandButton disabled="true"
-                                                     styleClass="uk-button uk-button-primary uk-margin-small-right"
+                                                     styleClass="uk-button uk-button-primary uk-margin-small-right uk-margin-small-top"
                                                      value="limpar">
                                     </h:commandButton>
                                 </div>
@@ -193,18 +207,101 @@
             </div>
         </div>
 
+        <div id="modal-asignar-licencia"  uk-modal="">
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+                <button class="uk-modal-close-default" type="button" uk-close=""></button>
+                <div class="uk-modal-header uk-background-secondary">
+                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Asignar Licencia</span></p>
+                </div>
+                <div class="uk-modal-body">
+
+                    <div class="uk-grid-small uk-grid" uk-grid="">
+
+                        <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column uk-text-bold uk-text-capitalize">
+
+                        </div>
+
+                        <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
+                            <h:form>
+
+                                <h:outputLabel styleClass="uk-form-label" value="Selecciona Licencia"  />
+                                <div class="uk-form-controls">
+                                    <h:selectOneMenu value = "#{userData.data}" styleClass="uk-select">
+                                        <f:selectItem itemValue = "1" itemLabel = "Item 1" />
+                                        <f:selectItem itemValue = "2" itemLabel = "Item 2" />
+                                    </h:selectOneMenu>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                    <h:commandButton styleClass="uk-button uk-button-secondary  uk-margin-small-left" value="Aceptar" >
+                        <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalLicencia') }"/>
+                    </h:commandButton>
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-bloqueo"  uk-modal="">
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+                <button class="uk-modal-close-default" type="button" uk-close=""></button>
+                <div class="uk-modal-header uk-background-secondary">
+                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Selecciona Motivo de Bloqueo</span></p>
+                </div>
+                <div class="uk-modal-body">
+
+                    <div class="uk-grid-small uk-grid" uk-grid="">
+
+                        <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column uk-text-bold uk-text-capitalize">
+
+                        </div>
+
+                        <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
+                            <label>Seleccionar licencia</label>
+                            <div class="uk-form-controls">
+                                <select class="uk-select">
+                                    <option value="-32766">Falta de pago</option>
+                                    <option value="-32752">Motivo Bloque 5</option>
+                                    <option value="-32756">Motivo Bloqueo 1</option>
+                                    <option value="-32755">Motivo Bloqueo 2</option>
+                                    <option value="-32754">Motivo Bloqueo 3</option>
+                                    <option value="-32753">Motivo Bloqueo 4</option>
+                                    <option value="-32764">Rango de edades</option>
+                                    <option value="-32751">Ventas</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                    <button class="uk-button uk-button-secondary" type="button">Guardar</button>
+                </div>
+            </div>
+        </div>
+
         <script type="text/javascript">
             var modalEliminar;
-            var modalModificar
+            var modalModificar;
+            var modalLicencia;
             document.addEventListener("DOMContentLoaded", function (evt) {
                 limpiaSelect("undefined");
                 // modalAgregar = document.querySelector('#modal-contacto');
                 modalEliminar = document.querySelector('#modal-eliminar');
                 modalModificar = document.querySelector('#modal-editar-coord');
+                modalLicencia = document.querySelector('#modal-asignar-licencia')
                 UIkit.util.on('#modal-eliminar', 'show', function () {
                     modalEliminar.querySelector('.uk-modal-body').click();
                 });
                 UIkit.util.on('#modal-editar-coord', 'show', function () {
+                    modalModificar.querySelector('.uk-modal-body').click();
+                });
+                UIkit.util.on('#modal-asignar-licencia', 'show', function () {
                     modalModificar.querySelector('.uk-modal-body').click();
                 });
             });
@@ -239,6 +336,10 @@
                                 UIkit.modal(modalModificar).hide();
                             }
                             break;
+                        case "modalLicencia":
+                            if (modalLicencia.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalLicencia).hide();
+                            }
 
                         default: console.error("error")
                     }
