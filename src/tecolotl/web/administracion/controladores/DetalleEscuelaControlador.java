@@ -19,7 +19,7 @@ public class DetalleEscuelaControlador  {
     private List<LicenciasModelo> licenciasModelo;
     @PostConstruct
     public void init() {
-            escuelaDetalleModelos = new EscuelaDetalleModelo("21DBA0004C", "Escuela de algun lugar",3,"72758","Puebla","Puebla","calle siempre viva",54,0,"activo");
+            escuelaDetalleModelos = new EscuelaDetalleModelo("21DBA0004C", "Escuela de algun lugar",3,"72758","Puebla","Puebla","calle siempre viva",54,0,"activo","margarita");
             contactoModelo = new ArrayList<>();
             licenciasModelo = new ArrayList<>();
         for (int i=0; i <= 4; i++) {

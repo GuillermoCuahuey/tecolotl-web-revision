@@ -251,6 +251,21 @@
                     </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div id="modal-eliminar" uk-modal="" class="">
             <div class="uk-modal-dialog uk-margin-auto-vertical">
 
@@ -268,43 +283,10 @@
                 </div>
             </div>
         </div>
-        <div id="modal-contacto" class="uk-modal" >
-            <div class="uk-modal-dialog">
-                <button class="uk-modal-close-default" type="button" uk-close=""></button>
-                <div class="uk-modal-header">
-                    <h2 class="uk-modal-title uk-text-center">Editar Contacto</h2>
-                </div>
-                <h:form id="formulario-agregar-contacto"  styleClass="uk-form-stacked">
-                    <div class="uk-modal-body">
+        <div>
 
-                        <div class="uk-grid-small" uk-grid="">
-                            <div class="uk-width-1-1">
-                                <h:outputLabel styleClass="uk-form-label" value="CCT" for="modal-contacto-nombre" />
-                                <div class="uk-form-controls">
-                                    <h:inputText id="modal-contacto-nombre"  pt:placeholder="21DBA0004C" disabled="true"  styleClass="uk-input" value="#{detalleEscuelaControlador.escuelaDetalleModelos.}"/>
-                                </div>
-
-                            </div>
-                            <div class="uk-width-1-2">
-
-                            </div>
-                            <div class="uk-width-1-2">
-
-                            </div>
-                            <div class="uk-width-1-2">
-                                <h:messages showDetail="false" styleClass="uk-list uk-alert-danger uk-alert" id="mensajes-error"/>
-                            </div>
-                        </div>
-                    </div>
-                    <!--<div class="uk-modal-footer uk-text-right">-->
-                        <!--<button class="uk-button uk-button-default uk-modal-close uk-margin-small-right" type="button"><h:outputText value="#{mensaje['button.cancel']}"/></button>-->
-                        <!--<h:commandButton styleClass="uk-button uk-button-primary uk-border-rounded" value="#{mensaje['button.accept']}">-->
-                            <!--<f:ajax listener="#{escuelaDetalleControlador.insertar}" execute="@form" render="@form panel-contacto modal-contacto" onevent="cierraModal"/>-->
-                        <!--</h:commandButton>-->
-                    <!--</div>-->
-                </h:form>
-            </div>
         </div>
+
 
         <script type="text/javascript">
             var modalAgregar;
