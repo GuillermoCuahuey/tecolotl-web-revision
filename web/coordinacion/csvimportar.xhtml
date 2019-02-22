@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pa="http://xmlns.jcp.org/jsf/composite/paginacion"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<ui:composition template="/template/dashboard.xhtml" >
+    <ui:define name="menu">
+        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
+            <li class="uk-nav-header">ACCIONES</li>
+            <li><a href="#"><span data-uk-icon="icon: table" class="uk-margin-small-right"></span>Escuelas</a></li>
+            <li><a href="#"><span data-uk-icon="icon: database" class="uk-margin-small-right"></span>Catalogos</a></li>
+            <li><a href="#"><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Friends</a></li>
+        </ul>
+    </ui:define>
+    <ui:define name="contenido">
+        <h:outputStylesheet library="css" name="tablas.css"/>
+
+        <h4 class="uk-heading-line uk-text-bold"><span></span></h4>
+
+
+
+        <div class="uk-grid uk-grid-medium uk-button-small" data-uk-grid="">
+
+            <!-- catalog prof-validos -->
+            <div class="uk-width-1-1l">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-large-bottom">
+                    <div class="uk-card-header">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-auto uk-text-capitalize"><h4 class="uk-text-capitalize">#{administracion['csvimportar.active.administrator.import.csv.teachers']}</h4></div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+
+                        <div class="js-upload uk-placeholder uk-text-center">
+                            <div class=" uk-form-custom">
+                                <input type="file" multiple=""/>
+                                <span class="uk-link">Selecciona Archivo</span>
+
+                            </div>
+
+                            <button class="uk-button uk-button-secondary uk-margin-small-left "  type="button">
+                                <span >subir</span>
+                                <span uk-icon="icon: cloud-upload" class="uk-icon uk-margin-small-right"></span>
+                            </button>
+                        </div>
+                        <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden=""></progress>
+
+
+                    </div>
+                    <div class="uk-card-footer">
+
+                    </div>
+                </div>
+            </div>
+            <!-- /FIN prof-validos -->
+            <!-- catalog prof-validos -->
+            <div class="uk-width-1-1l uk-margin-medium-bottom">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover">
+                    <div class="uk-card-header">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-auto uk-text-capitalize"><h4 class="uk-text-capitalize">#{administracion['csvimportar.active.administrator.loaded.files']}</h4></div>
+                            <div class="uk-width-expand uk-flex uk-flex-right">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <h:form id="formulario-tabla-prof-valido">
+                            <table class="uk-table">
+                                <thead>
+                                <tr class="uk-background-primary">
+                                    <th class="uk-width-small">
+                                        <div class="uk-flex uk-flex-between">
+                                            <span class="letra-titulo">Nick Name</span>
+                                        </div>
+                                    </th>
+                                    <th class="uk-table-expand">
+                                        <div class="uk-flex uk-flex-between">
+                                            <span class="letra-titulo">nombre</span>
+                                        </div>
+                                    </th>
+                                    <th class="uk-width-auto"><span class="letra-titulo">Apellido Paterno</span></th>
+                                    <th class="uk-width-auto"><span class="letra-titulo">Apellido Materno</span></th>
+                                    <th class="uk-width-small"><span class="letra-titulo">E-Mail</span></th>
+                                    <th class="uk-width-small"><span class="letra-titulo">Contraseña</span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="uk-text-center">
+
+                                    <td colspan="5"><img src="../resources/img/vacio.svg"/></td>
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+
+                            <h:dataTable id="tabla-prof-valido"
+                                         value="#{catalogoAdministradoValidoControlador.collectionDataModel}"
+                                         binding="#{catalogoAdministradoValidoControlador.htmlDataTable}"
+                                         var="dato"
+                                         first="0"
+                                         rows="1"
+                                         styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover"
+                                         footerClass="uk-background-primary"
+                                         columnClasses="uk-text-center,,,,uk-text-center,uk-text-center">
+
+
+                                <f:facet name="footer">
+
+                                </f:facet>
+                            </h:dataTable>
+                        </h:form>
+                    </div>
+                    <div class="uk-card-footer">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-auto uk-text-capitalize">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /FIN prof-validos -->
+            <!-- catalog prof-invalidos -->
+            <div class="uk-width-1-1l uk-margin-medium-bottom">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-large-bottom">
+                    <div class="uk-card-header">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-auto uk-text-capitalize"><h4 class="uk-text-capitalize">#{administracion['csvimportar.active.administrator.unloaded.files']}</h4></div>
+                            <div class="uk-width-expand uk-flex uk-flex-right">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <h:form id="formulario-tabla-prof-no-invalido">
+                            <table class="uk-table">
+                                <thead>
+                                <tr class="uk-background-primary">
+                                    <th class="uk-width-small">
+                                        <div class="uk-flex uk-flex-between">
+                                            <span class="letra-titulo">Nick Name</span>
+                                        </div>
+                                    </th>
+                                    <th class="uk-table-expand">
+                                        <div class="uk-flex uk-flex-between">
+                                            <span class="letra-titulo">nombre</span>
+                                        </div>
+                                    </th>
+                                    <th class="uk-width-auto"><span class="letra-titulo">Apellido Paterno</span></th>
+                                    <th class="uk-width-auto"><span class="letra-titulo">Apellido Materno</span></th>
+                                    <th class="uk-width-small"><span class="letra-titulo">E-Mail</span></th>
+                                    <th class="uk-width-small"><span class="letra-titulo">Contraseña</span></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="uk-text-center">
+
+                                    <td colspan="5"><img src="../resources/img/vacio.svg"/></td>
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+
+                            <h:dataTable id="tabla-prof-no-invalido"
+                                         value="#{catalogoAdministradoNoValidoControlador.collectionDataModel}"
+                                         binding="#{catalogoAdministradoNoValidoControlador.htmlDataTable}"
+                                         var="dato"
+                                         first="0"
+                                         rows="5"
+                                         styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover"
+                                         footerClass="uk-background-primary"
+                                         columnClasses="uk-text-center,,,,uk-text-center,uk-text-center">
+
+
+                                <f:facet name="footer">
+                                    </f:facet>
+                            </h:dataTable>
+                        </h:form>
+                    </div>
+                    <div class="uk-card-footer">
+
+                    </div>
+                </div>
+            </div>
+            <!-- /FIN prof-invalidos -->
+
+
+
+        </div>
+
+        <!--  Modal Bloqueo Catalogo  -->
+        <h:panelGroup layout="block" id="modal-bloqueo-catalogo" pt:uk-modal="">
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+                <h:form id="formulario-modal-editar" styleClass="uk-form-horizontal uk-margin-large">
+                    <div class="uk-modal-header uk-background-secondary">
+                        <p class="uk-h4 uk-text-center uk-text-bold">
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.editar']}" rendered="#{not empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.new']}" rendered="#{empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
+                        </p>
+                    </div>
+                    <div class="uk-modal-body">
+                        <div class="uk-margin">
+                            <h:outputLabel for="input-coordinador" styleClass="uk-form-label uk-text-capitalize" value="#{etiqueta['description']}"/>
+                            <div class="uk-form-controls">
+                                <h:inputText styleClass="uk-input"
+                                             id="input-coordinador"
+                                             pt:placeholder="#{etiqueta['write.text']}"
+                                             label="#{etiqueta['description']}"
+                                             value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
+                                    <f:validateRequired/>
+                                    <f:validateLength minimum="3" maximum="20"/>
+                                </h:inputText>
+                            </div>
+                        </div>
+                        <ui:fragment rendered="#{facesContext.validationFailed}">
+                            <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
+                                <h:message for="input-coordinador"/>
+                            </h:panelGroup>
+                        </ui:fragment>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
+                                         value="#{boton['cancel']}">
+                            <f:ajax render="@form"/>
+                        </h:commandButton>
+                        <h:commandButton value="#{boton['add']}"
+                                         styleClass="uk-button uk-button-secondary">
+                            <f:ajax execute="@form" render="@form"/>
+                        </h:commandButton>
+                    </div>
+                </h:form>
+            </div>
+        </h:panelGroup>
+
+        <!--  Modal Tipo Contacto -->
+        <h:panelGroup layout="block" id="modal-tipo-contacto" pt:uk-modal="">
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+                <h:form id="formulario-modal-tipo-contacto" styleClass="uk-form-stacked">
+                    <div class="uk-modal-header uk-background-secondary">
+                        <p class="uk-h4 uk-text-center uk-text-bold">
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.editar']}" rendered="#{not empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.new']}" rendered="#{empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
+                        </p>
+                    </div>
+                    <div class="uk-modal-body">
+                        <div class="uk-margin">
+                            <h:outputLabel for="input-contacto" styleClass="uk-form-label uk-text-capitalize" value="#{etiqueta['description']}"/>
+                            <div class="uk-form-controls">
+                                <h:inputText styleClass="uk-input"
+                                             id="input-contacto"
+                                             pt:placeholder="#{etiqueta['write.text']}"
+                                             label="#{etiqueta['description']}"
+                                             value="#{catalogoAdministradoContactoControlador.tablaModelo.nombre}">
+                                    <f:validateRequired/>
+                                    <f:validateLength minimum="3" maximum="20"/>
+                                </h:inputText>
+                            </div>
+                        </div>
+                        <ui:fragment rendered="#{facesContext.validationFailed}">
+                            <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
+                                <h:message for="input-contacto"/>
+                            </h:panelGroup>
+                        </ui:fragment>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
+                                         value="#{boton['cancel']}">
+                            <f:ajax render="@form"/>
+                        </h:commandButton>
+                        <h:commandButton value="#{boton['add']}"
+                                         styleClass="uk-button uk-button-secondary">
+                            <f:ajax execute="@form" render="@form"/>
+                        </h:commandButton>
+                    </div>
+                </h:form>
+            </div>
+        </h:panelGroup>
+
+        <!--  Modal Motivo Colonia  -->
+        <h:panelGroup layout="block" id="modal-colonia" pt:uk-modal="">
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+                <h:form id="formulario-modal-colonia" styleClass="uk-form-stacked">
+                    <div class="uk-modal-header uk-background-secondary">
+                        <p class="uk-h4 uk-text-center uk-text-bold">
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.editar']}" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.new']}" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
+                        </p>
+                    </div>
+                    <div class="uk-modal-body">
+                        <div class="uk-margin">
+                            <h:outputLabel for="input-colonia" styleClass="uk-form-label uk-text-capitalize" value="#{etiqueta['description']}"/>
+                            <div class="uk-form-controls">
+                                <h:inputText styleClass="uk-input"
+                                             id="input-colonia"
+                                             pt:placeholder="#{etiqueta['write.text']}"
+                                             label="#{etiqueta['description']}"
+                                             value="#{catalogoAdministradoColoniaControlador.tablaColonia.nombre}">
+                                    <f:validateRequired/>
+                                    <f:validateLength minimum="3" maximum="20"/>
+                                </h:inputText>
+                            </div>
+                        </div>
+                        <ui:fragment rendered="#{facesContext.validationFailed}">
+                            <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
+                                <h:message for="input-colonia"/>
+                            </h:panelGroup>
+                        </ui:fragment>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
+                                         value="#{boton['cancel']}">
+                            <f:ajax render="@form"/>
+                        </h:commandButton>
+                        <h:commandButton value="#{boton['add']}"
+                                         styleClass="uk-button uk-button-secondary">
+                            <f:ajax execute="@form" render="@form"/>
+                        </h:commandButton>
+                    </div>
+                </h:form>
+            </div>
+        </h:panelGroup>
+
+        <script type="text/javascript">
+            var modalModalEditar;
+            document.addEventListener('DOMContentLoaded', function (evt) {
+                modalModalEditar = document.querySelector('#modal-editar');
+                UIkit.util.on('#modal-editar', 'show', function () {
+                    modalModalEditar.querySelector('.uk-input').click();
+                });
+            });
+        </script>
+
+
+    </ui:define>
+</ui:composition>
+</html>

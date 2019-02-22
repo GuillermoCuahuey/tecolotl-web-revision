@@ -15,6 +15,7 @@ public class CatalogoAdministradoProfesorControlador extends PaginacionControlad
 
     private TablaModelo tablaModelo;
 
+
     @PostConstruct
     public void init() {
         Collection<TablaModelo> collection = new ArrayList<>();
