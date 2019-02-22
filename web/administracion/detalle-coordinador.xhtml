@@ -161,126 +161,194 @@
                 <div class="uk-modal-header uk-background-secondary">
                     <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Editar Nombre de Coordinador</span></p>
                 </div>
-                <div class="uk-modal-body">
-                    <div class="uk-grid-small uk-grid" >
-                        <h:form pt:uk-grid="">
-                            <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
-                                <h:outputLabel styleClass="uk-form-label" value="Nombre" for="name" />
-                                <div class="uk-form-controls">
-                                    <h:inputText id="name"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input" value="Jaime "/>
+                <h:form styleClass="uk-form-stacked" id="formulario-editar-coordinador">
+                    <div class="uk-modal-body">
+                            <div uk-grid="">
+                                <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
+                                    <h:outputLabel styleClass="uk-form-label" value="Nombre" for="name" />
+                                    <div class="uk-form-controls">
+                                        <h:inputText id="name"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input" value="Jaime " label="Nombre" pt:maxlength="30">
+                                            <f:validateRequired/>
+                                            <f:validateLength minimum="2" maximum="30"/>
+                                        </h:inputText>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
-                                <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="apellido-paterno" />
-                                <div class="uk-form-controls">
-                                    <h:inputText id="apellido-paterno"  pt:placeholder="Apellido paterno" disabled="false"  styleClass="uk-input" value="Martinez"/>
+                                <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
+                                    <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="apellido-paterno" />
+                                    <div class="uk-form-controls">
+                                        <h:inputText id="apellido-paterno"  pt:placeholder="Apellido paterno" disabled="false"  styleClass="uk-input" value="Martinez">
+                                            <f:validateRequired/>
+                                            <f:validateLength minimum="3" maximum="30"/>
+                                        </h:inputText>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
-                                <h:outputLabel styleClass="uk-form-label" value="Apellido Materno" for="apellido-materno" />
-                                <div class="uk-form-controls">
-                                    <h:inputText id="apellido-materno"  pt:placeholder="Apellido paterno" disabled="false"  styleClass="uk-input" value="Sanchez"/>
-                                </div>
-                            </div>
-                            <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
-                                <h:outputLabel styleClass="uk-form-label" value="Nick Name" for="nick" />
-                                <div class="uk-form-controls">
-                                    <h:inputText id="nick"  pt:placeholder="Nick Name" disabled="false"  styleClass="uk-input" value="Mr. Martin"/>
-                                </div>
-                            </div>
-                            <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
-                                <h:outputLabel styleClass="uk-form-label" value="Email" for="email" />
-                                <div class="uk-form-controls">
-                                    <h:inputText id="email"  pt:placeholder="Correo" disabled="false"  styleClass="uk-input" value="correo@gmail.com"/>
-                                </div>
-                            </div>
+                                <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
+                                    <h:outputLabel styleClass="uk-form-label" value="Apellido Materno" for="apellido-materno" />
+                                    <div class="uk-form-controls">
+                                        <h:inputText id="apellido-materno"  pt:placeholder="Apellido paterno" disabled="false"  styleClass="uk-input" value="Sanchez">
+                                            <f:validateRequired/>
+                                            <f:validateLength minimum="3" maximum="30"/>
+                                        </h:inputText>
 
-                        </h:form>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
+                                    <h:outputLabel styleClass="uk-form-label" value="Nick Name" for="nick" />
+                                    <div class="uk-form-controls">
+                                        <h:inputText id="nick"  pt:placeholder="Nick Name" disabled="false"  styleClass="uk-input" value="Mr. Martin">
+                                            <f:validateRequired/>
+                                            <f:validateLength minimum="3" maximum="15"/>
+                                        </h:inputText>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
+                                    <h:outputLabel styleClass="uk-form-label" value="Email" for="email" />
+                                    <div class="uk-form-controls">
+                                        <h:inputText id="email"  pt:placeholder="Correo" disabled="false"  styleClass="uk-input" value="correo@gmail.com">
+                                            <f:validateRequired/>
+                                            <f:validateLength minimum="3" maximum="30"/>
+                                        </h:inputText>
+                                    </div>
+                                </div>
+                            </div>
+                        <ui:fragment rendered="#{facesContext.validationFailed}">
+                            <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
+                                <h:messages styleClass="uk-list" />
+                            </h:panelGroup>
+                        </ui:fragment>
                     </div>
-                </div>
-                <div class="uk-modal-footer uk-text-right">
-                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                    <h:commandButton styleClass="uk-button uk-button-secondary  uk-margin-small-left" value="Aceptar" >
-                        <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalModificar') }"/>
-                    </h:commandButton>
-                </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                        <h:commandButton styleClass="uk-button uk-button-secondary  uk-margin-small-left" value="Aceptar" >
+                            <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalModificar') }" render="@form" execute="@form"/>
+                        </h:commandButton>
+                    </div>
+                </h:form>
             </div>
         </div>
 
         <div id="modal-asignar-licencia"  uk-modal="">
             <div class="uk-modal-dialog uk-margin-auto-vertical">
-                <button class="uk-modal-close-default" type="button" uk-close=""></button>
                 <div class="uk-modal-header uk-background-secondary">
                     <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Asignar Licencia</span></p>
                 </div>
+                <h:form id="formulario-licencia" styleClass="uk-form-stacked">
                 <div class="uk-modal-body">
 
-                    <div class="uk-grid-small uk-grid" uk-grid="">
+                    <h:outputLabel styleClass="uk-form-label" value="Selecciona Licencia"  />
+                        <div class="uk-form-controls">
+                            <h:selectOneMenu
+                                    value = "#{coordinadorControlador.licenciasModelo.id}" styleClass="uk-select"
+                                    id="seleccion-licencia"
+                                    label="Licencia">
+                                <f:selectItem itemValue = "#{null}" itemLabel = "seleccione" noSelectionOption="true" />
+                                <f:selectItems value="#{coordinadorControlador.licenciasModeloLista}" var="licencia"
+                                               itemValue="#{licencia.id}"
+                                               itemLabel="#{licencia.cct}"/>
+                                <f:validateRequired/>
+                            </h:selectOneMenu>
 
-                        <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column uk-text-bold uk-text-capitalize">
-
-                        </div>
-
-                        <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
-                            <h:form>
-
-                                <h:outputLabel styleClass="uk-form-label" value="Selecciona Licencia"  />
-                                <div class="uk-form-controls">
-                                    <h:selectOneMenu value = "#{userData.data}" styleClass="uk-select">
-                                        <f:selectItem itemValue = "1" itemLabel = "Item 1" />
-                                        <f:selectItem itemValue = "2" itemLabel = "Item 2" />
-                                    </h:selectOneMenu>
-                                </div>
-                            </h:form>
-                        </div>
                     </div>
-
+                    <ui:fragment rendered="#{facesContext.validationFailed}">
+                        <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
+                            <h:message for="seleccion-licencia"/>
+                        </h:panelGroup>
+                    </ui:fragment>
                 </div>
                 <div class="uk-modal-footer uk-text-right">
                     <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
                     <h:commandButton styleClass="uk-button uk-button-secondary  uk-margin-small-left" value="Aceptar" >
-                        <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalLicencia') }"/>
+                        <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalLicencia') }" render="@form" execute="@form"/>
                     </h:commandButton>
                 </div>
+                </h:form>
             </div>
         </div>
 
         <div id="modal-bloqueo"  uk-modal="">
             <div class="uk-modal-dialog uk-margin-auto-vertical">
-                <button class="uk-modal-close-default" type="button" uk-close=""></button>
                 <div class="uk-modal-header uk-background-secondary">
                     <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Selecciona Motivo de Bloqueo</span></p>
                 </div>
+             <h:form styleClass="uk-form-stacked">
                 <div class="uk-modal-body">
 
-                    <div class="uk-grid-small uk-grid" uk-grid="">
+                                <h:outputLabel styleClass="uk-form-label" value="Motivo de bloqueo"/>
+                                <div class="uk-form-controls">
+                                    <h:selectOneMenu value="#{coordinadorControlador.motivoBloqueoModelo.motivoBloque}"
+                                                     id="seleccion-bloqueo"
+                                                     label="bloqueo"
+                                                     styleClass="uk-select">
+                                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione" noSelectionOption="true"/>
+                                        <f:selectItems value="#{coordinadorControlador.motivoBloqueoModelos}"
+                                                       var="block"
+                                                       itemValue="#{block.motivoBloque}"
+                                                       itemLabel="#{block.motivoBloque}"/>
+                                        <f:validateRequired/>
+                                    </h:selectOneMenu>
+                                </div>
 
-                        <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column uk-text-bold uk-text-capitalize">
-
-                        </div>
-
-                        <div class="uk-width-1-1@s uk-width-1-3@m uk-first-column">
-                            <label>Seleccionar licencia</label>
-                            <div class="uk-form-controls">
-                                <select class="uk-select">
-                                    <option value="-32766">Falta de pago</option>
-                                    <option value="-32752">Motivo Bloque 5</option>
-                                    <option value="-32756">Motivo Bloqueo 1</option>
-                                    <option value="-32755">Motivo Bloqueo 2</option>
-                                    <option value="-32754">Motivo Bloqueo 3</option>
-                                    <option value="-32753">Motivo Bloqueo 4</option>
-                                    <option value="-32764">Rango de edades</option>
-                                    <option value="-32751">Ventas</option>
-
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                        <ui:fragment rendered="#{facesContext.validationFailed}">
+                            <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
+                                <h:message for="seleccion-bloqueo"/>
+                            </h:panelGroup>
+                        </ui:fragment>
 
                 </div>
                 <div class="uk-modal-footer uk-text-right">
                     <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                    <button class="uk-button uk-button-secondary" type="button">Guardar</button>
+                    <h:commandButton styleClass="uk-button uk-button-secondary  uk-margin-small-left" value="Aceptar" >
+                        <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalBloqueo') }" render="@form" execute="@form"/>
+                    </h:commandButton>
+                </div>
+            </h:form>
+
+            </div>
+        </div>
+
+        <div id="modal-nuevo-coord" class="uk-modal-container" uk-modal="">
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+                <div class="uk-modal-header uk-background-secondary">
+                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Nuevo Coordinador</span></p>
+                </div>
+                <div class="uk-modal-body">
+                    <div class="uk-grid-small uk-grid uk-form-stacked" uk-grid="">
+                        <div class="uk-width-1-1@s uk-width-1-4@m ">
+                            <h:outputLabel styleClass="uk-form-label" value="Nick name" for="modal-nick"/>
+                            <div class="uk-form-controls">
+                                <h:inputText id="modal-nick"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input" />
+                                <f:validateRequired/>
+                                <f:validateLength minimum="3" maximum="30"/>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-1@s uk-width-1-4@m ">
+                            <h:outputLabel styleClass="uk-form-label" value="Nombre" for="modal-nombre"/>
+                            <div class="uk-form-controls">
+                                <h:inputText id="modal-nombre"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input" />
+                                <f:validateRequired/>
+                                <f:validateLength minimum="3" maximum="30"/>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-1@s uk-width-1-4@m ">
+                            <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="modal-paterno"/>
+                            <div class="uk-form-controls">
+                                <h:inputText id="modal-paterno"  pt:placeholder="Apellido Paterno" disabled="false"  styleClass="uk-input" />
+                                <f:validateRequired/>
+                                <f:validateLength minimum="3" maximum="30"/>
+                            </div>
+                        </div>
+                        <div class="uk-width-1-1@s uk-width-1-4@m ">
+                            <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="modal-materno"/>
+                            <div class="uk-form-controls">
+                                <h:inputText id="modal-materno"  pt:placeholder="Apellido materno" disabled="false"  styleClass="uk-input" />
+                                <f:validateRequired/>
+                                <f:validateLength minimum="3" maximum="30"/>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -289,21 +357,27 @@
             var modalEliminar;
             var modalModificar;
             var modalLicencia;
+            var modalBloqueo;
             document.addEventListener("DOMContentLoaded", function (evt) {
                 limpiaSelect("undefined");
                 // modalAgregar = document.querySelector('#modal-contacto');
                 modalEliminar = document.querySelector('#modal-eliminar');
                 modalModificar = document.querySelector('#modal-editar-coord');
-                modalLicencia = document.querySelector('#modal-asignar-licencia')
+                modalLicencia = document.querySelector('#modal-asignar-licencia');
+                modalBloqueo = document.querySelector('#modal-bloqueo')
                 UIkit.util.on('#modal-eliminar', 'show', function () {
                     modalEliminar.querySelector('.uk-modal-body').click();
                 });
                 UIkit.util.on('#modal-editar-coord', 'show', function () {
-                    modalModificar.querySelector('.uk-modal-body').click();
+                    modalLicencia.querySelector('.uk-modal-body').click();
                 });
                 UIkit.util.on('#modal-asignar-licencia', 'show', function () {
                     modalModificar.querySelector('.uk-modal-body').click();
                 });
+                UIkit.util.on('#modal-bloqueo', 'show', function () {
+                    modalBloqueo.querySelector('.uk-modal-body').click();
+                });
+
             });
             document.addEventListener('DOMContentLoaded', function (evt) {
                 limpiaSelect();
@@ -340,8 +414,14 @@
                             if (modalLicencia.querySelector('.uk-alert-danger') === null) {
                                 UIkit.modal(modalLicencia).hide();
                             }
+                            break;
+                        case "modalBloqueo":
+                            if (modalBloqueo.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalBloqueo).hide();
+                            }
+                            break;
+                        default: console.error(modal);
 
-                        default: console.error("error")
                     }
                 }
 
