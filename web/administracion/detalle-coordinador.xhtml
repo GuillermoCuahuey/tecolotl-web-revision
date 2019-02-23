@@ -270,38 +270,38 @@
                 <div class="uk-modal-header uk-background-secondary">
                     <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Selecciona Motivo de Bloqueo</span></p>
                 </div>
-             <h:form styleClass="uk-form-stacked">
-                <div class="uk-modal-body">
+                 <h:form styleClass="uk-form-stacked">
+                    <div class="uk-modal-body">
 
-                                <h:outputLabel styleClass="uk-form-label" value="Motivo de bloqueo"/>
-                                <div class="uk-form-controls">
-                                    <h:selectOneMenu value="#{coordinadorControlador.motivoBloqueoModelo.motivoBloque}"
-                                                     id="seleccion-bloqueo"
-                                                     label="bloqueo"
-                                                     styleClass="uk-select">
-                                        <f:selectItem itemValue="#{null}" itemLabel="Seleccione" noSelectionOption="true"/>
-                                        <f:selectItems value="#{coordinadorControlador.motivoBloqueoModelos}"
-                                                       var="block"
-                                                       itemValue="#{block.motivoBloque}"
-                                                       itemLabel="#{block.motivoBloque}"/>
-                                        <f:validateRequired/>
-                                    </h:selectOneMenu>
-                                </div>
+                        <h:outputLabel styleClass="uk-form-label" value="Motivo de bloqueo"/>
+                        <div class="uk-form-controls">
+                            <h:selectOneMenu value="#{coordinadorControlador.motivoBloqueoModelo.motivoBloque}"
+                                             id="seleccion-bloqueo"
+                                             label="bloqueo"
+                                             styleClass="uk-select">
+                                <f:selectItem itemValue="#{null}" itemLabel="Seleccione" noSelectionOption="true"/>
+                                <f:selectItems value="#{coordinadorControlador.motivoBloqueoModelos}"
+                                               var="block"
+                                               itemValue="#{block.motivoBloque}"
+                                               itemLabel="#{block.motivoBloque}"/>
+                                <f:validateRequired/>
+                            </h:selectOneMenu>
+                        </div>
 
-                        <ui:fragment rendered="#{facesContext.validationFailed}">
-                            <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
-                                <h:message for="seleccion-bloqueo"/>
-                            </h:panelGroup>
-                        </ui:fragment>
+                            <ui:fragment rendered="#{facesContext.validationFailed}">
+                                <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
+                                    <h:message for="seleccion-bloqueo"/>
+                                </h:panelGroup>
+                            </ui:fragment>
 
-                </div>
-                <div class="uk-modal-footer uk-text-right">
-                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
-                    <h:commandButton styleClass="uk-button uk-button-secondary  uk-margin-small-left" value="Aceptar" >
-                        <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalBloqueo') }" render="@form" execute="@form"/>
-                    </h:commandButton>
-                </div>
-            </h:form>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                        <h:commandButton styleClass="uk-button uk-button-secondary  uk-margin-small-left" value="Aceptar" >
+                            <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalBloqueo') }" render="@form" execute="@form"/>
+                        </h:commandButton>
+                    </div>
+                </h:form>
 
             </div>
         </div>
