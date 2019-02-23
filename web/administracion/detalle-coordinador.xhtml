@@ -316,42 +316,49 @@
                         <div class="uk-width-1-1@s uk-width-1-4@m ">
                             <h:outputLabel styleClass="uk-form-label" value="Nick name" for="modal-nick"/>
                             <div class="uk-form-controls">
-                                <h:inputText id="modal-nick"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input" />
-                                <f:validateRequired/>
-                                <f:validateLength minimum="3" maximum="30"/>
+                                <h:inputText id="modal-nick"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input" >
+                                    <f:validateRequired/>
+                                    <f:validateLength minimum="3" maximum="30"/>
+                                </h:inputText>
                             </div>
                         </div>
                         <div class="uk-width-1-1@s uk-width-1-4@m ">
                             <h:outputLabel styleClass="uk-form-label" value="Nombre" for="modal-nombre"/>
                             <div class="uk-form-controls">
-                                <h:inputText id="modal-nombre"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input" />
-                                <f:validateRequired/>
-                                <f:validateLength minimum="3" maximum="30"/>
+                                <h:inputText id="modal-nombre"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input">
+                                    <f:validateRequired/>
+                                    <f:validateLength minimum="3" maximum="30"/>
+                                </h:inputText>
                             </div>
                         </div>
                         <div class="uk-width-1-1@s uk-width-1-4@m ">
                             <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="modal-paterno"/>
                             <div class="uk-form-controls">
-                                <h:inputText id="modal-paterno"  pt:placeholder="Apellido Paterno" disabled="false"  styleClass="uk-input" />
-                                <f:validateRequired/>
-                                <f:validateLength minimum="3" maximum="30"/>
+                                <h:inputText id="modal-paterno"  pt:placeholder="Apellido Paterno" disabled="false"  styleClass="uk-input">
+                                    <f:validateRequired/>
+                                    <f:validateLength minimum="3" maximum="30"/>
+                                </h:inputText>
                             </div>
                         </div>
                         <div class="uk-width-1-1@s uk-width-1-4@m ">
                             <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="modal-materno"/>
                             <div class="uk-form-controls">
-                                <h:inputText id="modal-materno"  pt:placeholder="Apellido materno" disabled="false"  styleClass="uk-input" />
-                                <f:validateRequired/>
-                                <f:validateLength minimum="3" maximum="30"/>
+                                <h:inputText id="modal-materno"  pt:placeholder="Apellido materno" disabled="false"  styleClass="uk-input">
+                                    <f:validateRequired/>
+                                    <f:validateLength minimum="3" maximum="30"/>
+                                </h:inputText>
                             </div>
                         </div>
 
                     </div>
 
                     </div>
-                </div>
+
             </div>
         </div>
+
+
+
 
         <script type="text/javascript">
             var modalEliminar;
