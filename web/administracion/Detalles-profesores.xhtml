@@ -95,7 +95,7 @@
                                                         <span class="uk-text-middle"><h:outputText value="bloquear"/></span>
                                                         <f:ajax/>
                                                     </h:commandLink>
-                                                    <h:commandLink  pt:uk-toggle="target: #modal-editar" >
+                                                    <h:commandLink  pt:uk-toggle="target: #modal-eliminar" >
                                                         <span uk-icon="icon: trash" class="uk-margin-small-right uk-icon" ></span>
                                                         <span class="uk-text-middle"><h:outputText value="borrar"/></span>
                                                         <f:ajax/>
@@ -129,35 +129,33 @@
             <!-- /FIN colonias -->
         </div>
 
-        <!--  Modal Bloqueo Catalogo  -->
+        <!--  Modal Bloqueo -->
         <h:panelGroup layout="block" id="modal-bloqueo" pt:uk-modal="">
             <div class="uk-modal-dialog uk-margin-auto-vertical">
                 <div class="uk-modal-header uk-background-secondary">
-                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Selecciona Motivo de Bloqueo</span></p>
+                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Selecciona Motivo</span></p>
                 </div>
                 <h:form styleClass="uk-form-stacked">
                     <div class="uk-modal-body">
 
-                        <h:outputLabel styleClass="uk-form-label" value="Motivo de bloqueo"/>
-                        <div class="uk-form-controls">
-                            <h:selectOneMenu value="#{coordinadorControlador.motivoBloqueoModelo.motivoBloque}"
-                                             id="seleccion-bloqueo"
-                                             label="bloqueo"
-                                             styleClass="uk-select">
-                                <f:selectItem itemValue="#{null}" itemLabel="Seleccione" noSelectionOption="true"/>
-                                <f:selectItems value="#{coordinadorControlador.motivoBloqueoModelos}"
-                                               var="block"
-                                               itemValue="#{block.motivoBloque}"
-                                               itemLabel="#{block.motivoBloque}"/>
-                                <f:validateRequired/>
-                            </h:selectOneMenu>
-                        </div>
+                        <h:outputLabel for="select-motivo-bloqueo" styleClass=" uk-text-capitalize uk-form-label" value="Motivo de Bloqueo"/>
+                        <h:selectOneMenu styleClass="uk-select"
+                                         label="Selecciona :"
+                                         id="select-motivo-bloqueo">
+                            <f:selectItem itemLabel="#{etiqueta['options']}" noSelectionOption="true"/>
+                            <f:selectItems value="#{detallesProfesorGrupoControlador.grupoModelos}"
+                                           var="grupo"
+                                           itemValue="#{grupo.id}"
+                                           itemLabel="#{grupo.grupo}"/>
+                            <f:validateRequired/>
+                        </h:selectOneMenu>
 
                         <ui:fragment rendered="#{facesContext.validationFailed}">
                             <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
-                                <h:message for="seleccion-bloqueo"/>
+                                <h:messages styleClass="uk-list"/>
                             </h:panelGroup>
                         </ui:fragment>
+
 
                     </div>
                     <div class="uk-modal-footer uk-text-right">
@@ -171,51 +169,30 @@
             </div>
 
         </h:panelGroup>
+        <!--  FIN Modal Bloqueo -->
 
-        <!--  Modal Tipo Contacto -->
-        <h:panelGroup layout="block" id="modal-tipo-contacto" pt:uk-modal="">
+        <!--  Modal Eliminar -->
+        <h:panelGroup layout="block" id="modal-eliminar" pt:uk-modal="">
             <div class="uk-modal-dialog uk-margin-auto-vertical">
-                <h:form id="formulario-modal-tipo-contacto" styleClass="uk-form-stacked uk-margin-large">
-                    <div class="uk-modal-header uk-background-secondary">
-                        <p class="uk-h4 uk-text-center uk-text-bold">
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.editar']}" rendered="#{not empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.new']}" rendered="#{empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
-                        </p>
-                    </div>
-                    <div class="uk-modal-body">
-                        <div class="uk-margin">
-                            <h:outputLabel for="input-contacto" styleClass="uk-form-label uk-text-capitalize" value="#{etiqueta['description']}"/>
-                            <div class="uk-form-controls">
-                                <h:inputText styleClass="uk-input"
-                                             id="input-contacto"
-                                             pt:placeholder="#{etiqueta['write.text']}"
-                                             label="#{etiqueta['description']}"
-                                             value="#{catalogoAdministradoContactoControlador.tablaModelo.nombre}">
-                                    <f:validateRequired/>
-                                    <f:validateLength minimum="3" maximum="20"/>
-                                </h:inputText>
-                            </div>
-                        </div>
-                        <ui:fragment rendered="#{facesContext.validationFailed}">
-                            <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
-                                <h:message for="input-contacto"/>
-                            </h:panelGroup>
-                        </ui:fragment>
-                    </div>
-                    <div class="uk-modal-footer uk-text-right">
-                        <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
-                                         value="#{boton['cancel']}">
-                            <f:ajax render="@form"/>
-                        </h:commandButton>
-                        <h:commandButton value="#{boton['add']}"
-                                         styleClass="uk-button uk-button-secondary">
-                            <f:ajax execute="@form" render="@form"/>
-                        </h:commandButton>
-                    </div>
+                <div class="uk-modal-header fondo-peligro">
+                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo"> Eliminar Profesor</span></p>
+                </div>
+                <h:form styleClass="uk-form-stacked">
+                <div class="uk-modal-body">
+                    <p>¿Está seguro en borrar la escuela Benito Juarez?, no se prodrá recuperar los datos
+                    </p>
+
+                </div>
                 </h:form>
+                <div class="uk-modal-footer uk-text-right">
+                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                    <h:commandButton styleClass="uk-button uk-button-secondary  uk-margin-small-left" value="Aceptar" >
+                        <f:ajax onevent="function cerrar() { cierraModal(data,modalEliminar) }" render="@form" execute="@form"/>
+                    </h:commandButton>
+                </div>
             </div>
         </h:panelGroup>
-
+        <!--  FIN Modal Eliminar -->
 
         <!--  Modal Nuevo Profesor  -->
         <h:panelGroup layout="block" id="modal-nuevo-profesor" styleClass="uk-modal-container" pt:uk-modal="">
@@ -348,8 +325,10 @@
                         </h:commandButton>
                         <h:commandButton value="#{boton['add']}"
                                          styleClass="uk-button uk-button-secondary">
-                            <f:ajax execute="@form" render="@form"/>
+
+                            <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalAgregar') }" execute="@form" render="@form"/>
                         </h:commandButton>
+
                     </div>
                 </h:form>
             </div>
@@ -443,60 +422,46 @@
                             </h:panelGroup>
                         </ui:fragment>
                     </div>
-                    <div class="uk-modal-footer uk-text-right">
-                        <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
-                                         value="#{boton['cancel']}">
-                            <f:ajax render="@form"/>
-                        </h:commandButton>
-                        <h:commandButton value="#{boton['add']}"
-                                         styleClass="uk-button uk-button-secondary uk-modal-close">
-                            <f:ajax execute="@form" render="@form"/>
-                        </h:commandButton>
-                    </div>
+                <div class="uk-modal-footer uk-text-right">
+                    <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
+                                     value="#{boton['cancel']}">
+                        <f:ajax render="@form"/>
+                    </h:commandButton>
+                    <h:commandButton value="#{boton['add']}"
+                                     styleClass="uk-button uk-button-secondary">
+
+                        <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalEditar') }" execute="@form" render="@form"/>
+                    </h:commandButton>
+
+                </div>
                 </h:form>
             </div>
 
         </h:panelGroup>
         <!--  FIN Modal Editar Profesor  -->
 
-        <div id="modal-eliminar"  uk-modal="">
-            <div class="uk-modal-dialog uk-margin-auto-vertical">
-                <div class="uk-modal-header fondo-peligro">
-                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo"> Eliminar Profesor</span></p>
-                </div>
-                <div class="uk-modal-body">
-                    <p>¿Está seguro en borrar la escuela Benito Juarez?, no se prodrá recuperar los datos
-                    </p>
-
-                </div>
-                <div class="uk-modal-footer uk-text-right">
-                    <button class="uk-button uk-button-default uk-modal-close" type="button">Cancelar</button>
-                    <button class="uk-button fondo-peligro" type="button"><span class="letra-titulo">Eliminar</span></button>
-                </div>
-            </div>
-        </div>
-
         <h:outputScript library="js" name="login.js" />
         <script type="text/javascript">
             var contrassenia;
             var contrasseniaeditar;
-            var modalModalEditar;
+            var modalEditar;
             var modalAgregar;
             var modalEliminar;
+            var modalBloqueo;
             document.addEventListener("DOMContentLoaded", function (evt) {
-                limpiarSelector("undefined");
+                modalEditar = document.querySelector('#modal-editar-profesor');
                 modalAgregar = document.querySelector('#modal-nuevo-profesor');
                 modalEliminar = document.querySelector('#modal-eliminar');
-                modalModificar = document.querySelector('#modal-editar-profesor');
-                modalBloqueo = document.querySelector('#modal-bloqueo')
+                modalBloqueo = document.querySelector('#modal-bloqueo');
+
+                UIkit.util.on('#modal-editar-profesor', 'show', function () {
+                    modalEditar.querySelector('.uk-modal-body').click();
+                });
+                UIkit.util.on('#modal-nuevo-profesor', 'show', function () {
+                    modalAgregar.querySelector('.uk-modal-body').click();
+                });
                 UIkit.util.on('#modal-eliminar', 'show', function () {
                     modalEliminar.querySelector('.uk-modal-body').click();
-                });
-                UIkit.util.on('#modal-editar-profesor', 'show', function () {
-                    modalLicencia.querySelector('.uk-modal-body').click();
-                });
-                UIkit.util.on('#modal-asignar-licencia', 'show', function () {
-                    modalModificar.querySelector('.uk-modal-body').click();
                 });
                 UIkit.util.on('#modal-bloqueo', 'show', function () {
                     modalBloqueo.querySelector('.uk-modal-body').click();
@@ -504,10 +469,6 @@
             });
 
             document.addEventListener('DOMContentLoaded', function (evt) {
-                modalModalEditar = document.querySelector('#modal-editar');
-                UIkit.util.on('#modal-editar', 'show', function () {
-                    modalModalEditar.querySelector('.uk-input').click();
-                });
                 contrassenia = document.getElementById('formulario-modal-nuevo-profesor:input-secret-password');
                 contrasseniaeditar = document.getElementById('formulario-modal-editar-profesor:input-secret-editar-password');
 
@@ -526,6 +487,36 @@
                 } else {
                     contrasseniaeditar.type = "password";
                 }
+            }
+            function cierraModal(data,modal) {
+                if (data.status === "success"){
+                    switch (modal) {
+                        case "modalEliminar":
+                            if (modalEliminar.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalEliminar).hide();
+                            }
+                            break;
+                        case "modalEditar":
+                            if (modalEditar.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalEditar).hide();
+                            }
+                            break;
+                        case "modalBloqueo":
+                            if (modalLicencia.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalBloqueo).hide();
+                            }
+                            break;
+                        case "modalAgregar":
+                            if (modalBloqueo.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalAgregar).hide();
+                            }
+                            break;
+                        default: console.error(modal);
+
+                    }
+                }
+
+
             }
 
         </script>
