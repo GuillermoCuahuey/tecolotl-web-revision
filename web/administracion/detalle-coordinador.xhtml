@@ -27,7 +27,7 @@
                             <div class="uk-width-auto"><h4><span class="uk-text-middle">Detalle Coordinador</span></h4></div>
                             <div class="uk-width-expand uk-text-right panel-icons">
                                 <h:form>
-                                    <h:commandLink styleClass="uk-icon-button  uk-icon" >
+                                    <h:commandLink styleClass="uk-icon-button  uk-icon" pt:uk-toggle="target: #modal-nuevo-coord" >
                                         <f:ajax></f:ajax>
                                         <h:outputText pt:uk-icon="icon: plus-circle; ratio: 1.5"/>
                                     </h:commandLink>
@@ -77,29 +77,29 @@
                                         <div uk-dropdown="boundary:.tabla-coordinador-dropdown; mode: click" id="dropear" >
                                             <ul class="uk-nav uk-dropdown-nav uk-text-left">
                                                 <li>
-                                                    <h:commandLink   pt:uk-toggle="target: #modal-editar-coord">
-                                                        <span uk-icon="icon: file-edit" class="uk-margin-small-right uk-icon" ></span>
+                                                    <h:commandLink   pt:uk-toggle="target: #modal-editar-coord" styleClass="uk-text-primary">
+                                                        <h:outputText pt:uk-icon="icon: file-edit" styleClass="uk-margin-small-right uk-icon" />
                                                         <span class="uk-text-middle"><h:outputText value="Editar"/></span>
                                                         <f:ajax />
                                                     </h:commandLink>
                                                 </li>
                                                 <li>
                                                     <h:commandLink  pt:uk-toggle="target: #modal-eliminar" >
-                                                        <span uk-icon="icon: trash" class="uk-margin-small-right uk-icon" ></span>
+                                                        <h:outputText pt:uk-icon="icon: trash" styleClass="uk-margin-small-right uk-icon" />
                                                         <span class="uk-text-middle"><h:outputText value="Eliminar"/></span>
                                                         <f:ajax/>
                                                     </h:commandLink>
                                                 </li>
                                                 <li>
                                                     <h:commandLink  pt:uk-toggle="target: #modal-asignar-licencia" >
-                                                        <span uk-icon="icon: plus-circle" class="uk-margin-small-right uk-icon" ></span>
+                                                        <h:outputText pt:uk-icon="icon: plus-circle" styleClass="uk-margin-small-right uk-icon"/>
                                                         <span class="uk-text-middle"><h:outputText value="Licencia"/></span>
                                                         <f:ajax/>
                                                     </h:commandLink>
                                                 </li>
                                                 <li>
                                                     <h:commandLink  pt:uk-toggle="target: #modal-bloqueo" >
-                                                        <span uk-icon="icon: ban" class="uk-margin-small-right uk-icon" ></span>
+                                                        <h:outputText pt:uk-icon="icon: ban" styleClass="uk-margin-small-right uk-icon" />
                                                         <span class="uk-text-middle"><h:outputText value="Bloqueo"/></span>
                                                         <f:ajax/>
                                                     </h:commandLink>
@@ -117,7 +117,7 @@
                     </div>
 
                     <div class="uk-card-footer">
-                        <f:ajax render="formulario-coordinador:tabla-coordinador formulario-paginacion-coordinador"
+                        <f:ajax render="formulario-coordinador:tabla-coordinador formulario-paginacion-coord"
                                 onevent="limpiaSelect">
                             <h:form id="formulario-paginacion-coordinador">
                                 <div  styleClass="" pt:uk-grid="">
@@ -220,7 +220,7 @@
                     <div class="uk-modal-footer uk-text-right">
                         <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
                         <h:commandButton styleClass="uk-button uk-button-secondary  uk-margin-small-left" value="Aceptar" >
-                            <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalModificar') }" render="@form" execute="@form"/>
+                            <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalModificar') }" render="@form" execute="@form" />
                         </h:commandButton>
                     </div>
                 </h:form>
@@ -248,7 +248,7 @@
                                 <f:validateRequired/>
                             </h:selectOneMenu>
 
-                    </div>
+                         </div>
                     <ui:fragment rendered="#{facesContext.validationFailed}">
                         <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
                             <h:message for="seleccion-licencia"/>
@@ -311,48 +311,89 @@
                 <div class="uk-modal-header uk-background-secondary">
                     <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Nuevo Coordinador</span></p>
                 </div>
-                <div class="uk-modal-body">
-                    <div class="uk-grid-small uk-grid uk-form-stacked" uk-grid="">
-                        <div class="uk-width-1-1@s uk-width-1-4@m ">
-                            <h:outputLabel styleClass="uk-form-label" value="Nick name" for="modal-nick"/>
-                            <div class="uk-form-controls">
-                                <h:inputText id="modal-nick"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input" >
-                                    <f:validateRequired/>
-                                    <f:validateLength minimum="3" maximum="30"/>
-                                </h:inputText>
-                            </div>
-                        </div>
-                        <div class="uk-width-1-1@s uk-width-1-4@m ">
-                            <h:outputLabel styleClass="uk-form-label" value="Nombre" for="modal-nombre"/>
-                            <div class="uk-form-controls">
-                                <h:inputText id="modal-nombre"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input">
-                                    <f:validateRequired/>
-                                    <f:validateLength minimum="3" maximum="30"/>
-                                </h:inputText>
-                            </div>
-                        </div>
-                        <div class="uk-width-1-1@s uk-width-1-4@m ">
-                            <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="modal-paterno"/>
-                            <div class="uk-form-controls">
-                                <h:inputText id="modal-paterno"  pt:placeholder="Apellido Paterno" disabled="false"  styleClass="uk-input">
-                                    <f:validateRequired/>
-                                    <f:validateLength minimum="3" maximum="30"/>
-                                </h:inputText>
-                            </div>
-                        </div>
-                        <div class="uk-width-1-1@s uk-width-1-4@m ">
-                            <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="modal-materno"/>
-                            <div class="uk-form-controls">
-                                <h:inputText id="modal-materno"  pt:placeholder="Apellido materno" disabled="false"  styleClass="uk-input">
-                                    <f:validateRequired/>
-                                    <f:validateLength minimum="3" maximum="30"/>
-                                </h:inputText>
-                            </div>
-                        </div>
+                <h:form id="formulario-nuevo-coord">
+                        <div class="uk-modal-body">
+                            <div class="uk-grid-small uk-grid uk-form-stacked" uk-grid="">
+                                    <div class="uk-width-1-1@s uk-width-1-4@m ">
+                                        <h:outputLabel styleClass="uk-form-label" value="Nick name" for="modal-nick"/>
+                                        <div class="uk-form-controls">
+                                            <h:inputText id="modal-nick"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input" >
+                                                <f:validateRequired/>
+                                                <f:validateLength minimum="3" maximum="30"/>
+                                            </h:inputText>
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-1-1@s uk-width-1-4@m ">
+                                        <h:outputLabel styleClass="uk-form-label" value="Nombre" for="modal-nombre"/>
+                                        <div class="uk-form-controls">
+                                            <h:inputText id="modal-nombre"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input">
+                                                <f:validateRequired/>
+                                                <f:validateLength minimum="3" maximum="30"/>
+                                            </h:inputText>
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-1-1@s uk-width-1-4@m ">
+                                        <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="modal-paterno"/>
+                                        <div class="uk-form-controls">
+                                            <h:inputText id="modal-paterno"  pt:placeholder="Apellido Paterno" disabled="false"  styleClass="uk-input">
+                                                <f:validateRequired/>
+                                                <f:validateLength minimum="3" maximum="30"/>
+                                            </h:inputText>
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-1-1@s uk-width-1-4@m ">
+                                        <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="modal-materno"/>
+                                        <div class="uk-form-controls">
+                                            <h:inputText id="modal-materno"  pt:placeholder="Apellido materno" disabled="false"  styleClass="uk-input">
+                                                <f:validateRequired/>
+                                                <f:validateLength minimum="3" maximum="30"/>
+                                            </h:inputText>
+                                        </div>
+                                    </div>
+                                <div class="uk-width-1-1@s uk-width-1-5@m uk-first-column">
+                                    <h:outputLabel styleClass="uk-form-label" value="email" for="modal-email"/>
+                                    <h:inputText id="modal-email"  pt:placeholder="email" disabled="false"  styleClass="uk-input" pt:type="email">
+                                        <f:validateRequired/>
+                                        <f:validateLength minimum="3" maximum="30"/>
+                                    </h:inputText>
+                                </div>
+                                <div class="uk-width-1-1@s uk-width-2-5@m ">
+                                    <h:outputLabel for="input-secret-editar-password" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.header.password']}"/>
+                                    <div class="uk-inline">
+                                        <!--<span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock" onclick="cambiareditar()"></span>-->
+                                        <h:commandLink styleClass="uk-form-icon uk-form-icon-flip">
+                                            <f:ajax/>
+                                            <h:graphicImage library="img" name="ojo.svg" styleClass="uk-icon-image" pt:uk-icon="" onclick="cambiareditar()"/>
+                                        </h:commandLink>
+                                        <h:inputSecret styleClass="uk-input"
+                                                       id="input-secret-editar-password"
+                                                       pt:placeholder="#{etiqueta['write.text']}"
+                                                       label="Pass"
+                                                       value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
+                                        </h:inputSecret>
+                                    </div>
+                                </div>
+                                <!--<div class="uk-width-1-1@s uk-width-1-5@m uk-inline">-->
+                                    <!--<div class="uk-position-medium uk-position-left uk-grid-margin-small">-->
+                                        <!--<h:graphicImage library="img" name="ojo.svg" styleClass="uk-icon-image" pt:uk-icon="" onclick="cambiareditar()"/>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <ui:fragment rendered="#{facesContext.validationFailed}">
+                                    <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
+                                        <h:messages styleClass="uk-list" />
+                                    </h:panelGroup>
+                                </ui:fragment>
 
-                    </div>
+                            </div>
 
-                    </div>
+                            </div>
+                            <div class="uk-modal-footer uk-text-right">
+                                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                                <h:commandButton styleClass="uk-button uk-button-secondary  uk-margin-small-left" value="Aceptar" >
+                                    <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalCoord') }" render="@form" execute="@form"/>
+                                </h:commandButton>
+                            </div>
+                </h:form>
 
             </div>
         </div>
@@ -361,17 +402,21 @@
 
 
         <script type="text/javascript">
+            var contrassenia;
+            var contrasseniaeditar;
             var modalEliminar;
             var modalModificar;
             var modalLicencia;
             var modalBloqueo;
+            var modalCoord;
             document.addEventListener("DOMContentLoaded", function (evt) {
                 limpiaSelect("undefined");
                 // modalAgregar = document.querySelector('#modal-contacto');
                 modalEliminar = document.querySelector('#modal-eliminar');
                 modalModificar = document.querySelector('#modal-editar-coord');
                 modalLicencia = document.querySelector('#modal-asignar-licencia');
-                modalBloqueo = document.querySelector('#modal-bloqueo')
+                modalBloqueo = document.querySelector('#modal-bloqueo');
+                modalCoord = document.querySelector('#modal-nuevo-coord');
                 UIkit.util.on('#modal-eliminar', 'show', function () {
                     modalEliminar.querySelector('.uk-modal-body').click();
                 });
@@ -384,11 +429,16 @@
                 UIkit.util.on('#modal-bloqueo', 'show', function () {
                     modalBloqueo.querySelector('.uk-modal-body').click();
                 });
+                UIkit.util.on('#modal-nuevo-coord', 'show', function () {
+                    modalCoord.querySelector('.uk-modal-body').click();
+                });
 
             });
             document.addEventListener('DOMContentLoaded', function (evt) {
                 limpiaSelect();
             });
+            contrassenia = document.getElementById('formulario-modal-nuevo-profesor:input-secret-password');
+            contrasseniaeditar = document.getElementById('formulario-nuevo-coord:input-secret-editar-password');
 
             function limpiaSelect(data) {
                 if (typeof data === 'undefined') {
@@ -427,12 +477,29 @@
                                 UIkit.modal(modalBloqueo).hide();
                             }
                             break;
+                        case "modalCoord":
+                            if (modalCoord.querySelector('.uk-alert-danger') === null){
+                                UIkit.modal(modalCoord).hide();
+                            }
+                            break;
                         default: console.error(modal);
 
                     }
                 }
-
-
+            }
+            function cambiar() {
+                if(contrassenia.type  === "password") {
+                    contrassenia.type = "text";
+                } else {
+                    contrassenia.type = "password";
+                }
+            }
+            function cambiareditar() {
+                if(contrasseniaeditar.type  === "password") {
+                    contrasseniaeditar.type = "text";
+                } else {
+                    contrasseniaeditar.type = "password";
+                }
             }
         </script>
     </ui:define>
