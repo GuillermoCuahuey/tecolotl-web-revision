@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:pa="http://xmlns.jcp.org/jsf/composite/paginacion">
+<ui:composition template="/template/dashboard.xhtml">
+<ui:define name="menu">
+    <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
+        <li class="uk-nav-header">ACCIONES</li>
+        <li><a href="#"><span data-uk-icon="icon: table" class="uk-margin-small-right"></span>Escuelas</a></li>
+        <li><a href="#"><span data-uk-icon="icon: database" class="uk-margin-small-right"></span>Catalogos</a></li>
+        <li><a href="#"><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Friends</a></li>
+    </ul>
+</ui:define>
+<ui:define name="contenido">
+    <h:outputStylesheet library="css" name="tablas.css"/>
+    <div uk-grid="">
+        <div class="uk-width-1-1@m">
+            <div class="uk-card uk-card-default uk-card-small uk-card-hover  uk-padding-small">
+                <div class="uk-grid uk-grid-divider uk-grid-small uk-grid-margin-small  uk-child-width-1-2 uk-child-width-1-4@l uk-child-width-1-5@xl uk-margin-auto  uk-text-center" uk-grid="">
+                    <div>
+                        <span class="uk-text-small uk-text-capitalize" ><h:outputText pt:uk-icon="icon:users" styleClass="uk-margin-small-right uk-text-primary"/>#{administracion['catalogoadministrativo.title']}</span>
+                        <h1 class="uk-heading-primary uk-margin-remove  uk-text-primary">2.134</h1>
+                        <div class="uk-text-small">
+                            <h:outputText styleClass="uk-text-success" pt:uk-icon="icon: triangle-up" value="15%"/> more than last week.
+                        </div>
+                    </div>
+                    <div>
+
+                        <span class="uk-text-small uk-text-capitalize"><h:outputText pt:uk-icon="icon:social" styleClass="uk-margin-small-right uk-text-primary"/>social media</span>
+                        <h1 class="uk-heading-primary uk-margin-remove uk-text-primary">8.490</h1>
+                        <div class="uk-text-small">
+                            <h:outputText styleClass="uk-text-warning" pt:uk-icon="icon: triangle-down" value="-15%"/>less than last week.
+                        </div>
+
+                    </div>
+                    <div>
+
+                        <span class="uk-text-small uk-text-capitalize"><h:outputText pt:uk-icon="icon:clock" styleClass="uk-margin-small-right uk-text-primary"/>Traffic hours</span>
+                        <h1 class="uk-heading-primary uk-margin-remove uk-text-primary">12.00<small class="uk-text-small">PM</small></h1>
+                        <div class="uk-text-small">
+                            <h:outputText styleClass="uk-text-success" pt:uk-icon="icon: triangle-up" value="19%"/>more than last week.
+                        </div>
+
+                    </div>
+                    <div>
+
+                        <span class="uk-text-small uk-text-capitalize"><h:outputText pt:uk-icon="icon:search" styleClass="uk-margin-small-right uk-text-primary"/>Week Search</span>
+                        <h1 class="uk-heading-primary uk-margin-remove uk-text-primary">9.543</h1>
+                        <div class="uk-text-small">
+                            <h:outputText styleClass="uk-text-danger" pt:uk-icon="icon: triangle-down" value="-23%"/>less than last week.
+                        </div>
+
+                    </div>
+                    <div class="uk-visible@xl">
+                        <span class="uk-text-small"><h:outputText pt:uk-icon="icon:users" styleClass="uk-margin-small-right uk-text-primary"/>Lorem ipsum</span>
+                        <h1 class="uk-heading-primary uk-margin-remove uk-text-primary">5.284</h1>
+                        <div class="uk-text-small">
+                            <h:outputText styleClass="uk-text-success" pt:uk-icon="icon: triangle-up" value="7%"/>more than last week.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="uk-width-1-1@m">
+            <div class="uk-card uk-card-default uk-card-small uk-card-hover  ">
+                <div class="uk-card-header">
+                    <div class="uk-grid uk-grid-small" uk-grid="">
+                        <div class="uk-width-auto"><h4><span class="uk-text-middle">Datos del profesor</span></h4></div>
+
+                    </div>
+                </div>
+                <div class="uk-card-body">
+                    <div class="uk-grid-small uk-child-width-1-3@m uk-flex-center" uk-grid="">
+                        <div>
+                            <h:outputLabel styleClass="uk-form-label uk-text-capitalize" value="nombre" for="nombre-prof"/>
+                            <div class="uk-form-controls">
+                                <h:inputText styleClass="uk-input uk-text-center" value="#{detalleProfesorControlador.profesorModelo.nombre}" pt:placeholder="nombre" disabled="true" pt:maxlength="30" id="nombre-prof"/>
+                            </div>
+                        </div>
+                        <div>
+                            <h:outputLabel styleClass="uk-form-label uk-text-capitalize" value="apellido paterno" for="apellido-prof"/>
+                            <div class="uk-form-controls">
+                                <h:inputText styleClass="uk-input uk-text-center" value="#{detalleProfesorControlador.profesorModelo.apellidoPaterno}" pt:placeholder="Apellido Paterno" disabled="true" pt:maxlength="30" id="apellido-prof"/>
+                            </div>
+                        </div>
+                        <div>
+                            <h:outputLabel styleClass="uk-form-label uk-text-capitalize" value="apellid materno" for="apellidom-prof"/>
+                            <div class="uk-form-controls">
+                                <h:inputText styleClass="uk-input uk-text-center" value="#{detalleProfesorControlador.profesorModelo.apellidoMaterno}" pt:placeholder="Apellido Materno" disabled="true" pt:maxlength="30" id="apellidom-prof"/>
+                            </div>
+                        </div>
+                        <div>
+                            <h:outputLabel styleClass="uk-form-label uk-text-capitalize" value="nick name" for="nick"/>
+                            <div class="uk-form-controls">
+                                <h:inputText styleClass="uk-input uk-text-center" value="#{detalleProfesorControlador.profesorModelo.nick}" pt:placeholder="Nick Name" disabled="true" pt:maxlength="30" id="nick"/>
+                            </div>
+                        </div>
+                        <div>
+                            <h:outputLabel styleClass="uk-form-label uk-text-capitalize" value="email" for="email"/>
+                            <div class="uk-form-controls">
+                                <h:inputText styleClass="uk-input uk-text-center" value="#{detalleProfesorControlador.profesorModelo.email}" pt:placeholder="Email" disabled="true" pt:maxlength="30" id="email"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="uk-width-1-1@m">
+            <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-medium-bottom">
+                <div class="uk-card-header">
+                    <div class="uk-grid uk-grid-small" uk-grid="">
+                        <div class="uk-width-auto"><h4><span class="uk-text-middle">Grupos de #{detalleProfesorControlador.profesorModelo.nombre}</span></h4></div>
+                    </div>
+                </div>
+                <div class="uk-card-body">
+                    <h:form id="formulario-detalle-profesor" styleClass="uk-form-stacked">
+                        <h:dataTable
+                                    value="#{detalleProfesorControlador.collectionDataModel}"
+                                    binding="#{detalleProfesorControlador.htmlDataTable}"
+                                    id="tabla-detalle-profesor"
+                                    var="profesor"
+                                    first="0"
+                                    rows="5"
+                                    styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover uk-text-center tabla-coordinador-dropdown"
+                                    headerClass="uk-background-primary uk-text-center"
+                                    footerClass="uk-background-primary uk-text-left">
+                            <h:column>
+                                <f:facet name="header"><span class="letra-titulo">Grado</span></f:facet>
+                                #{profesor.grado}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header"><span class="letra-titulo">Grupo</span></f:facet>
+                                #{profesor.grupo}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header"><span class="letra-titulo">Periodo</span></f:facet>
+                                <div class="uk-form-controls">
+                                    <h:selectOneMenu
+                                            value = "#{detalleProfesorControlador.profesorModelo.email}" styleClass="uk-select"
+                                            id="seleccion-licencia"
+                                            label="Licencia">
+                                        <f:selectItem itemValue = "#{null}" itemLabel = "seleccione" noSelectionOption="true" />
+                                        <f:selectItems value="#{detalleProfesorControlador.periodoModelos}" var="periodo"
+                                                       itemValue="#{periodo.id}"
+                                                       itemLabel="#{periodo.periodo}"/>
+                                        <f:validateRequired/>
+                                    </h:selectOneMenu>
+
+                                </div>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header"><span class="letra-titulo">Ver</span></f:facet>
+                                <button class="uk-button uk-button-primary" type="button">Aceptar</button>
+                            </h:column>
+                            <f:facet name="footer">
+                                <pa:pie-tabla htmlDataTable="#{detalleProfesorControlador.htmlDataTable}"/>
+                            </f:facet>
+                        </h:dataTable>
+                    </h:form>
+                </div>
+                <div class="uk-card-footer">
+                    <f:ajax render="formulario-detalle-profesor:tabla-detalle-profesor formulario-paginacion-profesor"
+                            onevent="limpiaSelect">
+                        <h:form id="formulario-paginacion-profesor">
+                            <div  uk-grid="">
+                                <div class="uk-panel uk-flex uk-flex-left uk-width-1-1@s uk-width-1-2@m">
+                                    <pa:boton htmlDataTable="#{detalleProfesorControlador.htmlDataTable}"/>
+                                </div>
+                            </div>
+                            <div class="uk-panel uk-flex uk-flex-right@m uk-flex-center@s uk-width-1-1@s uk-width-1-2@m">
+                                <h:commandButton disabled="true"
+                                                 styleClass="uk-button uk-button-primary uk-margin-small-right uk-margin-small-top"
+                                                 value="limpar">
+                                </h:commandButton>
+                            </div>
+                        </h:form>
+                    </f:ajax>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+
+        document.addEventListener("DOMContentLoaded", function (evt) {
+            limpiaSelect("undefined");
+            // modalAgregar = document.querySelector('#modal-contacto');
+
+
+        });
+        document.addEventListener('DOMContentLoaded', function (evt) {
+            limpiaSelect();
+        });
+
+        function limpiaSelect(data) {
+            if (typeof data === 'undefined') {
+                document.querySelectorAll('.uk-select').forEach(
+                    function (value) { value.removeAttribute('size'); }
+                )
+            } else {
+                if (data.status === 'success') {
+                    document.querySelectorAll('.uk-select').forEach(
+                        function (value) { value.removeAttribute('size'); }
+                    )
+                }
+            }
+        }
+
+
+
+    </script>
+
+</ui:define>
+
+</ui:composition>
+</html>
