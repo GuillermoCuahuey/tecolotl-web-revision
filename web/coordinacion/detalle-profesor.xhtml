@@ -120,7 +120,10 @@
                     </div>
                 </div>
                 <div class="uk-card-body">
+                  <div class="uk-container uk-container-small">
                     <h:form id="formulario-detalle-profesor" styleClass="uk-form-stacked">
+
+                      <div class="uk-overflow-auto">
                         <h:dataTable
                                     value="#{detalleProfesorControlador.collectionDataModel}"
                                     binding="#{detalleProfesorControlador.htmlDataTable}"
@@ -128,8 +131,9 @@
                                     var="profesor"
                                     first="0"
                                     rows="5"
-                                    styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover uk-text-center tabla-coordinador-dropdown"
+                                    styleClass="uk-table uk-table-justify  uk-table-divider uk-table-small uk-table-middle uk-table-hover uk-text-center tabla-coordinador-dropdown"
                                     headerClass="uk-background-primary uk-text-center"
+                                    columnClasses="uk-width-small,uk-width-small,uk-width-small"
                                     footerClass="uk-background-primary uk-text-left">
                             <h:column>
                                 <f:facet name="header"><span class="letra-titulo">#{coordinacion['detalleprofesor.table.schoolgrade']}</span></f:facet>
@@ -139,31 +143,33 @@
                                 <f:facet name="header"><span class="letra-titulo">Grupo</span></f:facet>
                                 #{profesor.grupo}
                             </h:column>
-                            <h:column>
-                                <f:facet name="header"><span class="letra-titulo">Periodo</span></f:facet>
-                                <div class="uk-form-controls">
-                                    <h:selectOneMenu
-                                            value = "#{detalleProfesorControlador.profesorModelo.email}" styleClass="uk-select"
-                                            id="seleccion-licencia"
-                                            label="Licencia">
-                                        <f:selectItem itemValue = "#{null}" itemLabel = "seleccione" noSelectionOption="true" />
-                                        <f:selectItems value="#{detalleProfesorControlador.periodoModelos}" var="periodo"
-                                                       itemValue="#{periodo.id}"
-                                                       itemLabel="#{periodo.periodo}"/>
-                                        <f:validateRequired/>
-                                    </h:selectOneMenu>
+                            <!--<h:column>-->
+                                <!--<f:facet name="header"><span class="letra-titulo">Periodo</span></f:facet>-->
+                                <!--<div class="uk-form-controls">-->
+                                    <!--<h:selectOneMenu-->
+                                            <!--value = "#{detalleProfesorControlador.profesorModelo.email}" styleClass="uk-select"-->
+                                            <!--id="seleccion-licencia"-->
+                                            <!--label="Licencia">-->
+                                        <!--<f:selectItem itemValue = "#{null}" itemLabel = "seleccione" noSelectionOption="true" />-->
+                                        <!--<f:selectItems value="#{detalleProfesorControlador.periodoModelos}" var="periodo"-->
+                                                       <!--itemValue="#{periodo.id}"-->
+                                                       <!--itemLabel="#{periodo.periodo}"/>-->
+                                        <!--<f:validateRequired/>-->
+                                    <!--</h:selectOneMenu>-->
 
-                                </div>
-                            </h:column>
+                                <!--</div>-->
+                            <!--</h:column>-->
                             <h:column>
                                 <f:facet name="header"><span class="letra-titulo">Ver</span></f:facet>
-                                <button class="uk-button uk-button-primary" type="button">Aceptar</button>
+                                <button class="uk-button uk-button-primary uk-button-small" type="button">Aceptar</button>
                             </h:column>
                             <f:facet name="footer">
                                 <pa:pie-tabla htmlDataTable="#{detalleProfesorControlador.htmlDataTable}"/>
                             </f:facet>
                         </h:dataTable>
+                      </div>
                     </h:form>
+                  </div>
                 </div>
                 <div class="uk-card-footer">
                     <f:ajax render="formulario-detalle-profesor:tabla-detalle-profesor formulario-paginacion-profesor"
@@ -171,7 +177,7 @@
                         <h:form id="formulario-paginacion-profesor">
                             <div  uk-grid="">
                                 <div class="uk-panel uk-flex uk-flex-left uk-width-1-1@s uk-width-1-2@m">
-                                    <pa:boton htmlDataTable="#{detalleProfesorControlador.htmlDataTable}"/>
+                                    <pa:boton-minimizado htmlDataTable="#{detalleProfesorControlador.htmlDataTable}"/>
                                 </div>
                             </div>
                             <div class="uk-panel uk-flex uk-flex-right@m uk-flex-center@s uk-width-1-1@s uk-width-1-2@m">
