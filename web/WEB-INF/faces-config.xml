@@ -17,6 +17,10 @@
             <base-name>administracion</base-name>
             <var>administracion</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>coordinacion</base-name>
+            <var>coordinacion</var>
+        </resource-bundle>
     </application>
   
 </faces-config>

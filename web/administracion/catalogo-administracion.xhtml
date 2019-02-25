@@ -31,7 +31,7 @@
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover">
                     <div class="uk-card-header ">
                         <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-auto uk-text-capitalize"><h4 class="uk-text-capitalize">#{administracion['catalogoadministrativo.administrator.bloc.catalog']}</h4></div>
+                            <div class="uk-width-auto "><h4 class="uk-text-capitalize">#{administracion['catalogoadministrativo.administrator.bloc.catalog']}</h4></div>
                             <div class="uk-width-expand uk-flex uk-flex-right">
                                 <h:form id="formulario-nuevo-bloqueo-catalogo">
                                 <ul class="uk-iconnav">
@@ -61,11 +61,11 @@
                                          footerClass="uk-background-primary"
                                          columnClasses=",uk-text-center">
                                 <h:column headerClass="uk-background-primary uk-background-primary">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.blocking.reason.table.header.name']}</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo ">#{administracion['catalogoadministrativo.blocking.reason.table.header.name']}</span></f:facet>
                                     #{dato.nombre}
                                 </h:column>
                                 <h:column headerClass="uk-background-primary uk-width-small uk-text-center uk-text-primary ">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.blocking.reason.table.header.editar']}</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo ">#{administracion['catalogoadministrativo.blocking.reason.table.header.editar']}</span></f:facet>
                                     <h:commandLink   pt:uk-toggle="target: #modal-bloqueo-catalogo">
                                         <span class="uk-icon-button puntero uk-text-primary" uk-icon="file-text" type="button"></span>
                                         <f:ajax/>
@@ -92,7 +92,7 @@
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-medium-bottom">
                     <div class="uk-card-header">
                         <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-auto uk-text-capitalize"><h4 class="uk-text-capitalize">#{administracion['catalogoadministrativo.administrator.contact.catalog']}</h4></div>
+                            <div class="uk-width-auto "><h4 class="uk-text-capitalize">#{administracion['catalogoadministrativo.administrator.contact.catalog']}</h4></div>
                             <div class="uk-width-expand uk-flex uk-flex-right">
                                 <div class="uk-width-expand uk-flex uk-flex-right">
                                     <h:form id="formulario-nuevo-tipo-contacto">
@@ -122,12 +122,12 @@
                                          columnClasses=",uk-text-center">
 
                                 <h:column headerClass="uk-background-primary uk-background-primary">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.contact.table.header.name']}</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo ">#{administracion['catalogoadministrativo.contact.table.header.name']}</span></f:facet>
                                     #{dato.nombre}
                                 </h:column>
                                 <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
 
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.contact.table.header.edit']}</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo ">#{administracion['catalogoadministrativo.contact.table.header.edit']}</span></f:facet>
                                     <h:commandLink   pt:uk-toggle="target: #modal-tipo-contacto">
                                         <span class="uk-icon-button puntero uk-text-primary" uk-icon="file-text" type="button"></span>
                                         <f:ajax/>
@@ -154,7 +154,7 @@
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-medium-bottom">
                     <div class="uk-card-header ">
                         <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-auto uk-text-capitalize"><h4 class="uk-text-capitalize">#{administracion['catalogoadministrativo.administrator.colony.catalog']}</h4></div>
+                            <div class="uk-width-auto "><h4 class="uk-text-capitalize">#{administracion['catalogoadministrativo.administrator.colony.catalog']}</h4></div>
                             <div class="uk-width-expand uk-flex uk-flex-right">
                                 <div class="uk-width-expand uk-flex uk-flex-right">
                                     <h:form id="formulario-nuevo-catalogo-colonia">
@@ -184,22 +184,22 @@
                                          columnClasses="uk-text-center,,,uk-text-center,uk-text-center">
 
                                 <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.colony.table.header.code.zip']}</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo ">#{administracion['catalogoadministrativo.colony.table.header.code.zip']}</span></f:facet>
                                     #{dato.codigopostal}
                                 </h:column>
 
                                 <h:column headerClass="uk-background-primary uk-background-primary">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.colony.table.header.name']}</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo ">#{administracion['catalogoadministrativo.colony.table.header.name']}</span></f:facet>
                                     #{dato.nombre}
                                 </h:column>
 
                                 <h:column headerClass="uk-background-primary uk-background-primary">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.colony.table.header.municipality']}</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo ">#{administracion['catalogoadministrativo.colony.table.header.municipality']}</span></f:facet>
                                     #{dato.municipio}
                                 </h:column>
 
                                 <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
-                                    <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogoadministrativo.colony.table.header.estate']}</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo ">#{administracion['catalogoadministrativo.colony.table.header.estate']}</span></f:facet>
                                     #{dato.estado}
                                 </h:column>
 
@@ -234,7 +234,7 @@
                     </div>
                     <div class="uk-card-footer">
                         <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-auto uk-text-capitalize">
+                            <div class="uk-width-auto ">
                                 <f:ajax render="formulario-tabla-colonia:tabla-colonia formulario-colonia">
                                     <h:form id="formulario-colonia" styleClass="uk-form-horizontal">
                                         <pa:boton-minimizado htmlDataTable="#{catalogoAdministradoColoniaControlador.htmlDataTable}"/>
@@ -265,13 +265,13 @@
                 <h:form id="formulario-modal-editar" styleClass="uk-form-stacked">
                 <div class="uk-modal-header uk-background-secondary">
                     <p class="uk-h4 uk-text-center uk-text-bold">
-                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="editar motivo de bloqueo" rendered="#{not empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
-                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="nuevo motivo de bloqueo" rendered="#{empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
+                        <h:outputText styleClass="letra-titulo " value="editar motivo de bloqueo" rendered="#{not empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
+                        <h:outputText styleClass="letra-titulo " value="nuevo motivo de bloqueo" rendered="#{empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
                     </p>
                 </div>
                 <div class="uk-modal-body">
                     <div class="uk-margin">
-                        <h:outputLabel for="input-catalogo-bloqueo" styleClass="uk-form-label uk-text-capitalize" value="#{etiqueta['description']}"/>
+                        <h:outputLabel for="input-catalogo-bloqueo" styleClass="uk-form-label " value="#{etiqueta['description']}"/>
                         <div class="uk-form-controls">
                             <h:inputText styleClass="uk-input"
                                          id="input-catalogo-bloqueo"
@@ -310,12 +310,12 @@
                 <h:form id="formulario-modal-tipo-contacto" styleClass="uk-form-stacked">
                     <div class="uk-modal-header uk-background-secondary">
                         <p class="uk-h4 uk-text-center uk-text-bold">
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="Editar tipo de contacto" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="nuevo tipo de contacto" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
+                            <h:outputText styleClass="letra-titulo " value="Editar tipo de contacto" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
+                            <h:outputText styleClass="letra-titulo " value="nuevo tipo de contacto" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
                         </p>
                     </div><div class="uk-modal-body">
                         <div class="uk-margin">
-                            <h:outputLabel for="input-contacto" styleClass="uk-form-label uk-text-capitalize" value="#{etiqueta['description']}"/>
+                            <h:outputLabel for="input-contacto" styleClass="uk-form-label " value="#{etiqueta['description']}"/>
                             <div class="uk-form-controls">
                                 <h:inputText styleClass="uk-input"
                                              id="input-contacto"
@@ -354,8 +354,8 @@
             <div class="uk-modal-dialog uk-margin-auto-vertical">
                 <div class="uk-modal-header uk-background-secondary">
                     <p class="uk-h4 uk-text-center uk-text-bold">
-                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogoadministrativo.administrator.modal.edit']}" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
-                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogoadministrativo.administrator.modal.new']}" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
+                        <h:outputText styleClass="letra-titulo " value="#{administracion['catalogoadministrativo.administrator.modal.edit']}" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
+                        <h:outputText styleClass="letra-titulo " value="#{administracion['catalogoadministrativo.administrator.modal.new']}" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
                     </p>
                 </div>
                 <h:form id="formulario-modal-colonia" styleClass="uk-form-stacked">
@@ -363,7 +363,7 @@
                     <div class="uk-modal-body">
 
 
-                        <h:outputLabel for="input-colonia" styleClass="uk-text-capitalize uk-form-label" value="#{etiqueta['description']}"/>
+                        <h:outputLabel for="input-colonia" styleClass=" uk-form-label" value="#{etiqueta['description']}"/>
                         <div class="uk-form-controls">
                             <h:inputText styleClass="uk-input"
                                          id="input-colonia"
@@ -406,7 +406,7 @@
                 <h:form styleClass="uk-form-stacked">
                     <div class="uk-modal-body">
 
-                        <h:outputLabel for="select-motivo-bloqueo" styleClass=" uk-text-capitalize uk-form-label" value="Motivo de Bloqueo"/>
+                        <h:outputLabel for="select-motivo-bloqueo" styleClass="  uk-form-label" value="Motivo de Bloqueo"/>
                         <h:selectOneMenu styleClass="uk-select"
                                          label="Selecciona :"
                                          id="select-motivo-bloqueo">

@@ -27,7 +27,7 @@
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover">
                     <div class="uk-card-header">
                         <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-auto"><h4><span class="uk-text-middle">#{administracion['catalogoadministrativo.title']}</span></h4></div>
+                            <div class="uk-width-auto"><h4 class="uk-text-capitalize"><span class="uk-text-middle">#{administracion['catalogoadministrativo.title']}</span></h4></div>
                             <div class="uk-width-expand uk-text-right panel-icons">
                                 <h:form>
                                     <h:commandLink styleClass="uk-icon-button  uk-icon" >
@@ -51,28 +51,28 @@
                                          footerClass="uk-background-primary"
                                          columnClasses=",,uk-text-center,uk-text-center,uk-text-center,uk-text-center">
                                 <h:column headerClass="uk-background-primary uk-width-small">
-                                    <f:facet name="header"><span class="letra-titulo">CCT</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo">#{administracion['catalogoadministrativo.school.table.cct']}</span></f:facet>
                                     #{escuela.cct}
                                 </h:column>
                                 <h:column headerClass="uk-background-primary uk-background-primary">
-                                    <f:facet name="header"><span class="letra-titulo">Nombre</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo">#{administracion['catalogoadministrativo.school.table.name']}</span></f:facet>
                                     #{escuela.nombre}
                                 </h:column>
                                 <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
-                                    <f:facet name="header"><span class="letra-titulo">Activo</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo">#{administracion['catalogoadministrativo.school.table.active']}</span></f:facet>
                                     <h:outputText rendered="#{escuela.activo}" pt:uk-icon="check"/>
                                     <h:outputText rendered="#{not escuela.activo}" pt:uk-icon="ban"/>
                                 </h:column>
                                 <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
-                                    <f:facet name="header"><span class="letra-titulo">Licencias</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo">#{administracion['catalogoadministrativo.school.table.licenses']}</span></f:facet>
                                     #{escuela.licecias}
                                 </h:column>
                                 <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
-                                    <f:facet name="header"><span class="letra-titulo">Dias Restantes</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo">#{administracion['catalogoadministrativo.school.table.remaining.days']}</span></f:facet>
                                     #{escuela.diasRestantes}
                                 </h:column>
                                 <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
-                                    <f:facet name="header"><span class="letra-titulo ">opciones</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo ">#{etiqueta['options']}</span></f:facet>
                                     <span class="uk-icon-button uk-text-center" uk-icon="more-vertical"></span>
                                 </h:column>
                                 <f:facet name="footer">
