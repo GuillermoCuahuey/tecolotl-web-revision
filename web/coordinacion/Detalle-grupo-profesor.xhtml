@@ -25,6 +25,107 @@
 
 
         <div class="uk-grid uk-grid-medium uk-button-small" data-uk-grid="">
+
+            <!-- catalog colonias -->
+            <div class="uk-width-1-1l uk-margin-small-bottom">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-small-bottom">
+                    <div class="uk-card-header ">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-auto uk-text-capitalize"><h4 class="uk-text-capitalize">#{administracion['catalogoadministrativo.administrator.colony.catalog']}</h4></div>
+
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+
+                        <div class="uk-grid-small" uk-grid="">
+                            <div class="uk-width-expand" uk-leader="">Lorem ipsum dolor sit amet</div>
+                            <div>$20.90</div>
+                        </div>
+                        <div class="uk-grid-small" uk-grid="">
+                            <div class="uk-width-expand" uk-leader="">Lorem ipsum dolor sit amet</div>
+                            <div>$20.90</div>
+                        </div>
+                        <div class="uk-grid-small" uk-grid="">
+                            <div class="uk-width-expand" uk-leader="">Lorem ipsum dolor sit amet</div>
+                            <div>$20.90</div>
+                        </div>
+                        <div class="uk-grid-small" uk-grid="">
+                            <div class="uk-width-expand" uk-leader="">Lorem ipsum dolor sit amet</div>
+                            <div>$20.90</div>
+                        </div>
+
+                        <div class="uk-margin">
+                            <div class="uk-grid-small uk-grid" uk-grid="">
+                            <div class="uk-width-1-1@s uk-width-1-5@m ">
+                                <h:outputLabel for="input-nick" styleClass="uk-text-capitalize uk-form-label" value="Grado"/>
+                                <div class="uk-form-controls">
+                                    <h:inputText styleClass="uk-input"
+                                                 id="input-nick"
+                                                 pt:placeholder="1"
+                                                 label="Grado"
+                                                 value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
+                                        <f:validateRequired/>
+                                        <f:validateLength minimum="3" maximum="20"/>
+                                    </h:inputText>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-1@s uk-width-1-5@m  ">
+                                <h:outputLabel for="input-name" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.teache.table.header.name']}"/>
+                                <h:inputText styleClass="uk-input"
+                                             id="input-name"
+                                             pt:placeholder="#{etiqueta['write.text']}"
+                                             label="#{administracion['detalleprofesor.teache.table.header.name']}"
+                                             value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
+                                    <f:validateRequired/>
+                                    <f:validateLength minimum="3" maximum="20"/>
+                                </h:inputText>
+                            </div>
+
+                            <div class="uk-width-1-1@s uk-width-1-5@m ">
+                                <h:outputLabel for="input-apellidop" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.header.last.name']}"/>
+                                <h:inputText styleClass="uk-input"
+                                             id="input-apellidop"
+                                             pt:placeholder="#{etiqueta['write.text']}"
+                                             label="#{administracion['detalleprofesor.active.modal.header.last.name']}"
+                                             value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
+                                    <f:validateRequired/>
+                                    <f:validateLength minimum="3" maximum="20"/>
+                                </h:inputText>
+                            </div>
+                            <div class="uk-width-1-1@s uk-width-1-5@m ">
+                                <h:outputLabel for="input-apellidom" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.header.mothers.last']} label"/>
+                                <h:inputText styleClass="uk-input"
+                                             id="input-apellidom"
+                                             pt:placeholder="#{etiqueta['write.text']}"
+                                             label="#{administracion['detalleprofesor.active.modal.header.mothers.last']}"
+                                             value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
+                                    <f:validateRequired/>
+                                    <f:validateLength minimum="3" maximum="20"/>
+                                </h:inputText>
+                            </div>
+                            <div class="uk-width-1-1@s uk-width-1-5@m uk-first-column">
+                                <h:outputLabel for="select-grado" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.new.teacher.degree']}"/>
+                                <h:selectOneMenu  styleClass="uk-select"
+                                                  id="select-grado"
+                                                  label="#{administracion['detalleprofesor.active.modal.new.teacher.degree']}">
+                                    <f:selectItem itemLabel="#{etiqueta['options']}" noSelectionOption="true"/>
+                                    <f:selectItems value="#{detallesProfesorGradoControlador.gradoModelos}"
+                                                   var="grado"
+                                                   itemValue="#{grado.id}"
+                                                   itemLabel="#{grado.grado}"/>
+                                    <f:validateRequired/>
+                                </h:selectOneMenu>
+                            </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /FIN colonias -->
+
             <!-- catalog colonias -->
             <div class="uk-width-1-1l uk-margin-large-bottom">
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-medium-bottom">
@@ -209,53 +310,7 @@
 
                         <div class="uk-margin">
                             <div class="uk-grid-small uk-grid" uk-grid="">
-                                <div class="uk-width-1-1@s uk-width-1-5@m ">
-                                    <h:outputLabel for="input-nick" styleClass="uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.header.nick']}"/>
-                                    <div class="uk-form-controls">
-                                        <h:inputText styleClass="uk-input"
-                                                     id="input-nick"
-                                                     pt:placeholder="#{etiqueta['write.text']}"
-                                                     label="#{administracion['detalleprofesor.teache.table.header.name']}"
-                                                     value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
-                                            <f:validateRequired/>
-                                            <f:validateLength minimum="3" maximum="20"/>
-                                        </h:inputText>
-                                    </div>
-                                </div>
-                                <div class="uk-width-1-1@s uk-width-2-5@m  ">
-                                    <h:outputLabel for="input-name" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.teache.table.header.name']}"/>
-                                    <h:inputText styleClass="uk-input"
-                                                 id="input-name"
-                                                 pt:placeholder="#{etiqueta['write.text']}"
-                                                 label="#{administracion['detalleprofesor.teache.table.header.name']}"
-                                                 value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
-                                        <f:validateRequired/>
-                                        <f:validateLength minimum="3" maximum="20"/>
-                                    </h:inputText>
-                                </div>
 
-                                <div class="uk-width-1-1@s uk-width-2-5@m ">
-                                    <h:outputLabel for="input-apellidop" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.header.last.name']}"/>
-                                    <h:inputText styleClass="uk-input"
-                                                 id="input-apellidop"
-                                                 pt:placeholder="#{etiqueta['write.text']}"
-                                                 label="#{administracion['detalleprofesor.active.modal.header.last.name']}"
-                                                 value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
-                                        <f:validateRequired/>
-                                        <f:validateLength minimum="3" maximum="20"/>
-                                    </h:inputText>
-                                </div>
-                                <div class="uk-width-1-1@s uk-width-2-5@m ">
-                                    <h:outputLabel for="input-apellidom" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.header.mothers.last']} label"/>
-                                    <h:inputText styleClass="uk-input"
-                                                 id="input-apellidom"
-                                                 pt:placeholder="#{etiqueta['write.text']}"
-                                                 label="#{administracion['detalleprofesor.active.modal.header.mothers.last']}"
-                                                 value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
-                                        <f:validateRequired/>
-                                        <f:validateLength minimum="3" maximum="20"/>
-                                    </h:inputText>
-                                </div>
                                 <div class="uk-width-1-1@s uk-width-3-5@m ">
                                     <h:outputLabel for="input-correo" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.header.email']}"/>
                                     <h:inputText styleClass="uk-input"
@@ -266,19 +321,6 @@
                                         <f:validateRequired/>
                                         <f:validateLength minimum="3" maximum="20"/>
                                     </h:inputText>
-                                </div>
-                                <div class="uk-width-1-1@s uk-width-2-5@m uk-first-column">
-                                    <h:outputLabel for="select-grado" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.new.teacher.degree']}"/>
-                                    <h:selectOneMenu  styleClass="uk-select"
-                                                      id="select-grado"
-                                                      label="#{administracion['detalleprofesor.active.modal.new.teacher.degree']}">
-                                        <f:selectItem itemLabel="#{etiqueta['options']}" noSelectionOption="true"/>
-                                        <f:selectItems value="#{detallesProfesorGradoControlador.gradoModelos}"
-                                                       var="grado"
-                                                       itemValue="#{grado.id}"
-                                                       itemLabel="#{grado.grado}"/>
-                                        <f:validateRequired/>
-                                    </h:selectOneMenu>
                                 </div>
 
                                 <div class="uk-width-1-1@s uk-width-2-5@m uk-first-column">

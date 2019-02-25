@@ -67,7 +67,7 @@
                                 <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
                                     <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogocoordinador.coordinator.block.table.header.edit']}</span></f:facet>
                                     <h:commandLink   pt:uk-toggle="target: #modal-coordinador">
-                                        <button class="uk-icon-button puntero" uk-icon="file-text" type="button"></button>
+                                        <span class="uk-icon-button puntero uk-text-primary" uk-icon="file-text" type="button"></span>
                                         <f:ajax/>
                                     </h:commandLink>
                                 </h:column>
@@ -129,7 +129,7 @@
 
                                     <f:facet name="header"><span class="letra-titulo uk-text-capitalize">#{administracion['catalogocoordinador.teacher.block.table.header.edit']}</span></f:facet>
                                     <h:commandLink   pt:uk-toggle="target: #modal-profesor">
-                                        <button class="uk-icon-button puntero" uk-icon="file-text" type="button"></button>
+                                        <span class="uk-icon-button puntero uk-text-primary" uk-icon="file-text" type="button"></span>
                                         <f:ajax/>
                                     </h:commandLink>
                                 </h:column>
@@ -157,8 +157,8 @@
                 <h:form id="formulario-modal-editar" styleClass="uk-form-stacked">
                 <div class="uk-modal-header uk-background-secondary">
                     <p class="uk-h4 uk-text-center uk-text-bold">
-                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.editar']}" rendered="#{not empty catalogoAdministradoCoordinadorControlador.tablaModelo.id}"/>
-                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.new']}" rendered="#{empty catalogoAdministradoCoordinadorControlador.tablaModelo.id}"/>
+                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="editar bloqueo coordinador" rendered="#{not empty catalogoAdministradoCoordinadorControlador.tablaModelo.id}"/>
+                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="nuevo bloqueo coordinador" rendered="#{empty catalogoAdministradoCoordinadorControlador.tablaModelo.id}"/>
                     </p>
                 </div>
                 <div class="uk-modal-body">
@@ -181,16 +181,17 @@
                         </h:panelGroup>
                     </ui:fragment>
                 </div>
-                <div class="uk-modal-footer uk-text-right">
-                    <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
-                                     value="#{boton['cancel']}">
-                        <f:ajax render="@form"/>
-                    </h:commandButton>
-                    <h:commandButton value="#{boton['add']}"
-                                     styleClass="uk-button uk-button-secondary">
-                        <f:ajax execute="@form" render="@form"/>
-                    </h:commandButton>
-                </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
+                                         value="#{boton['cancel']}">
+                            <f:ajax render="@form"/>
+                        </h:commandButton>
+                        <h:commandButton value="#{boton['add']}"
+                                         styleClass="uk-button uk-button-secondary">
+                            <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalCoordinador' ) }" execute="@form" render="@form"/>
+
+                        </h:commandButton>
+                    </div>
                 </h:form>
             </div>
         </h:panelGroup>
@@ -201,8 +202,8 @@
                 <h:form id="formulario-modal-profesor" styleClass="uk-form-stacked">
                     <div class="uk-modal-header uk-background-secondary">
                         <p class="uk-h4 uk-text-center uk-text-bold">
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.editar']}" rendered="#{not empty catalogoAdministradoProfesorControlador.tablaModelo.id}"/>
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.new']}" rendered="#{empty catalogoAdministradoProfesorControlador.tablaModelo.id}"/>
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="editar bloqueo profesor" rendered="#{not empty catalogoAdministradoProfesorControlador.tablaModelo.id}"/>
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="nuevo bloqueo profesor" rendered="#{empty catalogoAdministradoProfesorControlador.tablaModelo.id}"/>
                         </p>
                     </div>
                     <div class="uk-modal-body">
@@ -213,7 +214,7 @@
                                              id="input-profesor"
                                              pt:placeholder="#{etiqueta['write.text']}"
                                              label="#{etiqueta['description']}"
-                                             value="#{catalogoAdministradoProfesorControlador.tablaModelo.nombre}">
+                                             value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
                                     <f:validateRequired/>
                                     <f:validateLength minimum="3" maximum="20"/>
                                 </h:inputText>
@@ -232,7 +233,7 @@
                         </h:commandButton>
                         <h:commandButton value="#{boton['add']}"
                                          styleClass="uk-button uk-button-secondary">
-                            <f:ajax execute="@form" render="@form"/>
+                            <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalProfesor' ) }" execute="@form" render="@form"/>
                         </h:commandButton>
                     </div>
                 </h:form>
@@ -240,13 +241,48 @@
         </h:panelGroup>
 
         <script type="text/javascript">
-            var modalModalEditar;
-            document.addEventListener('DOMContentLoaded', function (evt) {
-                modalModalEditar = document.querySelector('#modal-editar');
-                UIkit.util.on('#modal-editar', 'show', function () {
-                    modalModalEditar.querySelector('.uk-input').click();
+
+            var modalCoordinador;
+            var modalProfesor;
+
+
+            document.addEventListener("DOMContentLoaded", function (evt) {
+                modalCoordinador = document.querySelector('#modal-coordinador');
+                modalProfesor = document.querySelector('#modal-profesor');
+
+                UIkit.util.on('#modal-coordinador', 'show', function () {
+                    modalCoordinador.querySelector('.uk-modal-body').click();
                 });
+                UIkit.util.on('#modal-profesor', 'show', function () {
+                    modalProfesor.querySelector('.uk-modal-body').click();
+                });
+
+
             });
+
+
+            function cierraModal(data,modal) {
+                if (data.status === "success"){
+                    switch (modal) {
+
+                        case "modalCoordinador":
+                            if (modalCoordinador.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalCoordinador).hide();
+                            }
+                            break;
+                        case "modalProfesor":
+                            if (modalProfesor.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalProfesor).hide();
+                            }
+
+                        default: console.error(modal);
+
+                    }
+                }
+
+
+            }
+
         </script>
     </ui:define>
 </ui:composition>
