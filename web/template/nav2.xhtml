@@ -3,6 +3,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
@@ -12,13 +13,19 @@
     <span class="titulo-blanco uk-text-capitalize">Dashboard</span>
 </div>
 <div class="left-content-box  content-box-dark">
+    <h:graphicImage library="img" name="maestra.svg" styleClass="uk-svg uk-border-circle profile-img"/>
     <h4 class="uk-text-center uk-margin-remove-vertical text-light">John Doe</h4>
     <div class="uk-position-relative uk-text-center uk-display-block">
         <a href="#" class="uk-text-small uk-text-muted uk-display-block uk-text-center" data-uk-icon="icon: triangle-down; ratio: 0.7">Admin</a>
         <!-- user dropdown -->
-        <div class="uk-dropdown user-drop" data-uk-dropdown="mode: click; pos: bottom-center; animation: uk-animation-slide-bottom-small; duration: 150">
+        <h:panelGroup  layout="block" styleClass="uk-dropdown user-drop" pt:data-uk-dropdown="mode: click; pos: bottom-center; animation: uk-animation-slide-bottom-small; duration: 150">
             <ul class="uk-nav uk-dropdown-nav uk-text-left">
                 <li><a href="#"><span data-uk-icon="icon: info"></span> Summary</a></li>
+                    <li>
+                         <h:outputLink>
+                             <h:outputText pt:uk-icon="icon: info"/> Hola
+                         </h:outputLink>
+                    </li>
                 <li><a href="#"><span data-uk-icon="icon: refresh"></span> Edit</a></li>
                 <li><a href="#"><span data-uk-icon="icon: settings"></span> Configuration</a></li>
                 <li class="uk-nav-divider"></li>
@@ -26,7 +33,7 @@
                 <li class="uk-nav-divider"></li>
                 <li><a href="#"><span data-uk-icon="icon: sign-out"></span> Sign Out</a></li>
             </ul>
-        </div>
+        </h:panelGroup>
         <!-- /user dropdown -->
     </div>
 </div>
