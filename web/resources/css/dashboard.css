@@ -200,6 +200,12 @@
 	margin: 0 auto;
 }
 
+.chart-container-min {
+	position: relative;
+	height: 235px;
+	margin: 0 auto;
+}
+
 .primera-mayuscula::first-letter {
 	text-transform: uppercase;
 }

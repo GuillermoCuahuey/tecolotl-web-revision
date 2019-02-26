@@ -2,14 +2,8 @@ var bar = document.getElementById('js-progressbar');
 
 UIkit.upload('.js-upload', {
 
-    url: '',
-    multiple: true,
-
     beforeSend: function () {
         console.log('beforeSend', arguments);
-    },
-    beforeAll: function () {
-        console.log('beforeAll', arguments);
     },
     load: function () {
         console.log('load', arguments);
@@ -24,7 +18,6 @@ UIkit.upload('.js-upload', {
     loadStart: function (e) {
         console.log('loadStart', arguments);
 
-        bar.removeAttribute('hidden');
         bar.max = e.total;
         bar.value = e.loaded;
     },
@@ -46,11 +39,6 @@ UIkit.upload('.js-upload', {
     completeAll: function () {
         console.log('completeAll', arguments);
 
-        setTimeout(function () {
-            bar.setAttribute('hidden', 'hidden');
-        }, 1000);
-
-        alert('Upload Completed');
     }
 
 });

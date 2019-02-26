@@ -19,52 +19,87 @@
     </ui:define>
     <ui:define name="contenido">
         <h:outputStylesheet library="css" name="tablas.css"/>
-
         <h4 class="uk-heading-line uk-text-bold"><span></span></h4>
-
-
-
         <div class="uk-grid uk-grid-medium uk-button-small" data-uk-grid="">
-
-            <!-- catalog prof-validos -->
-            <div class="uk-width-1-1l">
-                <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-large-bottom">
+            <!-- catalog subir archivo -->
+            <div class="uk-width-1-1s uk-width-1-3@m">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover">
                     <div class="uk-card-header">
                         <div class="uk-grid uk-grid-small">
                             <div class="uk-width-auto uk-text-capitalize"><h4 class="uk-text-capitalize">#{administracion['csvimportar.active.administrator.import.csv.teachers']}</h4></div>
+                            <div class="uk-width-expand uk-text-right panel-icons">
+                                <a href="#" class="uk-icon-link" title="Descargar CSV ejemplo" data-uk-tooltip="" data-uk-icon="icon: cloud-download"></a>
+                            </div>
                         </div>
                     </div>
                     <div class="uk-card-body">
-
-                        <div class="js-upload uk-placeholder uk-text-center">
-                            <div class=" uk-form-custom">
-                                <input type="file" multiple=""/>
-                                <span class="uk-link">Selecciona Archivo</span>
-
+                        <div class="chart-container-min">
+                            <div class="js-upload uk-placeholder uk-text-center">
+                                <div class=" uk-form-custom">
+                                    <input type="file"/>
+                                    <span class="uk-link">Selecciona Archivo</span>
+                                </div>
                             </div>
-
-                            <button class="uk-button uk-button-secondary uk-margin-small-left "  type="button">
-                                <span >subir</span>
-                                <span uk-icon="icon: cloud-upload" class="uk-icon uk-margin-small-right"></span>
-                            </button>
+                            <label><input class="uk-checkbox" type="checkbox" name="titulo"/> Primera fila como título</label>
                         </div>
-                        <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden=""></progress>
-
-
-                    </div>
-                    <div class="uk-card-footer">
-
+                        <progress id="barra-proceso-archivo" class="uk-progress" value="0" max="100"></progress>
                     </div>
                 </div>
             </div>
-            <!-- /FIN prof-validos -->
+            <!--/ catalog subir archivo -->
+            <!-- catalog subir archivo -->
+            <div class="uk-width-1-1s uk-width-2-3@m">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover">
+                    <div class="uk-card-body">
+                        <div class="chart-container">
+                            <ul class="uk-child-width-expand" uk-tab="">
+                                <li class="uk-active">
+                                    <a href="#">Datos Archivo</a>
+                                </li>
+                                <li class="uk-disabled">
+                                    <a href="#">Datos correctos</a>
+                                </li>
+                                <li class="uk-disabled">
+                                    <a href="#">
+                                        <span>Datos incorrectos</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="uk-switcher">
+                                <li>
+                                    <div class="uk-grid-small uk-margin-small-left" uk-grid="">
+                                        <div class="uk-width-expand" uk-leader="">Nombre del Archivo</div>
+                                        <div class="uk-margin-small-right">Aun no seleccionado</div>
+                                    </div>
+                                    <div class="uk-grid-small uk-margin-small-left" uk-grid="">
+                                        <div class="uk-width-expand" uk-leader="">Tamaño del archivo</div>
+                                        <div class="uk-margin-small-right">0.0 KB</div>
+                                    </div>
+                                    <div class="uk-grid-small uk-margin-small-left" uk-grid="">
+                                        <div class="uk-width-expand" uk-leader="">Formato del archivo</div>
+                                        <div class="uk-margin-small-right">Sin Tipo</div>
+                                    </div>
+                                    <div class="uk-grid-small uk-margin-small-left" uk-grid="">
+                                        <div class="uk-width-expand" uk-leader="">Filas Totales</div>
+                                        <div class="uk-margin-small-right">0</div>
+                                    </div>
+                                </li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ catalog subir archivo -->
             <!-- catalog prof-validos -->
-            <div class="uk-width-1-1l uk-margin-medium-bottom">
+            <div class="uk-width-1-1@s">
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover">
                     <div class="uk-card-header">
                         <div class="uk-grid uk-grid-small">
                             <div class="uk-width-auto uk-text-capitalize"><h4 class="uk-text-capitalize">#{administracion['csvimportar.active.administrator.loaded.files']}</h4></div>
-                            <div class="uk-width-expand uk-flex uk-flex-right">
+                            <div class="uk-width-expand uk-text-right panel-icons">
+                                <a href="#" class="uk-icon-link" title="Subir datos" data-uk-tooltip="" data-uk-icon="icon: cloud-upload"></a>
                             </div>
                         </div>
                     </div>
@@ -72,56 +107,32 @@
                         <h:form id="formulario-tabla-prof-valido">
                             <table class="uk-table">
                                 <thead>
-                                <tr class="uk-background-primary">
-                                    <th class="uk-width-small">
-                                        <div class="uk-flex uk-flex-between">
-                                            <span class="letra-titulo">Nick Name</span>
-                                        </div>
-                                    </th>
-                                    <th class="uk-table-expand">
-                                        <div class="uk-flex uk-flex-between">
-                                            <span class="letra-titulo">nombre</span>
-                                        </div>
-                                    </th>
-                                    <th class="uk-width-auto"><span class="letra-titulo">Apellido Paterno</span></th>
-                                    <th class="uk-width-auto"><span class="letra-titulo">Apellido Materno</span></th>
-                                    <th class="uk-width-small"><span class="letra-titulo">E-Mail</span></th>
-                                    <th class="uk-width-small"><span class="letra-titulo">Contraseña</span></th>
-                                </tr>
+                                    <tr class="uk-background-primary">
+                                        <th><span class="letra-titulo">Nick Name</span></th>
+                                        <th><span class="letra-titulo">Nombre</span></th>
+                                        <th><span class="letra-titulo">Apellido Paterno</span></th>
+                                        <th><span class="letra-titulo">Apellido Materno</span></th>
+                                        <th><span class="letra-titulo">Correo Electrónico</span></th>
+                                        <th><span class="letra-titulo">Contraseña</span></th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="uk-text-center">
-
-                                    <td colspan="5"><img src="../resources/img/vacio.svg"/></td>
-                                </tr>
-
+                                    <tr class="uk-text-center">
+                                        <td colspan="6"><h:graphicImage library="img" name="vacio.svg"/></td>
+                                    </tr>
                                 </tbody>
-
+                                <tfoot>
+                                    <tr class="uk-background-primary">
+                                        <th><span class="letra-titulo">Nick Name</span></th>
+                                        <th><span class="letra-titulo">Nombre</span></th>
+                                        <th><span class="letra-titulo">Apellido Paterno</span></th>
+                                        <th><span class="letra-titulo">Apellido Materno</span></th>
+                                        <th><span class="letra-titulo">Correo Electrónico</span></th>
+                                        <th><span class="letra-titulo">Contraseña</span></th>
+                                    </tr>
+                                </tfoot>
                             </table>
-
-                            <h:dataTable id="tabla-prof-valido"
-                                         value="#{catalogoAdministradoValidoControlador.collectionDataModel}"
-                                         binding="#{catalogoAdministradoValidoControlador.htmlDataTable}"
-                                         var="dato"
-                                         first="0"
-                                         rows="1"
-                                         styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover"
-                                         footerClass="uk-background-primary"
-                                         columnClasses="uk-text-center,,,,uk-text-center,uk-text-center">
-
-
-                                <f:facet name="footer">
-
-                                </f:facet>
-                            </h:dataTable>
                         </h:form>
-                    </div>
-                    <div class="uk-card-footer">
-                        <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-auto uk-text-capitalize">
-
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -140,203 +151,187 @@
                         <h:form id="formulario-tabla-prof-no-invalido">
                             <table class="uk-table">
                                 <thead>
-                                <tr class="uk-background-primary">
-                                    <th class="uk-width-small">
-                                        <div class="uk-flex uk-flex-between">
-                                            <span class="letra-titulo">Nick Name</span>
-                                        </div>
-                                    </th>
-                                    <th class="uk-table-expand">
-                                        <div class="uk-flex uk-flex-between">
-                                            <span class="letra-titulo">nombre</span>
-                                        </div>
-                                    </th>
-                                    <th class="uk-width-auto"><span class="letra-titulo">Apellido Paterno</span></th>
-                                    <th class="uk-width-auto"><span class="letra-titulo">Apellido Materno</span></th>
-                                    <th class="uk-width-small"><span class="letra-titulo">E-Mail</span></th>
-                                    <th class="uk-width-small"><span class="letra-titulo">Contraseña</span></th>
-                                </tr>
+                                    <tr class="fondo-peligro">
+                                        <th><span class="letra-titulo">Fila</span></th>
+                                        <th><span class="letra-titulo">Nick Name</span></th>
+                                        <th><span class="letra-titulo">Nombre</span></th>
+                                        <th><span class="letra-titulo">Apellido Paterno</span></th>
+                                        <th><span class="letra-titulo">Apellido Materno</span></th>
+                                        <th><span class="letra-titulo">Correo Electrónico</span></th>
+                                        <th><span class="letra-titulo">Contraseña</span></th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="uk-text-center">
-
-                                    <td colspan="5"><img src="../resources/img/vacio.svg"/></td>
-                                </tr>
-
+                                    <tr class="uk-text-center">
+                                        <td colspan="7"><h:graphicImage library="img" name="vacio.svg"/></td>
+                                    </tr>
                                 </tbody>
-
+                                <tfoot>
+                                    <tr class="fondo-peligro">
+                                        <th><span class="letra-titulo">Fila</span></th>
+                                        <th><span class="letra-titulo">Nick Name</span></th>
+                                        <th><span class="letra-titulo">Nombre</span></th>
+                                        <th><span class="letra-titulo">Apellido Paterno</span></th>
+                                        <th><span class="letra-titulo">Apellido Materno</span></th>
+                                        <th><span class="letra-titulo">Correo Electrónico</span></th>
+                                        <th><span class="letra-titulo">Contraseña</span></th>
+                                    </tr>
+                                </tfoot>
                             </table>
-
-                            <h:dataTable id="tabla-prof-no-invalido"
-                                         value="#{catalogoAdministradoNoValidoControlador.collectionDataModel}"
-                                         binding="#{catalogoAdministradoNoValidoControlador.htmlDataTable}"
-                                         var="dato"
-                                         first="0"
-                                         rows="5"
-                                         styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover"
-                                         footerClass="uk-background-primary"
-                                         columnClasses="uk-text-center,,,,uk-text-center,uk-text-center">
-
-
-                                <f:facet name="footer">
-                                    </f:facet>
-                            </h:dataTable>
                         </h:form>
-                    </div>
-                    <div class="uk-card-footer">
-
                     </div>
                 </div>
             </div>
             <!-- /FIN prof-invalidos -->
-
-
-
         </div>
-
-        <!--  Modal Bloqueo Catalogo  -->
-        <h:panelGroup layout="block" id="modal-bloqueo-catalogo" pt:uk-modal="">
-            <div class="uk-modal-dialog uk-margin-auto-vertical">
-                <h:form id="formulario-modal-editar" styleClass="uk-form-horizontal uk-margin-large">
-                    <div class="uk-modal-header uk-background-secondary">
-                        <p class="uk-h4 uk-text-center uk-text-bold">
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.editar']}" rendered="#{not empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.new']}" rendered="#{empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
-                        </p>
-                    </div>
-                    <div class="uk-modal-body">
-                        <div class="uk-margin">
-                            <h:outputLabel for="input-coordinador" styleClass="uk-form-label uk-text-capitalize" value="#{etiqueta['description']}"/>
-                            <div class="uk-form-controls">
-                                <h:inputText styleClass="uk-input"
-                                             id="input-coordinador"
-                                             pt:placeholder="#{etiqueta['write.text']}"
-                                             label="#{etiqueta['description']}"
-                                             value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
-                                    <f:validateRequired/>
-                                    <f:validateLength minimum="3" maximum="20"/>
-                                </h:inputText>
-                            </div>
-                        </div>
-                        <ui:fragment rendered="#{facesContext.validationFailed}">
-                            <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
-                                <h:message for="input-coordinador"/>
-                            </h:panelGroup>
-                        </ui:fragment>
-                    </div>
-                    <div class="uk-modal-footer uk-text-right">
-                        <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
-                                         value="#{boton['cancel']}">
-                            <f:ajax render="@form"/>
-                        </h:commandButton>
-                        <h:commandButton value="#{boton['add']}"
-                                         styleClass="uk-button uk-button-secondary">
-                            <f:ajax execute="@form" render="@form"/>
-                        </h:commandButton>
-                    </div>
-                </h:form>
-            </div>
-        </h:panelGroup>
-
-        <!--  Modal Tipo Contacto -->
-        <h:panelGroup layout="block" id="modal-tipo-contacto" pt:uk-modal="">
-            <div class="uk-modal-dialog uk-margin-auto-vertical">
-                <h:form id="formulario-modal-tipo-contacto" styleClass="uk-form-stacked">
-                    <div class="uk-modal-header uk-background-secondary">
-                        <p class="uk-h4 uk-text-center uk-text-bold">
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.editar']}" rendered="#{not empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.new']}" rendered="#{empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
-                        </p>
-                    </div>
-                    <div class="uk-modal-body">
-                        <div class="uk-margin">
-                            <h:outputLabel for="input-contacto" styleClass="uk-form-label uk-text-capitalize" value="#{etiqueta['description']}"/>
-                            <div class="uk-form-controls">
-                                <h:inputText styleClass="uk-input"
-                                             id="input-contacto"
-                                             pt:placeholder="#{etiqueta['write.text']}"
-                                             label="#{etiqueta['description']}"
-                                             value="#{catalogoAdministradoContactoControlador.tablaModelo.nombre}">
-                                    <f:validateRequired/>
-                                    <f:validateLength minimum="3" maximum="20"/>
-                                </h:inputText>
-                            </div>
-                        </div>
-                        <ui:fragment rendered="#{facesContext.validationFailed}">
-                            <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
-                                <h:message for="input-contacto"/>
-                            </h:panelGroup>
-                        </ui:fragment>
-                    </div>
-                    <div class="uk-modal-footer uk-text-right">
-                        <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
-                                         value="#{boton['cancel']}">
-                            <f:ajax render="@form"/>
-                        </h:commandButton>
-                        <h:commandButton value="#{boton['add']}"
-                                         styleClass="uk-button uk-button-secondary">
-                            <f:ajax execute="@form" render="@form"/>
-                        </h:commandButton>
-                    </div>
-                </h:form>
-            </div>
-        </h:panelGroup>
-
-        <!--  Modal Motivo Colonia  -->
-        <h:panelGroup layout="block" id="modal-colonia" pt:uk-modal="">
-            <div class="uk-modal-dialog uk-margin-auto-vertical">
-                <h:form id="formulario-modal-colonia" styleClass="uk-form-stacked">
-                    <div class="uk-modal-header uk-background-secondary">
-                        <p class="uk-h4 uk-text-center uk-text-bold">
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.editar']}" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
-                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogocoordinador.modal.new']}" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
-                        </p>
-                    </div>
-                    <div class="uk-modal-body">
-                        <div class="uk-margin">
-                            <h:outputLabel for="input-colonia" styleClass="uk-form-label uk-text-capitalize" value="#{etiqueta['description']}"/>
-                            <div class="uk-form-controls">
-                                <h:inputText styleClass="uk-input"
-                                             id="input-colonia"
-                                             pt:placeholder="#{etiqueta['write.text']}"
-                                             label="#{etiqueta['description']}"
-                                             value="#{catalogoAdministradoColoniaControlador.tablaColonia.nombre}">
-                                    <f:validateRequired/>
-                                    <f:validateLength minimum="3" maximum="20"/>
-                                </h:inputText>
-                            </div>
-                        </div>
-                        <ui:fragment rendered="#{facesContext.validationFailed}">
-                            <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
-                                <h:message for="input-colonia"/>
-                            </h:panelGroup>
-                        </ui:fragment>
-                    </div>
-                    <div class="uk-modal-footer uk-text-right">
-                        <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
-                                         value="#{boton['cancel']}">
-                            <f:ajax render="@form"/>
-                        </h:commandButton>
-                        <h:commandButton value="#{boton['add']}"
-                                         styleClass="uk-button uk-button-secondary">
-                            <f:ajax execute="@form" render="@form"/>
-                        </h:commandButton>
-                    </div>
-                </h:form>
-            </div>
-        </h:panelGroup>
-
+        <h:outputScript library="js" name="csv/papaparse.js"/>
         <script type="text/javascript">
-            var modalModalEditar;
-            document.addEventListener('DOMContentLoaded', function (evt) {
-                modalModalEditar = document.querySelector('#modal-editar');
-                UIkit.util.on('#modal-editar', 'show', function () {
-                    modalModalEditar.querySelector('.uk-input').click();
-                });
+            var archivoInput = document.querySelector('input[type=file]');
+            var switcher = document.querySelector('.uk-switcher');
+            var filasCorrectas = [];
+            var filasIncorrectas = [];
+            archivoInput.addEventListener('change', function(){
+                let archivo = archivoInput.files[0];
+                let subArchivo = archivo.name.split('\.');
+                let datosArchivo = switcher.querySelector('li');
+                let lista = document.createElement('ul');
+                lista.classList.add('uk-list','uk-list-divider');
+                agrega(datosArchivo.querySelector("div"), 'uk-alert-success', subArchivo[0]);
+                if (archivo.size > 1024 * 5) {
+                    agrega(datosArchivo.querySelector("div").nextElementSibling, 'uk-alert-danger', (archivo.size / 1024).toFixed(2)) + 'KB';
+                    agrelaLista('No mas de 5KB', lista);
+                } else {
+                    agrega(datosArchivo.querySelector("div").nextElementSibling, 'uk-alert-success', (archivo.size / 1024).toFixed(2)) + 'KB';
+                }
+                if (subArchivo[subArchivo.length - 1].toLowerCase() !== 'csv') {
+                    agrega(datosArchivo.querySelector('div').nextElementSibling.nextElementSibling, 'uk-alert-danger', subArchivo[subArchivo.length - 1].toLowerCase());
+                    agrelaLista('formato incorrecto', lista);
+                } else {
+                    agrega(datosArchivo.querySelector('div').nextElementSibling.nextElementSibling, 'uk-alert-success', subArchivo[subArchivo.length - 1].toLowerCase());
+                }
+                if (lista.hasChildNodes()) {
+                    UIkit.notification({
+                        message: lista.outerHTML,
+                        status: 'danger',
+                        pos: 'top-right',
+                        timeout: 5000
+                    });
+                } else {
+                    Papa.parse(archivo, {
+                        header : document.querySelector('input[type=checkbox][name=titulo]').checked,
+                        complete: function (resultado, archivo) {
+                            if (resultado.data.length > 0) {
+                                agrega(
+                                    datosArchivo.querySelector('div').nextElementSibling.nextElementSibling.nextElementSibling,
+                                    'uk-alert-success',
+                                    resultado.data.length
+                                );
+                                llenaTablas(resultado);
+                            } else {
+                                agrega(
+                                    datosArchivo.querySelector('div').nextElementSibling.nextElementSibling.nextElementSibling,
+                                    'uk-alert-warning',
+                                    resultado.data.length
+                                );
+                                UIkit.notification({message: 'Elementos no encontrados', status: 'warning', pos: 'top-right', timeout: 5000});
+                            }
+                        }
+                    });
+                }
             });
+            function agrelaLista(mensaje, lista) {
+                let error = document.createElement('li');
+                error.appendChild(document.createTextNode(mensaje));
+                lista.appendChild(error);
+            }
+            function agrega(componente, tipoAlerta, valor) {
+                componente.classList.add(tipoAlerta);
+                componente.querySelector('div:nth-child(2)').innerHTML = valor;
+            }
+            function llenaTablas(resultado) {
+                let tablas = document.querySelectorAll('.uk-table tbody');
+                let listaErrores = [];
+                for (var indice = 0; indice &lt; resultado.data.length; indice++) {
+                    if (resultado.data[indice].nickname.length &lt; 3 || resultado.data[indice].nickname.length &gt; 20) {
+                        listaErrores.push({fila: indice, valor: 'Nickname tamaño incorrecto: '+resultado.data[indice].nickname.length});
+                        filasIncorrectas.push(resultado.data[indice]);
+                        continue;
+                    }
+                    if (resultado.data[indice].nombre.length &lt; 3 || resultado.data[indice].nombre.length &gt; 20) {
+                        listaErrores.push({fila: indice, valor: 'Nombre tamaño incorrecto: '+resultado.data[indice].nombre.length});
+                        filasIncorrectas.push(resultado.data[indice]);
+                        continue;
+                    }
+                    if (resultado.data[indice].apellido_paterno.length &lt; 3 || resultado.data[indice].apellido_paterno.length &gt; 20) {
+                        listaErrores.push({fila: indice, valor: 'Apellido Paterno tamaño incorrecto: '+resultado.data[indice].apellido_paterno.length});
+                        filasIncorrectas.push(resultado.data[indice]);
+                        continue;
+                    }
+                    if (resultado.data[indice].apellido_materno.length &lt; 3 || resultado.data[indice].apellido_materno.length &gt; 20) {
+                        listaErrores.push({fila: indice, valor: 'Apellido Materno tamaño incorrecto: '+resultado.data[indice].apellido_materno.length});
+                        filasIncorrectas.push(resultado.data[indice]);
+                        continue;
+                    }
+                    if (resultado.data[indice].email.length &lt; 3 || resultado.data[indice].email.length &gt; 30) {
+                        listaErrores.push({fila: indice, valor: 'correo electronico tamaño incorrecto: '+resultado.data[indice].email.length});
+                        filasIncorrectas.push(resultado.data[indice]);
+                        continue;
+                    }
+                    if (resultado.data[indice].contrasenia.length &lt; 3 || resultado.data[indice].contrasenia.length &gt; 20) {
+                        listaErrores.push({fila: indice, valor: 'contraseña tamaño incorrecto: '+resultado.data[indice].contrasenia.length});
+                        filasIncorrectas.push(resultado.data[indice]);
+                        continue;
+                    }
+                    filasCorrectas.push(resultado.data[indice])
+                }
+                if (filasCorrectas.length &gt; 0) {
+                    tablas[0].removeChild(tablas[0].querySelector('tr'));
+                    for (var indice = 0; indice &lt; filasCorrectas.length; indice++) {
+                        let fila = tablas[0].insertRow(indice);
+                        for (var llave in filasCorrectas[indice]) {
+                            let celda = fila.insertCell(-1);
+                            celda.appendChild(document.createTextNode(filasCorrectas[indice][llave]));
+                          }
+                    }
+                    agregaMensaje(switcher.querySelector('li').nextElementSibling, [{fila: 'Filas encontradas', valor: filasCorrectas.length}], 'uk-alert-primary');
+                    switcher.previousElementSibling.querySelector('li').nextElementSibling.classList.remove('uk-disabled');
+                }
+                if (filasIncorrectas.length &gt; 0) {
+                    tablas[1].removeChild(tablas[1].querySelector('tr'));
+                    for (var indice = 0; indice &lt; filasIncorrectas.length; indice++) {
+                        let fila = tablas[1].insertRow(indice);
+                        let celda = fila.insertCell(-1);
+                        celda.appendChild(document.createTextNode(listaErrores[indice].fila));
+                        for (var llave in filasIncorrectas[indice]) {
+                            let celda = fila.insertCell(-1);
+                            celda.appendChild(document.createTextNode(filasIncorrectas[indice][llave]));
+                        }
+                    }
+                    let scrollPanel = document.createElement('div');
+                    scrollPanel.classList.add('uk-panel', 'uk-panel-scrollable');
+                    switcher.querySelector('li').nextElementSibling.nextElementSibling.appendChild(scrollPanel);
+                    agregaMensaje(scrollPanel, listaErrores, 'uk-alert-danger');
+                    switcher.previousElementSibling.querySelector('li').nextElementSibling.nextElementSibling.classList.remove('uk-disabled');
+                }
+            }
+            function agregaMensaje(elemento, mensaje, tipo) {
+                for (let indice = 0; indice &lt; mensaje.length; indice++) {
+                    let datosCorrectosEtiqueta = document.createElement('div');
+                    datosCorrectosEtiqueta.classList.add('uk-grid-small', 'uk-margin-small-left', tipo);
+                    datosCorrectosEtiqueta.setAttribute('uk-grid', '');
+                    let datosCorrectosMensaje = document.createElement('div');
+                    datosCorrectosMensaje.classList.add('uk-width-expand');
+                    datosCorrectosMensaje.setAttribute('uk-leader', '');
+                    datosCorrectosMensaje.appendChild(document.createTextNode(tipo === 'uk-alert-danger' ? 'Fila '.concat(mensaje[indice].fila) : mensaje[indice].fila));
+                    datosCorrectosEtiqueta.appendChild(datosCorrectosMensaje);
+                    let datosCorrectosMensaje2 = document.createElement('div');
+                    datosCorrectosMensaje2.classList.add('uk-margin-small-right');
+                    datosCorrectosMensaje2.appendChild(document.createTextNode(mensaje[indice].valor));
+                    datosCorrectosEtiqueta.appendChild(datosCorrectosMensaje2);
+                    elemento.appendChild(datosCorrectosEtiqueta);
+                }
+            }
         </script>
-
-
     </ui:define>
 </ui:composition>
 </html>
