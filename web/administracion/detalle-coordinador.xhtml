@@ -24,7 +24,7 @@
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-medium-bottom">
                     <div class="uk-card-header">
                         <div class="uk-grid uk-grid-small" uk-grid="">
-                            <div class="uk-width-auto"><h4><span class="uk-text-middle">Detalle Coordinador</span></h4></div>
+                            <div class="uk-width-auto"><h4><span class="uk-text-middle uk-text-capitalize">detalle coordinador</span></h4></div>
                             <div class="uk-width-expand uk-text-right panel-icons">
                                 <h:form>
                                     <h:commandLink styleClass="uk-icon-button  uk-icon" pt:uk-toggle="target: #modal-nuevo-coord" >
@@ -50,28 +50,28 @@
                                     footerClass="uk-background-primary uk-text-left"
                                     columnClasses=",,uk-text-center,uk-text-center,uk-text-center,uk-text-center">
                                 <h:column>
-                                    <f:facet name="header"><span class="letra-titulo">Nick Name</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo">#{administracion['catalogocoordinador.coordinator.detail.table.header.nick']}</span></f:facet>
                                     #{coordinador.nickname}
                                 </h:column>
                                 <h:column>
-                                    <f:facet name="header"><span class="letra-titulo">Nombre</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo">#{administracion['catalogocoordinador.coordinator.block.table.header.name']}</span></f:facet>
                                     #{coordinador.nombre}
                                 </h:column>
                                 <h:column>
-                                    <f:facet name="header"><span class="letra-titulo">Correo Electronico</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo">#{administracion['catalogocoordinador.coordinator.detail.table.header.email']}</span></f:facet>
                                     #{coordinador.email}
                                 </h:column>
                                 <h:column>
-                                    <f:facet name="header"><span class="letra-titulo">Estatus</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo">#{administracion['catalogocoordinador.coordinator.detail.table.header.status']}</span></f:facet>
                                     <h:outputText rendered="#{coordinador.activo}" pt:uk-icon="check"/>
                                     <h:outputText rendered="#{not coordinador.activo}" pt:uk-icon="ban"/>
                                 </h:column>
                                 <h:column>
-                                    <f:facet name="header"><span class="letra-titulo">Licencias</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo">#{administracion['catalogocoordinador.coordinator.detail.table.header.licenses']}</span></f:facet>
                                     #{coordinador.licecias}
                                 </h:column>
                                 <h:column>
-                                    <f:facet name="header"><span class="letra-titulo">Opciones</span></f:facet>
+                                    <f:facet name="header"><span class="letra-titulo">#{etiqueta['options']}</span></f:facet>
                                     <div class="uk-inline  ">
                                         <button class="uk-icon-button puntero" uk-icon="more-vertical" type="button"></button>
                                         <div uk-dropdown="boundary:.tabla-coordinador-dropdown; mode: click" id="dropear" >
@@ -128,7 +128,7 @@
                                 <div class="uk-panel uk-flex uk-flex-right@m uk-flex-center@s uk-width-1-1@s uk-width-1-2@m">
                                     <h:commandButton disabled="true"
                                                      styleClass="uk-button uk-button-primary uk-margin-small-right uk-margin-small-top"
-                                                     value="limpar">
+                                                     value="limpiar">
                                     </h:commandButton>
                                 </div>
                             </h:form>
@@ -142,14 +142,14 @@
             <div class="uk-modal-dialog uk-margin-auto-vertical">
 
                 <div class="uk-modal-header fondo-peligro"  >
-                    <p class="uk-h4 uk-text-center uk-text-bold" ><span class="letra-titulo">Eliminar</span></p>
+                    <p class="uk-h4 uk-text-center uk-text-bold" ><span class="letra-titulo uk-text-capitalize">#{boton['remove']}</span></p>
                 </div>
-                <div class="uk-modal-body">
-                    <p>Esta seguro que desea Borrar al contacto: <span class="uk-text-bold">Mr. Martin</span> </p>
+                <div class="uk-modal-body uk-text-capitalize">
+                    <p>esta seguro que desea borrar al contacto: <span class="uk-text-bold">mr. martin</span> </p>
                 </div>
                 <div class="uk-modal-footer uk-text-right">
-                    <button class="uk-button uk-button-default uk-border-rounded uk-modal-close" type="button">Cancelar</button>
-                    <h:commandButton styleClass="uk-button uk-button-danger  uk-margin-small-left" value="Aceptar" >
+                    <button class="uk-button uk-button-default uk-border-rounded uk-modal-close" type="button">#{boton['cancel']}</button>
+                    <h:commandButton styleClass="uk-button uk-button-danger  uk-margin-small-left" value="#{boton['accept']}" >
                         <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalEliminar' ) }"/>
                     </h:commandButton>
                 </div>
@@ -159,7 +159,7 @@
         <div id="modal-editar-coord" class="uk-modal-container" uk-modal="">
             <div class="uk-modal-dialog uk-margin-auto-vertical">
                 <div class="uk-modal-header uk-background-secondary">
-                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Editar Nombre de Coordinador</span></p>
+                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">editar nombre de coordinador</span></p>
                 </div>
                 <h:form styleClass="uk-form-stacked" id="formulario-editar-coordinador">
                     <div class="uk-modal-body">

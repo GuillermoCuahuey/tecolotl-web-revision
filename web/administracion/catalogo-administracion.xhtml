@@ -264,16 +264,16 @@
             <div class="uk-modal-dialog uk-margin-auto-vertical">
                 <h:form id="formulario-modal-editar" styleClass="uk-form-stacked">
                 <div class="uk-modal-header uk-background-secondary">
-                    <p class="uk-h4 uk-text-center uk-text-bold">
+                    <p class="uk-h4 uk-text-center uk-text-bold uk-text-capitalize">
                         <h:outputText styleClass="letra-titulo " value="editar motivo de bloqueo" rendered="#{not empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
                         <h:outputText styleClass="letra-titulo " value="nuevo motivo de bloqueo" rendered="#{empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
                     </p>
                 </div>
                 <div class="uk-modal-body">
-                    <div class="uk-margin">
+                    <div class="uk-margin uk-text-capitalize">
                         <h:outputLabel for="input-catalogo-bloqueo" styleClass="uk-form-label " value="#{etiqueta['description']}"/>
                         <div class="uk-form-controls">
-                            <h:inputText styleClass="uk-input"
+                            <h:inputText styleClass="uk-input uk-text-capitalize"
                                          id="input-catalogo-bloqueo"
                                          pt:placeholder="#{etiqueta['write.text']}"
                                          label="#{etiqueta['description']}"
@@ -309,15 +309,15 @@
             <div class="uk-modal-dialog uk-margin-auto-vertical">
                 <h:form id="formulario-modal-tipo-contacto" styleClass="uk-form-stacked">
                     <div class="uk-modal-header uk-background-secondary">
-                        <p class="uk-h4 uk-text-center uk-text-bold">
+                        <p class="uk-h4 uk-text-center uk-text-bold uk-text-capitalize">
                             <h:outputText styleClass="letra-titulo " value="Editar tipo de contacto" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
                             <h:outputText styleClass="letra-titulo " value="nuevo tipo de contacto" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
                         </p>
                     </div><div class="uk-modal-body">
-                        <div class="uk-margin">
+                        <div class="uk-margin uk-text-capitalize">
                             <h:outputLabel for="input-contacto" styleClass="uk-form-label " value="#{etiqueta['description']}"/>
                             <div class="uk-form-controls">
-                                <h:inputText styleClass="uk-input"
+                                <h:inputText styleClass="uk-input uk-text-capitalize"
                                              id="input-contacto"
                                              pt:placeholder="#{etiqueta['write.text']}"
                                              label="#{etiqueta['description']}"
@@ -353,19 +353,19 @@
         <h:panelGroup layout="block" id="modal-colonia" pt:uk-modal="">
             <div class="uk-modal-dialog uk-margin-auto-vertical">
                 <div class="uk-modal-header uk-background-secondary">
-                    <p class="uk-h4 uk-text-center uk-text-bold">
+                    <p class="uk-h4 uk-text-center uk-text-bold uk-text-capitalize">
                         <h:outputText styleClass="letra-titulo " value="#{administracion['catalogoadministrativo.administrator.modal.edit']}" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
                         <h:outputText styleClass="letra-titulo " value="#{administracion['catalogoadministrativo.administrator.modal.new']}" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
                     </p>
                 </div>
                 <h:form id="formulario-modal-colonia" styleClass="uk-form-stacked">
 
-                    <div class="uk-modal-body">
+                    <div class="uk-modal-body uk-text-capitalize">
 
 
                         <h:outputLabel for="input-colonia" styleClass=" uk-form-label" value="#{etiqueta['description']}"/>
                         <div class="uk-form-controls">
-                            <h:inputText styleClass="uk-input"
+                            <h:inputText styleClass="uk-input uk-text-capitalize"
                                          id="input-colonia"
                                          pt:placeholder="#{etiqueta['write.text']}"
                                          label="#{etiqueta['description']}"
