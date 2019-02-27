@@ -4,11 +4,11 @@ var char1El = document.getElementById('chart1');
 new Chart(char1El, {
   type: 'bar',
   data: {
-    labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+    labels: ["Grupo A", "Grupo B", "Grupo C", "Grupo D", "Grupo E"],
     datasets: [{
-      label: "Population (millions)",
+      label: "Extrella",
       backgroundColor: ["#39f", "#895df6", "#3cba9f", "#e8c3b9", "#c45850"],
-      data: [1478, 5267, 3600, 1900, 4700]
+      data: [578, 267, 600, 900, 700]
     }]
   },
   
@@ -23,7 +23,7 @@ new Chart(char1El, {
     },
     title: {
       display: true,
-      text: 'Predicted world population (millions) in 2050'
+      text: 'Calficacion general del grupo'
     }
   }
 });
@@ -33,6 +33,118 @@ new Chart(char1El, {
 var char2El = document.getElementById('chart2');
 
 new Chart(char2El, {
+  type: 'doughnut',
+  data: {
+    labels: ["Listening", "Reading", "Speaking", "Writing", "Mental Map"],
+    datasets: [
+      {
+        label: "Rendimiento",
+        backgroundColor: ["#39f", "#895df6","#3cba9f","#e8c3b9","#c45850"],
+        data: [2478,5267,734,784,433]
+      }
+    ]
+  },
+  options: {
+    maintainAspectRatio: false,
+    responsiveAnimationDuration: 500,
+    animation: {
+      duration: 2000
+    },
+    title: {
+      display: true,
+      text: 'the best student of the classes'
+    }
+  }
+});
+
+// Chart 3
+// ========================================================================
+var char3El = document.getElementById('chart3');
+
+new Chart(char3El, {
+  type: 'radar',
+  data: {
+    labels: ["Listening", "Reading", "Speaking", "Writing", "Mental Map"],
+    datasets: [{
+      label: "Grupo A",
+      fill: true,
+      backgroundColor: "rgba(51,153,255,0.6)",
+      borderColor: "rgba(51,153,255,0.2)",
+
+      pointBorderColor: "#fff",
+      pointBackgroundColor: "rgba(179,181,198,1)",
+      data: [2.33, 5.61, 6.69, 9.32, 8.2]
+    }, {
+      label: "Grupo B",
+      fill: true,
+      backgroundColor: "rgba(255,99,132,0.2)",
+      borderColor: "rgba(255,99,132,1)",
+      pointBorderColor: "#fff",
+      pointBackgroundColor: "rgba(255,99,132,1)",
+      pointBorderColor: "#fff",
+      data: [7.25, 8.25, 6, 9.1, 4.45]
+    } , {
+      label: "Grupo C",
+      fill: true,
+      backgroundColor: "rgba(24, 198, 60,0.2)",
+      borderColor: "rgba(24, 198, 60,1)",
+      pointBorderColor: "#fff",
+      pointBackgroundColor: "rgba(24, 198, 60,1)",
+      pointBorderColor: "#fff",
+      data: [7.25, 8.25, 9, 9.1, 2.45]
+    }]
+  },
+  options: {
+    maintainAspectRatio: false,
+    responsiveAnimationDuration: 500,
+    animation: {
+      duration: 2000
+    },
+    title: {
+      display: true,
+      text: 'Distribution in % of world population'
+    }
+  }
+});
+
+// Chart 4
+// ========================================================================
+var char4El = document.getElementById('chart4');
+
+new Chart(char4El, {
+  type: 'horizontalBar',
+  data: {
+    labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+    datasets: [{
+      label: "Population (millions)",
+      backgroundColor: ["#39f", "#895df6", "#3cba9f", "#e8c3b9", "#c45850"],
+      data: [900, 7000, 5700, 2800, 5600]
+    }]
+  },
+  options: {
+    maintainAspectRatio: false,
+    responsiveAnimationDuration: 500,
+    legend: {
+      display: false
+    },
+    animation: {
+      duration: 2000
+    },
+    title: {
+      display: true,
+      text: 'Predicted activity in 2020'
+    }
+  }
+});
+
+
+
+
+// Chart 5
+// ========================================================================
+var char5El = document.getElementById('chart5');
+
+new Chart(char5El, {
   type: 'line',
   data: {
     labels: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018],
@@ -74,105 +186,4 @@ new Chart(char2El, {
       text: 'Sales per region'
     }
   }
-});
-
-
-// Chart 3
-// ========================================================================
-var char3El = document.getElementById('chart3');
-
-new Chart(char3El, {
-  type: 'horizontalBar',
-  data: {
-    labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-    datasets: [{
-      label: "Population (millions)",
-      backgroundColor: ["#39f", "#895df6", "#3cba9f", "#e8c3b9", "#c45850"],
-      data: [900, 7000, 5700, 2800, 5600]
-    }]
-  },
-  options: {
-    maintainAspectRatio: false,
-    responsiveAnimationDuration: 500,
-    legend: {
-      display: false
-    },
-    animation: {
-      duration: 2000
-    },
-    title: {
-      display: true,
-      text: 'Predicted activity in 2020'
-    }
-  }
-});
-
-// Chart 4
-// ========================================================================
-var char4El = document.getElementById('chart4');
-
-new Chart(char4El, {
-  type: 'radar',
-  data: {
-    labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-    datasets: [{
-      label: "1950",
-      fill: true,
-      backgroundColor: "rgba(51,153,255,0.6)",
-      borderColor: "rgba(51,153,255,0.2)",
-
-      pointBorderColor: "#fff",
-      pointBackgroundColor: "rgba(179,181,198,1)",
-      data: [8.77, 55.61, 21.69, 6.62, 6.82]
-    }, {
-      label: "2050",
-      fill: true,
-      backgroundColor: "rgba(255,99,132,0.2)",
-      borderColor: "rgba(255,99,132,1)",
-      pointBorderColor: "#fff",
-      pointBackgroundColor: "rgba(255,99,132,1)",
-      pointBorderColor: "#fff",
-      data: [25.48, 54.16, 7.61, 8.06, 4.45]
-    }]
-  },
-  options: {
-    maintainAspectRatio: false,
-    responsiveAnimationDuration: 500,
-    animation: {
-      duration: 2000
-    },
-    title: {
-      display: true,
-      text: 'Distribution in % of world population'
-    }
-  }
-});
-
-// Chart 4
-// ========================================================================
-var char5El = document.getElementById('chart5');
-
-new Chart(char5El, {
-    type: 'doughnut',
-    data: {
-      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
-      datasets: [
-        {
-          label: "Population (millions)",
-          backgroundColor: ["#39f", "#895df6","#3cba9f","#e8c3b9","#c45850"],
-          data: [2478,5267,734,784,433]
-        }
-      ]
-    },
-    options: {
-      maintainAspectRatio: false,
-      responsiveAnimationDuration: 500,
-      animation: {
-        duration: 2000
-      },
-      title: {
-        display: true,
-        text: 'Predicted world population (millions) in 2050'
-      }
-    }
 });
