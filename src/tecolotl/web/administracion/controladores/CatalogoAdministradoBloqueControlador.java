@@ -16,13 +16,13 @@ public class CatalogoAdministradoBloqueControlador extends PaginacionControlador
     private TablaModelo tablaModelo;
 
     @PostConstruct
-    public void init() {
-        Collection<TablaModelo> collection = new ArrayList<>();
-        for (int i=0; i < 33; i++) {
-            ((ArrayList<TablaModelo>) collection).add(new TablaModelo("Motivo" + i, i));
-        }
-        getCollectionDataModel().setWrappedData(collection);
+public void init() {
+    Collection<TablaModelo> collection = new ArrayList<>();
+    for (int i=0; i < 33; i++) {
+        ((ArrayList<TablaModelo>) collection).add(new TablaModelo("Motivo" + i, i));
     }
+    getCollectionDataModel().setWrappedData(collection);
+}
 
     public TablaModelo getTablaModelo() {
         return tablaModelo;

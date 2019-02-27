@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pa="http://xmlns.jcp.org/jsf/composite/paginacion"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jQuery UI Datepicker - Default functionality</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<ui:composition template="/template/dashboard.xhtml">
+    <ui:define name="menu">
+        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
+            <li class="uk-nav-header">ACCIONES</li>
+            <li><a href="#"><span data-uk-icon="icon: table" class="uk-margin-small-right"></span>Escuelas</a></li>
+            <li><a href="#"><span data-uk-icon="icon: database" class="uk-margin-small-right"></span>Catalogos</a></li>
+
+        </ul>
+    </ui:define>
+    <ui:define name="contenido">
+        <h:outputStylesheet library="css" name="tablas.css"/>
+
+        <h4 class="uk-heading-line uk-text-bold"><span></span></h4>
+
+
+
+        <div class="uk-grid uk-grid-medium" data-uk-grid="">
+
+            <!-- catalog colonias -->
+            <div class="uk-width-1-1l uk-margin-large-bottom">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-medium-bottom">
+                    <div class="uk-card-header ">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-auto "><h4 class="uk-text-capitalize">grupo A</h4></div>
+                            <div class="uk-width-expand uk-flex uk-flex-right">
+                                <div class="uk-width-expand uk-flex uk-flex-right">
+                                    <h:form id="formulario-nuevo-catalogo-colonia">
+                                        <ul class="uk-iconnav">
+                                            <li>
+                                                <h:commandLink pt:uk-toggle="target: #modal-nuevo-alumno">
+                                                    <span class="uk-icon-link uk-text-capitalize uk-text-primary" title="nuevo alumno" data-uk-tooltip="" data-uk-icon="icon: plus-circle; ratio: 1.5"></span>
+                                                    <f:ajax/>
+                                                </h:commandLink>
+                                            </li>
+                                        </ul>
+                                    </h:form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <h:form id="formulario-tabla-colonia">
+                            <div class="uk-overflow-auto">
+                            <h:dataTable id="tabla-colonia"
+                                         value="#{grupoAlumnosControlador.collectionDataModel}"
+                                         binding="#{grupoAlumnosControlador.htmlDataTable}"
+                                         var="dato"
+                                         first="0"
+                                         rows="10"
+                                         styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover tabla-colonia-limite"
+                                         footerClass="uk-background-primary"
+                                         columnClasses=",uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center">
+
+                                <h:column headerClass="uk-background-primary ">
+                                    <f:facet name="header"><span class="letra-titulo ">Alumnos</span></f:facet>
+                                    #{dato.nickname}
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center uk-text-primary ">
+                                    <f:facet name="header"><span class="letra-titulo ">Estatus</span></f:facet>
+                                    <h:commandLink   pt:uk-toggle="target: #modal-bloqueo-catalogo">
+                                        <span class="uk-icon-button puntero uk-text-success" uk-icon="check" type="button"></span>
+                                        <f:ajax/>
+                                    </h:commandLink>
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
+                                    <f:facet name="header"><span class="letra-titulo ">Nivel</span></f:facet>
+                                    #{dato.nivel}
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
+                                    <f:facet name="header"><span class="letra-titulo ">Listen</span></f:facet>
+                                    #{dato.listen}
+                                </h:column>
+                                <h:column headerClass="uk-background-primary  uk-width-small uk-text-center">
+                                    <f:facet name="header"><span class="letra-titulo ">Transcript</span></f:facet>
+                                    #{dato.trasncript}
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
+                                    <f:facet name="header"><span class="letra-titulo ">Read</span></f:facet>
+                                    #{dato.read}
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
+                                    <f:facet name="header"><span class="letra-titulo ">Grammar </span></f:facet>
+                                    #{dato.gramman}
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
+                                    <f:facet name="header"><span class="letra-titulo ">quizzes</span></f:facet>
+                                    #{dato.quizzes}
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
+                                    <f:facet name="header"><span class="letra-titulo ">nivel de progreso</span></f:facet>
+                                    <div>
+                                        <span class="uk-text-small"><small>%60</small></span>
+                                        <progress class="uk-progress" value="60" max="100"></progress>
+                                    </div>
+                                </h:column>
+                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
+                                    <f:facet name="header"><span class="letra-titulo ">opciones</span></f:facet>
+
+                                    <div class=" uk-inline uk-text-left">
+                                        <span class="uk-icon-button puntero uk-text-primary" uk-icon="more-vertical" type="button"></span>
+                                        <div uk-dropdown="boundary:.tabla-colonia-limite; mode: click" >
+                                            <ul class="uk-nav uk-dropdown-nav">
+                                                <li>
+                                                    <h:commandLink  pt:uk-toggle="target: #modal-colonia" >
+                                                        <span uk-icon="icon: pencil"  class="uk-margin-small-right uk-icon uk-text-primary" ></span>
+                                                        <span class="uk-text-middle uk-text-primary"><h:outputText value="Asignar Tarea"/></span>
+                                                        <f:ajax/>
+                                                    </h:commandLink>
+                                                </li>
+                                                <li>
+                                                    <h:commandLink  pt:uk-toggle="target: #modal-eliminar" >
+                                                        <span uk-icon="icon: push" class="uk-margin-small-right uk-icon uk-text-primary" ></span>
+                                                        <span class="uk-text-middle uk-text-primary"><h:outputText value="evaluar"/></span>
+                                                        <f:ajax/>
+                                                    </h:commandLink>
+                                                </li>
+                                                <li>
+                                                    <h:commandLink  pt:uk-toggle="target: #modal-colonia" >
+                                                        <span uk-icon="icon: copy" class="uk-margin-small-right uk-icon uk-text-primary" ></span>
+                                                        <span class="uk-text-middle uk-text-primary"><h:outputText value="reporte"/></span>
+                                                        <f:ajax/>
+                                                    </h:commandLink>
+                                                </li>
+                                                <li>
+                                                    <h:commandLink  pt:uk-toggle="target: #modal-eliminar" >
+                                                        <span uk-icon="icon: users" class="uk-margin-small-right uk-icon uk-text-primary" ></span>
+                                                        <span class="uk-text-middle uk-text-primary"><h:outputText value="ver alumnos"/></span>
+                                                        <f:ajax/>
+                                                    </h:commandLink>
+                                                </li>
+                                                <li>
+                                                    <h:commandLink  pt:uk-toggle="target: #modal-eliminar" >
+                                                        <span uk-icon="icon: cloud-upload" class="uk-margin-small-right uk-icon uk-text-primary" ></span>
+                                                        <span class="uk-text-middle uk-text-primary"><h:outputText value="importar/exportar"/></span>
+
+                                                        <f:ajax/>
+                                                    </h:commandLink>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </h:column>
+
+                                <f:facet name="footer">
+                                    <pa:pie-tabla htmlDataTable="#{grupoAlumnosControlador.htmlDataTable}"/>
+                                </f:facet>
+                            </h:dataTable>
+                            </div>
+                        </h:form>
+                    </div>
+                    <div class="uk-card-footer">
+                        <div class="uk-grid uk-grid-small">
+                            <div class="uk-width-auto ">
+                                <f:ajax render="formulario-tabla-colonia:tabla-colonia formulario-colonia">
+                                    <h:form id="formulario-colonia" styleClass="uk-form-horizontal">
+                                        <pa:boton-minimizado htmlDataTable="#{grupoAlumnosControlador.htmlDataTable}"/>
+                                    </h:form>
+                                </f:ajax>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /FIN colonias -->
+        </div>
+
+        <!--  Modal Bloqueo Catalogo  -->
+        <h:panelGroup layout="block" id="modal-nuevo-alumno" styleClass="uk-modal-container" pt:uk-modal="">
+            <div class="uk-modal-dialog uk-margin-auto-vertical">
+                <h:form id="formulario-modal-nuevo-profesor" styleClass="uk-form-stacked">
+                    <div class="uk-modal-header uk-background-secondary">
+                        <p class="uk-h4 uk-text-center uk-text-bold">
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize data-u" value=""/>
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['detalleprofesor.professor.modal.title.new.teacher']}" rendered="#{empty catalogoAdministradoCoordinadorControlador.tablaModelo.nombre.id}"/>
+                        </p>
+                    </div>
+                    <div class="uk-modal-body">
+
+                        <div class="uk-margin">
+                            <div class="uk-grid-small uk-grid" uk-grid="">
+                                <div class="uk-width-1-1@s uk-width-1-5@m ">
+                                    <h:outputLabel for="input-nick" styleClass="uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.header.nick']}"/>
+                                    <div class="uk-form-controls">
+                                        <h:inputText styleClass="uk-input"
+                                                     id="input-nick"
+                                                     pt:placeholder="#{etiqueta['write.text']}"
+                                                     label="Nombre"
+                                                     value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
+                                            <f:validateRequired/>
+                                            <f:validateLength minimum="3" maximum="20"/>
+                                        </h:inputText>
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-1@s uk-width-2-5@m  ">
+                                    <h:outputLabel for="input-name" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.teache.table.header.name']}"/>
+                                    <h:inputText styleClass="uk-input"
+                                                 id="input-name"
+                                                 pt:placeholder="#{etiqueta['write.text']}"
+                                                 label="Apellido Paterno"
+                                                 value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
+                                        <f:validateRequired/>
+                                        <f:validateLength minimum="3" maximum="20"/>
+                                    </h:inputText>
+                                </div>
+
+                                <div class="uk-width-1-1@s uk-width-2-5@m ">
+                                    <h:outputLabel for="input-apellidop" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.header.last.name']}"/>
+                                    <h:inputText styleClass="uk-input"
+                                                 id="input-apellidop"
+                                                 pt:placeholder="#{etiqueta['write.text']}"
+                                                 label="Apellido Materno"
+                                                 value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
+                                        <f:validateRequired/>
+                                        <f:validateLength minimum="3" maximum="20"/>
+                                    </h:inputText>
+                                </div>
+                                <div class="uk-width-1-1@s uk-width-2-5@m ">
+                                    <h:outputLabel for="input-apellidom" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.header.mothers.last']} label"/>
+                                    <h:inputText styleClass="uk-input"
+                                                 id="input-apellidom"
+                                                 pt:placeholder="#{etiqueta['write.text']}"
+                                                 label="#{administracion['detalleprofesor.active.modal.header.mothers.last']}"
+                                                 value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
+                                        <f:validateRequired/>
+                                        <f:validateLength minimum="3" maximum="20"/>
+                                    </h:inputText>
+                                </div>
+                                <div class="uk-width-1-1@s uk-width-1-6@s uk-first-column">
+                                    <h:outputLabel for="select-dia" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.new.teacher.grup']}"/>
+                                    <h:selectOneMenu styleClass="uk-select"
+                                                     label="#{administracion['detalleprofesor.active.modal.new.teacher.grup']}"
+                                                     id="select-dia">
+                                        <f:selectItem itemLabel="#{etiqueta['options']}" noSelectionOption="true"/>
+                                        <f:selectItems value="#{detallesProfesorGrupoControlador.grupoModelos}"
+                                                       var="grupo"
+                                                       itemValue="#{grupo.id}"
+                                                       itemLabel="#{grupo.grupo}"/>
+                                        <f:validateRequired/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="uk-width-1-1@s uk-width-1-6@s uk-first-column">
+                                    <h:outputLabel for="select-mes" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.new.teacher.grup']}"/>
+                                    <h:selectOneMenu styleClass="uk-select"
+                                                     label="#{administracion['detalleprofesor.active.modal.new.teacher.grup']}"
+                                                     id="select-mes">
+                                        <f:selectItem itemLabel="#{etiqueta['options']}" noSelectionOption="true"/>
+                                        <f:selectItems value="#{detallesProfesorGrupoControlador.grupoModelos}"
+                                                       var="grupo"
+                                                       itemValue="#{grupo.id}"
+                                                       itemLabel="#{grupo.grupo}"/>
+                                        <f:validateRequired/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="uk-width-1-1@s uk-width-1-6@s uk-first-column">
+                                    <h:outputLabel for="select-anio" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.new.teacher.grup']}"/>
+                                    <h:selectOneMenu styleClass="uk-select"
+                                                     label="#{administracion['detalleprofesor.active.modal.new.teacher.grup']}"
+                                                     id="select-anio">
+                                        <f:selectItem itemLabel="#{etiqueta['options']}" noSelectionOption="true"/>
+                                        <f:selectItems value="#{detallesProfesorGrupoControlador.grupoModelos}"
+                                                       var="grupo"
+                                                       itemValue="#{grupo.id}"
+                                                       itemLabel="#{grupo.grupo}"/>
+                                        <f:validateRequired/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="uk-width-1-1@s uk-width-3-5@m ">
+                                    <h:outputLabel for="input-correo" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.header.email']}"/>
+                                    <h:inputText styleClass="uk-input"
+                                                 id="input-correo"
+                                                 pt:placeholder="#{etiqueta['write.text']}"
+                                                 label="#{administracion['detalleprofesor.active.modal.header.email']}"
+                                                 value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
+                                        <f:validateRequired/>
+                                        <f:validateLength minimum="3" maximum="20"/>
+                                    </h:inputText>
+                                </div>
+                                <div class="uk-width-1-1@s uk-width-2-5@m uk-first-column">
+                                    <h:outputLabel for="select-grado" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.new.teacher.degree']}"/>
+                                    <h:selectOneMenu  styleClass="uk-select"
+                                                      id="select-grado"
+                                                      label="#{administracion['detalleprofesor.active.modal.new.teacher.degree']}">
+                                        <f:selectItem itemLabel="#{etiqueta['options']}" noSelectionOption="true"/>
+                                        <f:selectItems value="#{detallesProfesorGradoControlador.gradoModelos}"
+                                                       var="grado"
+                                                       itemValue="#{grado.id}"
+                                                       itemLabel="#{grado.grado}"/>
+                                        <f:validateRequired/>
+                                    </h:selectOneMenu>
+                                </div>
+
+                                <div class="uk-width-1-1@s uk-width-2-5@m uk-first-column">
+                                    <h:outputLabel for="select-grupo" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.new.teacher.grup']}"/>
+                                    <h:selectOneMenu styleClass="uk-select"
+                                                     label="#{administracion['detalleprofesor.active.modal.new.teacher.grup']}"
+                                                     id="select-grupo">
+                                        <f:selectItem itemLabel="#{etiqueta['options']}" noSelectionOption="true"/>
+                                        <f:selectItems value="#{detallesProfesorGrupoControlador.grupoModelos}"
+                                                       var="grupo"
+                                                       itemValue="#{grupo.id}"
+                                                       itemLabel="#{grupo.grupo}"/>
+                                        <f:validateRequired/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <div class="uk-width-1-1@s uk-width-2-5@m ">
+                                    <h:outputLabel for="input-secret-password" styleClass=" uk-text-capitalize uk-form-label" value="#{administracion['detalleprofesor.active.modal.header.password']}"/>
+                                    <h:inputSecret styleClass="uk-input"
+                                                   id="input-secret-password"
+                                                   pt:placeholder="#{etiqueta['write.text']}"
+                                                   label="#{administracion['detalleprofesor.active.modal.header.password']}"
+                                                   value="#{catalogoAdministradoCoordinadorControlador.tablaModelo.nombre}">
+                                        <f:validateRequired/>
+                                        <f:validateLength minimum="3" maximum="20"/>
+                                    </h:inputSecret>
+                                </div>
+                                <input type="text" id="datepicker" class="hasDatepicker">
+
+                                <div class="uk-width-1-1@s uk-width-1-5@m uk-inline uk-margin-small-left">
+                                    <div class="uk-position-bottom-left">
+                                        <h:graphicImage library="img" name="ojo.svg" styleClass="uk-icon-button" pt:uk-icon="" onclick="cambiar()"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ui:fragment rendered="#{facesContext.validationFailed}">
+                            <h:panelGroup layout="block" styleClass="uk-alert-danger"  pt:uk-alert="">
+                                <h:messages styleClass="uk-list"/>
+                            </h:panelGroup>
+                        </ui:fragment>
+                    </div>
+                    <div class="uk-modal-footer uk-text-right">
+                        <h:commandButton styleClass="uk-button uk-button-default uk-modal-close uk-margin-small-right"
+                                         value="#{boton['cancel']}">
+                            <f:ajax render="@form"/>
+                        </h:commandButton>
+                        <h:commandButton value="#{boton['add']}"
+                                         styleClass="uk-button uk-button-secondary">
+
+                            <f:ajax onevent="function cerrar(data) { cierraModal(data,'modalAgregar') }" execute="@form" render="@form"/>
+                        </h:commandButton>
+
+                    </div>
+                </h:form>
+            </div>
+
+        </h:panelGroup>
+
+
+
+        <script type="text/javascript">
+
+            var modalEditar;
+            var modalAgregarBloqueo;
+            var modalAgregarContacto;
+            var modalAgregarColonia;
+            var modalEliminar;
+            document.addEventListener("DOMContentLoaded", function (evt) {
+                modalEditar = document.querySelector('#modal-colonia');
+                modalAgregarBloqueo = document.querySelector('#modal-bloqueo-catalogo');
+                modalAgregarContacto = document.querySelector('#modal-tipo-contacto');
+                modalAgregarColonia = document.querySelector('#modal-colonia');
+                modalEliminar = document.querySelector('#modal-eliminar');
+
+                UIkit.util.on('#modal-colonia', 'show', function () {
+                    modalEditar.querySelector('.uk-modal-body').click();
+                });
+                UIkit.util.on('#modal-bloqueo-catalogo', 'show', function () {
+                    modalAgregarBloqueo.querySelector('.uk-modal-body').click();
+                });
+                UIkit.util.on('#modal-tipo-contacto\'', 'show', function () {
+                    modalAgregarContacto.querySelector('.uk-modal-body').click();
+                });
+                UIkit.util.on('#modal-colonia', 'show', function () {
+                    modalAgregarColonia.querySelector('.uk-modal-body').click();
+                });
+                UIkit.util.on('#modal-eliminar', 'show', function () {
+                    modalEliminar.querySelector('.uk-modal-body').click();
+                });
+
+            });
+
+
+            function cierraModal(data,modal) {
+                if (data.status === "success"){
+                    switch (modal) {
+                        case "modalEliminar":
+                            if (modalEliminar.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalEliminar).hide();
+                            }
+                            break;
+                        case "modalEditar":
+                            if (modalEditar.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalEditar).hide();
+                            }
+                            break;
+                        case "modalAgregarBloqueo":
+                            if (modalAgregarBloqueo.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalAgregarBloqueo).hide();
+                            }
+                            break;case "modalAgregarContacto":
+                            if (modalAgregarContacto.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalAgregarContacto).hide();
+                            }
+                            break;case "modalAgregarColonia":
+                            if (modalAgregarColonia.querySelector('.uk-alert-danger') === null) {
+                                UIkit.modal(modalAgregarColonia).hide();
+                            }
+                            break;
+                        default: console.error(modal);
+
+                    }
+                }
+
+
+            }
+
+        </script>
+
+
+    </ui:define>
+</ui:composition>
+
+</html>
