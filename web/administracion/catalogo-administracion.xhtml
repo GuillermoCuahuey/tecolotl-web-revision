@@ -264,9 +264,15 @@
             <div class="uk-modal-dialog uk-margin-auto-vertical">
                 <h:form id="formulario-modal-editar" styleClass="uk-form-stacked">
                 <div class="uk-modal-header uk-background-secondary">
-                    <p class="uk-h4 uk-text-center uk-text-bold uk-text-capitalize">
-                        <h:outputText styleClass="letra-titulo " value="editar motivo de bloqueo" rendered="#{not empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
-                        <h:outputText styleClass="letra-titulo " value="nuevo motivo de bloqueo" rendered="#{empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
+                    <p class="uk-h4 uk-text-center uk-text-bold">
+                        <h:outputText
+                                styleClass="letra-titulo uk-text-capitalize"
+                                value="#{administracion['catalogoadministrativo.administrator.modal.edit.blocking.reason']}"
+                                rendered="#{not empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
+                        <h:outputText
+                                styleClass="letra-titulo uk-text-capitalize"
+                                value="#{administracion['catalogoadministrativo.administrator.modal.new.reason.blocking']}"
+                                rendered="#{empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
                     </p>
                 </div>
                 <div class="uk-modal-body">
@@ -353,7 +359,7 @@
         <h:panelGroup layout="block" id="modal-colonia" pt:uk-modal="">
             <div class="uk-modal-dialog uk-margin-auto-vertical">
                 <div class="uk-modal-header uk-background-secondary">
-                    <p class="uk-h4 uk-text-center uk-text-bold uk-text-capitalize">
+                    <p class="uk-h4 uk-text-center uk-text-bold">
                         <h:outputText styleClass="letra-titulo " value="#{administracion['catalogoadministrativo.administrator.modal.edit']}" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
                         <h:outputText styleClass="letra-titulo " value="#{administracion['catalogoadministrativo.administrator.modal.new']}" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
                     </p>

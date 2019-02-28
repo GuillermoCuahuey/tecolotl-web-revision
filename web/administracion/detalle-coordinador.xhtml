@@ -314,45 +314,66 @@
                 <h:form id="formulario-nuevo-coord">
                         <div class="uk-modal-body">
                             <div class="uk-grid-small uk-grid uk-form-stacked" uk-grid="">
-                                    <div class="uk-width-1-1@s uk-width-1-4@m ">
-                                        <h:outputLabel styleClass="uk-form-label" value="Nick name" for="modal-nick"/>
+                                    <div class="uk-width-1-1@s uk-width-1-4@m">
+                                        <h:outputLabel styleClass="uk-form-label uk-text-capitalize" value="#{administracion['catalogocoordinador.coordinator.detail.table.header.nick']}" for="modal-nick"/>
                                         <div class="uk-form-controls">
-                                            <h:inputText id="modal-nick"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input" >
+                                            <h:inputText
+                                                    id="modal-nick"
+                                                    pt:placeholder="#{administracion['catalogocoordinador.coordinator.detail.table.header.nick']}"
+                                                    disabled="false"
+                                                    styleClass="uk-input uk-text-capitalize" >
                                                 <f:validateRequired/>
                                                 <f:validateLength minimum="3" maximum="30"/>
                                             </h:inputText>
                                         </div>
                                     </div>
                                     <div class="uk-width-1-1@s uk-width-1-4@m ">
-                                        <h:outputLabel styleClass="uk-form-label" value="Nombre" for="modal-nombre"/>
+                                        <h:outputLabel styleClass="uk-form-label uk-text-capitalize" value="#{administracion['catalogocoordinador.coordinator.block.table.header.name']}" for="modal-nombre"/>
                                         <div class="uk-form-controls">
-                                            <h:inputText id="modal-nombre"  pt:placeholder="Nombre" disabled="false"  styleClass="uk-input">
+                                            <h:inputText
+                                                    id="modal-nombre"
+                                                    pt:placeholder="#{administracion['catalogocoordinador.coordinator.block.table.header.name']}"
+                                                    disabled="false"
+                                                    styleClass="uk-input uk-text-capitalize">
                                                 <f:validateRequired/>
                                                 <f:validateLength minimum="3" maximum="30"/>
                                             </h:inputText>
                                         </div>
                                     </div>
                                     <div class="uk-width-1-1@s uk-width-1-4@m ">
-                                        <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="modal-paterno"/>
+                                        <h:outputLabel styleClass="uk-form-label uk-text-capitalize" value="#{administracion['detallecoordinador.coordinator.active.modal.last.name']}" for="modal-paterno"/>
                                         <div class="uk-form-controls">
-                                            <h:inputText id="modal-paterno"  pt:placeholder="Apellido Paterno" disabled="false"  styleClass="uk-input">
+                                            <h:inputText
+                                                    id="modal-paterno"
+                                                    pt:placeholder="#{administracion['detallecoordinador.coordinator.active.modal.last.name']}"
+                                                    disabled="false"
+                                                    styleClass="uk-input uk-text-capitalize">
                                                 <f:validateRequired/>
                                                 <f:validateLength minimum="3" maximum="30"/>
                                             </h:inputText>
                                         </div>
                                     </div>
                                     <div class="uk-width-1-1@s uk-width-1-4@m ">
-                                        <h:outputLabel styleClass="uk-form-label" value="Apellido Paterno" for="modal-materno"/>
+                                        <h:outputLabel styleClass="uk-form-label uk-text-capitalize" value="#{administracion['detallecoordinador.coordinator.active.modal.mothers.last']}" for="modal-materno"/>
                                         <div class="uk-form-controls">
-                                            <h:inputText id="modal-materno"  pt:placeholder="Apellido materno" disabled="false"  styleClass="uk-input">
+                                            <h:inputText
+                                                    id="modal-materno"
+                                                    pt:placeholder="#{administracion['detallecoordinador.coordinator.active.modal.mothers.last']}"
+                                                    disabled="false"
+                                                    styleClass="uk-input uk-text-capitalize">
                                                 <f:validateRequired/>
                                                 <f:validateLength minimum="3" maximum="30"/>
                                             </h:inputText>
                                         </div>
                                     </div>
                                 <div class="uk-width-1-1@s uk-width-1-5@m uk-first-column">
-                                    <h:outputLabel styleClass="uk-form-label" value="email" for="modal-email"/>
-                                    <h:inputText id="modal-email"  pt:placeholder="email" disabled="false"  styleClass="uk-input" pt:type="email">
+                                    <h:outputLabel styleClass="uk-form-label uk-text-capitalize" value="#{administracion['catalogocoordinador.coordinator.detail.table.header.email']}" for="modal-email"/>
+                                    <h:inputText
+                                            id="modal-email"
+                                            pt:placeholder="#{administracion['catalogocoordinador.coordinator.detail.table.header.email']}"
+                                            disabled="false"
+                                            styleClass="uk-input uk-text-capitalize"
+                                            pt:type="email">
                                         <f:validateRequired/>
                                         <f:validateLength minimum="3" maximum="30"/>
                                     </h:inputText>
