@@ -74,24 +74,6 @@ new Chart(char3El, {
       pointBorderColor: "#fff",
       pointBackgroundColor: "rgba(179,181,198,1)",
       data: [2.33, 5.61, 6.69, 9.32, 8.2]
-    }, {
-      label: "Grupo B",
-      fill: true,
-      backgroundColor: "rgba(255,99,132,0.2)",
-      borderColor: "rgba(255,99,132,1)",
-      pointBorderColor: "#fff",
-      pointBackgroundColor: "rgba(255,99,132,1)",
-      pointBorderColor: "#fff",
-      data: [7.25, 8.25, 6, 9.1, 4.45]
-    } , {
-      label: "Grupo C",
-      fill: true,
-      backgroundColor: "rgba(24, 198, 60,0.2)",
-      borderColor: "rgba(24, 198, 60,1)",
-      pointBorderColor: "#fff",
-      pointBackgroundColor: "rgba(24, 198, 60,1)",
-      pointBorderColor: "#fff",
-      data: [7.25, 8.25, 9, 9.1, 2.45]
     }]
   },
   options: {
@@ -107,32 +89,68 @@ new Chart(char3El, {
   }
 });
 
+
+
 // Chart 4
 // ========================================================================
 var char4El = document.getElementById('chart4');
+  new Chart(char4El, {
+    type: 'radar',
+    data: {
+      labels: ["Listening", "Reading", "Speaking", "Writing", "Mental Map"],
+      datasets: [{
+        label: "Grupo B",
+        fill: true,
+        backgroundColor: "rgba(137, 93, 246,0.2)",
+        borderColor: "rgba(137, 93, 246,1)",
+        pointBorderColor: "#fff",
+        pointBackgroundColor: "rgba(137, 93, 246,1)",
+        pointBorderColor: "#fff",
+        data: [7.25, 8.25, 6, 9.1, 4.45]
+      } ]
+    },
+    options: {
+      maintainAspectRatio: false,
+      responsiveAnimationDuration: 500,
+      animation: {
+        duration: 2000
+      },
+      title: {
+        display: true,
+        text: 'Distribution in % of world population'
+      }
+    }
+  });
 
-new Chart(char4El, {
-  type: 'horizontalBar',
+
+
+// Chart 5
+// ========================================================================
+var char5El = document.getElementById('chart5');
+new Chart(char5El, {
+  type: 'radar',
   data: {
-    labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+    labels: ["Listening", "Reading", "Speaking", "Writing", "Mental Map"],
     datasets: [{
-      label: "Population (millions)",
-      backgroundColor: ["#39f", "#895df6", "#3cba9f", "#e8c3b9", "#c45850"],
-      data: [900, 7000, 5700, 2800, 5600]
-    }]
+      label: "Grupo C",
+      fill: true,
+      backgroundColor: "rgba(60, 186, 159  ,0.2)",
+      borderColor: "rgba(60, 186, 159  ,1)",
+      pointBorderColor: "#fff",
+      pointBackgroundColor: "rgba(60, 186, 159  ,1)",
+      pointBorderColor: "#fff",
+      data: [7.25, 8.25, 6, 9.1, 4.45]
+    } ]
   },
   options: {
     maintainAspectRatio: false,
     responsiveAnimationDuration: 500,
-    legend: {
-      display: false
-    },
     animation: {
       duration: 2000
     },
     title: {
       display: true,
-      text: 'Predicted activity in 2020'
+      text: 'Distribution in % of world population'
     }
   }
 });
@@ -140,11 +158,11 @@ new Chart(char4El, {
 
 
 
-// Chart 5
+// Chart 6
 // ========================================================================
-var char5El = document.getElementById('chart5');
+var char6El = document.getElementById('chart6');
 
-new Chart(char5El, {
+new Chart(char6El, {
   type: 'line',
   data: {
     labels: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018],

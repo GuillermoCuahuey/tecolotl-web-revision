@@ -118,11 +118,10 @@
                                         <div uk-dropdown="boundary:.tabla-profesor-dropdown; mode: click" id="dropear" >
                                             <ul class="uk-nav uk-dropdown-nav uk-text-left">
                                                 <li>
-                                                    <h:commandLink   pt:uk-toggle="target: #modal-editar-coord" styleClass="uk-text-primary" >
+                                                    <h:link    outcome="detalle-profesor" styleClass="uk-text-primary" >
                                                         <h:outputText pt:uk-icon="icon: file-edit" styleClass="uk-margin-small-right uk-icon" />
                                                         <span class="uk-text-middle"><h:outputText value="Detalle"/></span>
-                                                        <f:ajax />
-                                                    </h:commandLink>
+                                                    </h:link>
                                                 </li>
                                                 <li>
                                                     <h:commandLink   pt:uk-toggle="target: #modal-editar-prof" styleClass="uk-text-primary">
