@@ -5,24 +5,9 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:pa="http://xmlns.jcp.org/jsf/composite/paginacion"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>jQuery UI Datepicker - Default functionality</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:pa="http://xmlns.jcp.org/jsf/composite/paginacion"  >
 <ui:composition template="/template/dashboard.xhtml">
-    <ui:define name="menu">
-        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
-            <li class="uk-nav-header">ACCIONES</li>
-            <li><a href="#"><span data-uk-icon="icon: table" class="uk-margin-small-right"></span>Escuelas</a></li>
-            <li><a href="#"><span data-uk-icon="icon: database" class="uk-margin-small-right"></span>Catalogos</a></li>
-
-        </ul>
-    </ui:define>
     <ui:define name="contenido">
         <h:outputStylesheet library="css" name="tablas.css"/>
 
@@ -330,7 +315,6 @@
                                         <f:validateLength minimum="3" maximum="20"/>
                                     </h:inputSecret>
                                 </div>
-                                <input type="text" id="datepicker" class="hasDatepicker">
 
                                 <div class="uk-width-1-1@s uk-width-1-5@m uk-inline uk-margin-small-left">
                                     <div class="uk-position-bottom-left">
