@@ -9,10 +9,27 @@
 <ui:composition template="/template/dashboard.xhtml">
         <ui:define name="menu">
             <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
-                <li class="uk-nav-header">ACCIONES</li>
-                <li><a href="#" class="uk-text-capitalize"><span data-uk-icon="icon: table" class="uk-margin-small-right"></span>#{administracion['detalleescuela.menu.school']}</a></li>
-                <li><a href="#" class="uk-text-capitalize"><span data-uk-icon="icon: database" class="uk-margin-small-right"></span>#{administracion['detalleescuela.menu.catalogs']}</a></li>
+                <li class="uk-nav-header">Menú</li>
+                <li class="uk-parent uk-open">
+                    <h:link outcome="administracion-dashboard" >
+                        <h:outputText pt:data-uk-icon="icon: table" styleClass="uk-margin-small-right"/>
+                        Escuelas
+                    </h:link>
+                    <ul class="uk-nav-sub">
+                        <li class=""><h:link value=" " outcome="administracion-dashboard"><h:outputText pt:uk-icon="info" class="uk-margin-small-right" />Dashboard admin</h:link></li>
+                        <li class=""><h:link value=" " outcome="catalogo-administracion"><h:outputText pt:uk-icon="info" class="uk-margin-small-right" />Catalogo admin</h:link></li>
+                        <li class=""><h:link value=" " outcome="catalogo-coordinacion"><h:outputText pt:uk-icon="info" class="uk-margin-small-right" />Catalogo coordinación</h:link></li>
+                        <li class="uk-active"><a> <span uk-icon="info" class="uk-margin-small-right"/>Detalle escuela</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h:link>
+                        <h:outputText pt:data-uk-icon="icon: database" styleClass="uk-margin-small-right"/>
+                        Catalogos
+                    </h:link>
+                </li>
                 <li><a href="#"><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Friends</a></li>
+
             </ul>
         </ui:define>
 
@@ -145,7 +162,7 @@
                                             <h:form>
                                                 <h:commandLink styleClass="uk-icon-button  uk-icon" >
                                                     <f:ajax></f:ajax>
-                                                    <h:outputText pt:uk-icon="icon: plus-circle; ratio: 1.5"/>
+                                                    <h:outputText pt:uk-icon="icon: plus-circle; ratio: 1.5" styleClass="uk-text-primary"/>
                                                 </h:commandLink>
                                             </h:form>
                                         </div>
@@ -160,7 +177,7 @@
                                                          id="tabla-contacto"
                                                          first="0"
                                                          rows="5"
-                                                         styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover uk-text-center tabla-escuela-contacto"
+                                                         styleClass="uk-table uk-table-small uk-table-divider uk-table-middle uk-table-hover uk-text-center tabla-escuela-contacto"
                                                          headerClass="uk-background-primary uk-text-center"
                                                           columnClasses=""  >
                                                 <h:column>
@@ -177,8 +194,8 @@
                                                 </h:column>
                                                 <h:column>
                                                     <f:facet name="header"><h:outputText styleClass="letra-titulo" value="Opciones" /></f:facet>
-                                                    <div class="uk-inline  ">
-                                                        <button class="uk-icon-button puntero" uk-icon="more-vertical" type="button"></button>
+                                                    <div class="uk-inline ">
+                                                        <button class="uk-icon-button puntero uk-text-primary" uk-icon="more-vertical" type="button"></button>
                                                         <div uk-dropdown="boundary:.tabla-escuela-contacto; mode: click" id="dropear" >
                                                             <ul class="uk-nav uk-dropdown-nav uk-text-left">
                                                                 <li>
@@ -218,7 +235,7 @@
                                             <h:form>
                                                 <h:commandLink styleClass="uk-icon-button  uk-icon" >
                                                     <f:ajax></f:ajax>
-                                                    <h:outputText pt:uk-icon="icon: plus-circle; ratio: 1.5"/>
+                                                    <h:outputText pt:uk-icon="icon: plus-circle; ratio: 1.5" styleClass="uk-text-primary"/>
                                                 </h:commandLink>
                                             </h:form>
                                         </div>
@@ -231,7 +248,7 @@
                                                      id="tabla-licencias"
                                                      first="0"
                                                      rows="5"
-                                                     styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover uk-text-center"
+                                                     styleClass="uk-table uk-table-small uk-border-rounded uk-table-divider uk-table-middle uk-table-hover uk-text-center"
                                                      headerClass="uk-button-primary uk-text-center"
                                                      columnClasses=",,uk-text-center,uk-text-center,uk-text-center,uk-text-center" >
                                             <h:column>
