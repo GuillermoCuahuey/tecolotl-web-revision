@@ -11,10 +11,19 @@
 <ui:composition template="/template/dashboard.xhtml" >
     <ui:define name="menu">
         <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
-            <li class="uk-nav-header">ACCIONES</li>
+            <li class="uk-nav-header">Menú</li>
             <li><a href="#"><span data-uk-icon="icon: table" class="uk-margin-small-right"></span>Escuelas</a></li>
-            <li><a href="#"><span data-uk-icon="icon: database" class="uk-margin-small-right"></span>Catalogos</a></li>
-            <li><a href="#"><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Friends</a></li>
+            <li class="uk-parent uk-open">
+                <a href="CatalagoAdministrador.html"><span data-uk-icon="icon: database" class="uk-margin-small-right"></span>Catálogos</a>
+                <ul class="uk-nav-sub">
+                    <li class="uk-active"><h:link ><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Adminsitrador</h:link>
+                    </li>
+                    <li ><h:link outcome="catalogo-coordinacion.xhtml"><span data-uk-icon="icon: users" class=" uk-active uk-margin-small-right"></span>Coordinador/Profesor</h:link>
+                    </li>
+
+                </ul>
+            </li>
+
         </ul>
     </ui:define>
     <ui:define name="contenido">
@@ -37,7 +46,7 @@
                                 <ul class="uk-iconnav">
                                     <li>
                                         <h:commandLink pt:uk-toggle="target: #modal-bloqueo-catalogo">
-                                            <span class="uk-icon-link" title="#{boton['add']}" data-uk-tooltip="" data-uk-icon="icon: plus-circle; ratio: 1.5">
+                                            <span class="uk-icon-link uk-text-primary" title="#{boton['add']}" data-uk-tooltip="" data-uk-icon="icon: plus-circle; ratio: 1.5">
                                             </span>
                                             <f:ajax/>
                                         </h:commandLink>
@@ -99,7 +108,7 @@
                                         <ul class="uk-iconnav">
                                             <li>
                                                 <h:commandLink pt:uk-toggle="target: #modal-tipo-contacto">
-                                                <span class="uk-icon-link" title="#{boton['add']}" data-uk-tooltip="" data-uk-icon="icon: plus-circle; ratio: 1.5"></span>
+                                                <span class="uk-icon-link uk-text-primary" title="#{boton['add']}" data-uk-tooltip="" data-uk-icon="icon: plus-circle; ratio: 1.5"></span>
                                                     <f:ajax/>
                                                 </h:commandLink>
                                             </li>
@@ -161,7 +170,7 @@
                                         <ul class="uk-iconnav">
                                             <li>
                                                 <h:commandLink pt:uk-toggle="target: #modal-colonia">
-                                                    <span class="uk-icon-link" title="#{boton['add']}" data-uk-tooltip="" data-uk-icon="icon: plus-circle; ratio: 1.5"></span>
+                                                    <span class="uk-icon-link uk-text-primary" title="#{boton['add']}" data-uk-tooltip="" data-uk-icon="icon: plus-circle; ratio: 1.5"></span>
                                                     <f:ajax/>
                                                 </h:commandLink>
                                             </li>
@@ -265,14 +274,8 @@
                 <h:form id="formulario-modal-editar" styleClass="uk-form-stacked">
                 <div class="uk-modal-header uk-background-secondary">
                     <p class="uk-h4 uk-text-center uk-text-bold">
-                        <h:outputText
-                                styleClass="letra-titulo uk-text-capitalize"
-                                value="#{administracion['catalogoadministrativo.administrator.modal.edit.blocking.reason']}"
-                                rendered="#{not empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
-                        <h:outputText
-                                styleClass="letra-titulo uk-text-capitalize"
-                                value="#{administracion['catalogoadministrativo.administrator.modal.new.reason.blocking']}"
-                                rendered="#{empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
+                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="editar motivo de bloqueo" rendered="#{not empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
+                        <h:outputText styleClass="letra-titulo " value="nuevo motivo de bloqueo" rendered="#{empty catalogoAdministradoBloqueControlador.tablaModelo.id}"/>
                     </p>
                 </div>
                 <div class="uk-modal-body">
@@ -315,9 +318,9 @@
             <div class="uk-modal-dialog uk-margin-auto-vertical">
                 <h:form id="formulario-modal-tipo-contacto" styleClass="uk-form-stacked">
                     <div class="uk-modal-header uk-background-secondary">
-                        <p class="uk-h4 uk-text-center uk-text-bold uk-text-capitalize">
-                            <h:outputText styleClass="letra-titulo " value="Editar tipo de contacto" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
-                            <h:outputText styleClass="letra-titulo " value="nuevo tipo de contacto" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
+                        <p class="uk-h4 uk-text-center uk-text-bold">
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="Editar tipo de contacto" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
+                            <h:outputText styleClass="letra-titulo uk-text-capitalize" value="nuevo tipo de contacto" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
                         </p>
                     </div><div class="uk-modal-body">
                         <div class="uk-margin uk-text-capitalize">
@@ -360,8 +363,8 @@
             <div class="uk-modal-dialog uk-margin-auto-vertical">
                 <div class="uk-modal-header uk-background-secondary">
                     <p class="uk-h4 uk-text-center uk-text-bold">
-                        <h:outputText styleClass="letra-titulo " value="#{administracion['catalogoadministrativo.administrator.modal.edit']}" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
-                        <h:outputText styleClass="letra-titulo " value="#{administracion['catalogoadministrativo.administrator.modal.new']}" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
+                        <h:outputText styleClass="letra-titulo uk-text-capitalize" value="#{administracion['catalogoadministrativo.administrator.modal.edit']}" rendered="#{not empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
+                        <h:outputText styleClass="letra-titulo uk-text-capitalize " value="#{administracion['catalogoadministrativo.administrator.modal.new']}" rendered="#{empty catalogoAdministradoColoniaControlador.tablaColonia.id}"/>
                     </p>
                 </div>
                 <h:form id="formulario-modal-colonia" styleClass="uk-form-stacked">
@@ -407,7 +410,7 @@
         <h:panelGroup layout="block" id="modal-colonia0" pt:uk-modal="">
             <div class="uk-modal-dialog uk-margin-auto-vertical">
                 <div class="uk-modal-header uk-background-secondary">
-                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo">Selecciona Motivo</span></p>
+                    <p class="uk-h4 uk-text-center uk-text-bold uk-text-capitalize"><span class="letra-titulo">Selecciona Motivo</span></p>
                 </div>
                 <h:form styleClass="uk-form-stacked">
                     <div class="uk-modal-body">
@@ -449,7 +452,7 @@
         <h:panelGroup layout="block" id="modal-eliminar" pt:uk-modal="">
             <div class="uk-modal-dialog uk-margin-auto-vertical">
                 <div class="uk-modal-header fondo-peligro">
-                    <p class="uk-h4 uk-text-center uk-text-bold"><span class="letra-titulo"> Eliminar Profesor</span></p>
+                    <p class="uk-h4 uk-text-center uk-text-bold uk-text-capitalize"><span class="letra-titulo"> Eliminar Profesor</span></p>
                 </div>
                 <h:form styleClass="uk-form-stacked">
                     <div class="uk-modal-body">
