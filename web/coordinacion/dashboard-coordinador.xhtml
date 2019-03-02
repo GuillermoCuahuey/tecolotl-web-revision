@@ -9,16 +9,40 @@
       xmlns:pa="http://xmlns.jcp.org/jsf/composite/paginacion"  >
 <ui:composition template="/template/dashboard.xhtml">
     <ui:define name="menu">
-        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
-            <li class="uk-nav-header">ACCIONES</li>
-            <li><a href="#"><span data-uk-icon="icon: table" class="uk-margin-small-right"></span>Escuelas</a></li>
-            <li><a href="#"><span data-uk-icon="icon: database" class="uk-margin-small-right"></span>Catalogos</a></li>
-            <li><a href="#"><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Friends</a></li>
+        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" uk-nav="">
+            <li class="uk-nav-header">Menú</li>
+            <li class="uk-parent ">
+                <h:link><h:outputText pt:uk-icon="info" class="uk-margin-small-right"/>Escuela</h:link>
+                <ul class="uk-nav-sub">
+                    <li><h:link outcome="/administracion/administracion-dashboard"><h:outputText pt:uk-icon="home" class="uk-margin-small-right"/>Dashboard</h:link></li>
+                </ul>
+            </li>
+            <li class="uk-parent">
+                <h:link><h:outputText pt:uk-icon="database" class="uk-margin-small-right"/>Catalogo</h:link>
+                <ul class="uk-nav-sub">
+                    <li><h:link outcome="/administracion/catalogo-administracion"><h:outputText pt:uk-icon="home" class="uk-margin-small-right"/>Catalogo administracion</h:link></li>
+                    <li><h:link outcome="/administracion/catalogo-coordinacion"><h:outputText pt:uk-icon="home" class="uk-margin-small-right"/>Catalogo coordinacion</h:link></li>
+                </ul>
+            </li>
+            <li class="uk-parent uk-open">
+                <h:link><h:outputText pt:uk-icon="database" class="uk-margin-small-right"/>Coordinacion</h:link>
+                <ul class="uk-nav-sub">
+                    <li class="uk-active"><h:link ><h:outputText pt:uk-icon="home" class="uk-margin-small-right"/>Dashboard coordinador</h:link></li>
+
+                </ul>
+            </li>
+            <li class="uk-parent">
+                <h:link><h:outputText pt:uk-icon="database" class="uk-margin-small-right"/>Profesor</h:link>
+                <ul class="uk-nav-sub">
+                    <li><h:link outcome="catalogo-administracion"><h:outputText pt:uk-icon="home" class="uk-margin-small-right"/>Catalogo administracion</h:link></li>
+                    <li><h:link outcome="catalogo-coordinacion"><h:outputText pt:uk-icon="home" class="uk-margin-small-right"/>Catalogo coordinacion</h:link></li>
+                </ul>
+            </li>
         </ul>
     </ui:define>
     <ui:define name="contenido">
         <h:outputStylesheet library="css" name="tablas.css"/>
-        <div uk-grid="">
+        <h:panelGroup layout="block" styleClass="uk-grid" pt:uk-grid="">
             <div class="uk-width-1-1@m">
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover  uk-padding-small">
                     <div class="uk-grid uk-grid-divider uk-grid-small uk-grid-margin-small  uk-child-width-1-2 uk-child-width-1-4@l uk-child-width-1-5@xl uk-margin-auto  uk-text-center" uk-grid="">
@@ -137,7 +161,6 @@
                                                         <f:ajax/>
                                                     </h:commandLink>
                                                 </li>
-
                                                 <li>
                                                     <h:commandLink  pt:uk-toggle="target: #modal-bloqueo" styleClass="uk-text-primary" >
                                                         <h:outputText pt:uk-icon="icon: ban" styleClass="uk-margin-small-right uk-icon" />
@@ -166,19 +189,12 @@
                                         <pa:boton htmlDataTable="#{administracionProfesorControlador.htmlDataTable}"/>
                                     </div>
                                 </div>
-                                <div class="uk-panel uk-flex uk-flex-right@m uk-flex-center@s uk-width-1-1@s uk-width-1-2@m">
-                                    <h:commandButton disabled="true"
-                                                     styleClass="uk-button uk-button-primary uk-margin-small-right uk-margin-small-top"
-                                                     value="limpar">
-                                    </h:commandButton>
-                                </div>
                             </h:form>
                         </f:ajax>
                     </div>
                 </div>
             </div>
-
-        </div>
+        </h:panelGroup>
 
         <div id="modal-eliminar"  uk-modal="">
             <div class="uk-modal-dialog uk-margin-auto-vertical">
