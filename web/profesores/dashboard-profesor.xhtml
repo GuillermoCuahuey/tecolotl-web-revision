@@ -9,10 +9,19 @@
 
 <ui:composition template="/template/dashboard-profesor.xhtml">
     <ui:define name="menu">
-        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" >
-            <li class="uk-nav-header">ACCIONES</li>
-            <li><h:outputLink ><h:panelGroup pt:uk-icon="icon: table" styleClass="uk-margin-small-right"/> Escuelas</h:outputLink></li>
-            <li><h:outputLink ><h:panelGroup pt:uk-icon="icon: database" styleClass="uk-margin-small-right"/> Catalogos</h:outputLink></li>
+        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
+            <li class="uk-nav-header">Menú</li>
+            <li class="uk-active"><a href="#"><span data-uk-icon="icon: table" class="uk-margin-small-right"></span>Recursos Maestro</a></li>
+            <li class="uk-parent">
+                <a ><span data-uk-icon="icon: database" class="uk-margin-small-right"></span>Alumnos</a>
+                <ul class="uk-nav-sub">
+                    <li><h:link outcome="catalogo-administracion.xhtml" ><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Adminstracion</h:link>
+                    </li>
+
+
+                </ul>
+            </li>
+            <li><a href="Deshboard.html"><img  class="uk-icon-image" src="../resources/img/maestro.svg"></img> &nbsp; Profesores</a></li>
 
         </ul>
     </ui:define>

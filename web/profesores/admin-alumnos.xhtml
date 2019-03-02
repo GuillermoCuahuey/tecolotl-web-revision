@@ -33,6 +33,13 @@
                                                     <f:ajax/>
                                                 </h:commandLink>
                                             </li>
+                                            <li>
+                                                <h:commandLink  pt:uk-toggle="target: #modal-" >
+                                                    <span class="uk-icon-link uk-text-capitalize uk-text-primary" title="CSV" data-uk-tooltip="" data-uk-icon="icon: cloud-upload; ratio: 1.5"></span>
+
+                                                    <f:ajax/>
+                                                </h:commandLink>
+                                            </li>
                                         </ul>
                                     </h:form>
                                 </div>
@@ -125,18 +132,18 @@
                                                 <li>
                                                     <h:commandLink  pt:uk-toggle="target: #modal-eliminar" >
                                                         <span uk-icon="icon: users" class="uk-margin-small-right uk-icon uk-text-primary" ></span>
-                                                        <span class="uk-text-middle uk-text-primary"><h:outputText value="ver alumnos"/></span>
+                                                        <span class="uk-text-middle uk-text-primary"><h:outputText value="editar"/></span>
                                                         <f:ajax/>
                                                     </h:commandLink>
                                                 </li>
                                                 <li>
                                                     <h:commandLink  pt:uk-toggle="target: #modal-eliminar" >
-                                                        <span uk-icon="icon: cloud-upload" class="uk-margin-small-right uk-icon uk-text-primary" ></span>
-                                                        <span class="uk-text-middle uk-text-primary"><h:outputText value="importar/exportar"/></span>
-
+                                                        <span uk-icon="icon: trash" class="uk-margin-small-right uk-icon uk-text-primary" ></span>
+                                                        <span class="uk-text-middle uk-text-primary"><h:outputText value="editar"/></span>
                                                         <f:ajax/>
                                                     </h:commandLink>
                                                 </li>
+
                                             </ul>
                                         </div>
                                     </div>
