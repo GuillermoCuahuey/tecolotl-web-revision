@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pa="http://xmlns.jcp.org/jsf/composite/paginacion">
 
 <ui:composition template="/template/dashboard-profesor.xhtml">
     <ui:define name="menu">
@@ -69,43 +70,210 @@
        </h:panelGroup>
     </ui:define>
     <ui:define name="contenido">
+        <h:outputStylesheet library="css" name="tablas.css"/>
 
         <h:panelGroup layout="block" class="uk-grid uk-grid-medium" pt:uk-grid="">
-            <ui:repeat value="#{dahsboardProfesorControldor.salonModelos}" var="profesor">
+
             <!-- panel -->
-            <div class="uk-width-1-2@l">
+            <div class="uk-width-1-1@m">
                 <div class="uk-card uk-card-default uk-card-small uk-card-hover">
                     <div class="uk-card-header">
-                        <div class="uk-grid uk-grid-small">
-                            <div class="uk-width-auto"><h4>#{profesor.grado} #{profesor.grupo}</h4></div>
-                            <div class="uk-width-expand uk-text-right panel-icons">
-                                <h:outputLink styleClass="uk-icon-link" title="Move" pt:uk-tooltip="" pt:uk-icon="icon: move" />
-                                <h:outputLink  styleClass="uk-icon-link" title="Configuration" pt:uk-tooltip="" pt:uk-icon="icon: cog"/>
-                                <h:outputLink styleClass="uk-icon-link" title="Close" pt:uk-tooltip="" pt:uk-icon="icon: close"/>
+                        <h:panelGroup layout="block" styleClass="uk-grid-small uk-flex-middle uk-grid" pt:uk-grid="">
+                            <div class="uk-width-auto">
+                                <h:graphicImage library="img" name="3ojos.svg" width="50" height="50" styleClass="uk-border-circle"/>
                             </div>
-                        </div>
+                            <div class="uk-width-expand">
+                                <h3 class="uk-card-title uk-margin-remove-bottom">Rendimiento Grupal</h3>
+                            </div>
+                        </h:panelGroup>
                     </div>
                     <div class="uk-card-body">
                         <div class="chart-container">
-                            <canvas class="mi-char">
-                                <div>#{profesor.grado}</div>
-                                <div>#{profesor.grupo}</div>
-                                <div>#{dahsboardProfesorControldor.color.get(2)}</div>
+                            <canvas class="mi-tabla">
+
                             </canvas>
                         </div>
                     </div>
                 </div>
             </div>
-            </ui:repeat>
 
         </h:panelGroup>
+
+        <h:panelGroup layout="block" class="uk-grid uk-grid-medium" pt:uk-grid="">
+            <ui:repeat value="#{dahsboardProfesorControldor.graficaModelos}" var="grafica">
+            <!-- panel -->
+            <div class="uk-width-1-2@l">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover">
+                    <div class="uk-card-header">
+                        <h:panelGroup layout="block" styleClass="uk-grid-small uk-flex-middle uk-grid" pt:uk-grid="">
+                            <div class="uk-width-auto">
+                                <h:graphicImage library="img" name="verde.svg" width="50" height="50" styleClass="uk-border-circle" pt:uk-svg=""/>
+                            </div>
+                            <div class="uk-width-expand">
+                                <h4 class="uk-margin-remove-bottom">Mejor alumno de la clase</h4>
+                            </div>
+                        </h:panelGroup>
+                    </div>
+                    <div class="uk-card-body">
+                        <div class="chart-container">
+                            <canvas class="mi-char">
+                                <div>#{grafica.grupo}</div>
+                                <div>#{grafica.grado}</div>
+                                <div>#{grafica.color}</div>
+                                <div>#{grafica.dato1}</div>
+                                <div>#{grafica.dato2}</div>
+                                <div>#{grafica.dato3}</div>
+                                <div>#{grafica.dato4}</div>
+                                <div>#{grafica.dato5}</div>
+                            </canvas>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            </ui:repeat>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" class="uk-grid uk-grid-medium" pt:uk-grid="">
+
+            <div class="uk-width-1-1@m">
+                <div class="uk-card uk-card-default uk-card-small uk-card-hover uk-margin-medium-bottom">
+                    <div class="uk-card-header">
+                        <div class="uk-grid uk-grid-small" uk-grid="">
+                            <div class="uk-width-auto"><h4><span class="uk-text-middle">Grupos de #{detalleProfesorControlador.profesorModelo.nombre}</span></h4></div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <div class="uk-container uk-container-small">
+                            <h:form id="formulario-detalle-profesor" styleClass="uk-form-stacked">
+
+                                <div class="uk-overflow-auto">
+                                    <h:dataTable
+                                            value="#{detalleProfesorControlador.collectionDataModel}"
+                                            binding="#{detalleProfesorControlador.htmlDataTable}"
+                                            id="tabla-detalle-profesor"
+                                            var="profesor"
+                                            first="0"
+                                            rows="5"
+                                            styleClass="uk-table uk-table-justify  uk-table-divider uk-table-small uk-table-middle uk-table-hover uk-text-center tabla-profesor-dropdown"
+                                            headerClass="uk-background-primary uk-text-center"
+                                            columnClasses="uk-width-small,uk-width-small,uk-width-small"
+                                            footerClass="uk-background-primary uk-text-left">
+                                        <h:column>
+                                            <f:facet name="header"><span class="letra-titulo">#{coordinacion['detalleprofesor.table.schoolgrade']}</span></f:facet>
+                                            #{profesor.grado}
+                                        </h:column>
+                                        <h:column>
+                                            <f:facet name="header"><span class="letra-titulo">Grupo</span></f:facet>
+                                            #{profesor.grupo}
+                                        </h:column>
+
+                                        <h:column>
+                                            <f:facet name="header"><span class="letra-titulo">Opciones</span></f:facet>
+                                            <div class="uk-inline  ">
+                                                <button class="uk-icon-button puntero" uk-icon="more-vertical" type="button"></button>
+                                                <div uk-dropdown="boundary:.tabla-profesor-dropdown; mode: click" id="dropear" >
+                                                    <ul class="uk-nav uk-dropdown-nav uk-text-left">
+                                                        <li>
+                                                            <h:link    outcome="detalle-profesor" styleClass="uk-text-primary" >
+                                                                <h:outputText pt:uk-icon="icon: file-edit" styleClass="uk-margin-small-right uk-icon" />
+                                                                <span class="uk-text-middle"><h:outputText value="Detalle"/></span>
+                                                            </h:link>
+                                                        </li>
+                                                        <li>
+                                                            <h:commandLink   pt:uk-toggle="target: #modal-editar-prof" styleClass="uk-text-primary">
+                                                                <h:outputText pt:uk-icon="icon: file-edit" styleClass="uk-margin-small-right uk-icon" />
+                                                                <span class="uk-text-middle"><h:outputText value="Editar"/></span>
+                                                                <f:ajax />
+                                                            </h:commandLink>
+                                                        </li>
+                                                        <li>
+                                                            <h:commandLink  pt:uk-toggle="target: #modal-eliminar" styleClass="uk-text-primary" >
+                                                                <h:outputText pt:uk-icon="icon: trash" styleClass="uk-margin-small-right uk-icon" />
+                                                                <span class="uk-text-middle"><h:outputText value="Eliminar"/></span>
+                                                                <f:ajax/>
+                                                            </h:commandLink>
+                                                        </li>
+                                                        <li>
+                                                            <h:commandLink  pt:uk-toggle="target: #modal-bloqueo" styleClass="uk-text-primary" >
+                                                                <h:outputText pt:uk-icon="icon: ban" styleClass="uk-margin-small-right uk-icon" />
+                                                                <span class="uk-text-middle"><h:outputText value="Bloqueo"/></span>
+                                                                <f:ajax/>
+                                                            </h:commandLink>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </h:column>
+                                        <f:facet name="footer">
+                                            <pa:pie-tabla htmlDataTable="#{detalleProfesorControlador.htmlDataTable}"/>
+                                        </f:facet>
+                                    </h:dataTable>
+                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+                    <div class="uk-card-footer">
+                        <f:ajax render="formulario-detalle-profesor:tabla-detalle-profesor formulario-paginacion-profesor"
+                                onevent="limpiaSelect">
+                            <h:form id="formulario-paginacion-profesor">
+                                <div  uk-grid="">
+                                    <div class="uk-panel uk-flex uk-flex-left uk-width-1-1@s uk-width-1-2@m">
+                                        <pa:boton-minimizado htmlDataTable="#{detalleProfesorControlador.htmlDataTable}"/>
+                                    </div>
+                                </div>
+                                <div class="uk-panel uk-flex uk-flex-right@m uk-flex-center@s uk-width-1-1@s uk-width-1-2@m">
+                                    <h:commandButton disabled="true"
+                                                     styleClass="uk-button uk-button-primary uk-margin-small-right uk-margin-small-top"
+                                                     value="limpar">
+                                    </h:commandButton>
+                                </div>
+                            </h:form>
+                        </f:ajax>
+                    </div>
+                </div>
+            </div>
+        </h:panelGroup>
+
 
 
         <h:outputScript library="js" name="Chart.js"/>
         <!--<h:outputScript library="js" name="chartScripts.js"/>-->
         <script type="text/javascript">
             var i;
+
             let grafica = document.querySelectorAll('.mi-char');
+            let grafica2 = document.querySelectorAll('.mi-tabla');
+
+            document.addEventListener("DOMContentLoaded", function (evt) {
+                limpiaSelect("undefined");
+                // modalAgregar = document.querySelector('#modal-contacto');
+
+
+            });
+            document.addEventListener('DOMContentLoaded', function (evt) {
+                limpiaSelect();
+            });
+
+            function limpiaSelect(data) {
+                if (typeof data === 'undefined') {
+                    document.querySelectorAll('.uk-select').forEach(
+                        function (value) { value.removeAttribute('size'); }
+                    )
+                } else {
+                    if (data.status === 'success') {
+                        document.querySelectorAll('.uk-select').forEach(
+                            function (value) { value.removeAttribute('size'); }
+                        )
+                    }
+                }
+            }
+
+
+
+
+
             for (i = 0; i &lt; grafica.length; i++) {
 
                 // datos[0].innerHTML
@@ -117,13 +285,13 @@
                     data: {
                         labels: ["Listening","Reading" , "Speaking", "Writing", "Mental Map"],
                         datasets: [{
-                            label: datos[0].innerHTML+datos[1].innerHTML,
+                            label: datos[1].innerHTML+datos[0].innerHTML,
                             fill: true,
                             backgroundColor: datos[2].innerHTML,
                             borderColor: "rgba(51,153,255,0.2)",
                             pointBorderColor: "#fff",
                             pointBackgroundColor: "rgba(179,181,198,1)",
-                            data: [2.33, 5.61, 6.69, 9.32, 8.2]
+                            data: [parseFloat(datos[3].innerHTML), parseFloat(datos[4].innerHTML), parseFloat(datos[5].innerHTML), parseFloat(datos[6].innerHTML), parseFloat(datos[7].innerHTML)]
                         }]
                     },
                     options: {
@@ -134,11 +302,42 @@
                         },
                         title: {
                             display: true,
-                            text: 'Distribution in % of world population'
+                            text: 'Mejor Alumno de la clase'
                         }
                     }
                 });
             }
+
+
+               // let datos2 = grafica2.querySelectorAll('div');
+                new Chart(grafica2, {
+                    type: 'bar',
+                    data: {
+                        labels: ["Grupo A", "Grupo B", "Grupo C", "Grupo D", "Grupo E"],
+                        datasets: [{
+                            label: "jookoo",
+                            backgroundColor: ["#7d3c98", "#2471a3", "#2e86c1", "#17a589", "#d68910"],
+                            data: [578, 267, 600, 900, 700]
+                        }]
+                    },
+
+                    options: {
+                        maintainAspectRatio: false,
+                        responsiveAnimationDuration: 500,
+                        legend: {
+                            display: false
+                        },
+                        animation: {
+                            duration: 2000
+                        },
+                        title: {
+                            display: true,
+                            text: 'Calficacion general del grupo'
+                        }
+                    }
+                });
+
+
         </script>
 
     </ui:define>
