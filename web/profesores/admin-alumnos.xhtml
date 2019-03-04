@@ -8,7 +8,25 @@
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:pa="http://xmlns.jcp.org/jsf/composite/paginacion"  >
 <ui:composition template="/template/dashboard.xhtml">
+    <ui:define name="menu">
+        <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav="">
+            <li class="uk-nav-header">Menú</li>
+            <li class="uk-active"><a href="#"><span data-uk-icon="icon: table" class="uk-margin-small-right"></span>Recursos Maestro</a></li>
+            <li class="uk-parent">
+                <a ><span data-uk-icon="icon: database" class="uk-margin-small-right"></span>Alumnos</a>
+                <ul class="uk-nav-sub">
+                    <li class="uk-text-primary"><h:link styleClass="uk-text-primary" outcome="catalogo-administracion.xhtml" ><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Adminstracion</h:link>
+                    </li>
+                </ul>
+            </li>
+            <li class="uk-text-primary"><a href="Deshboard.html"><img  class="uk-icon-image uk-text-primary" src="../resources/img/mochilab.svg"uk-svg=""></img> &nbsp; Alumnos</a></li>
+
+
+</ul>
+    </ui:define>
     <ui:define name="contenido">
+
+
         <h:outputStylesheet library="css" name="tablas.css"/>
 
         <h4 class="uk-heading-line uk-text-bold"><span></span></h4>
@@ -34,8 +52,8 @@
                                                 </h:commandLink>
                                             </li>
                                             <li>
-                                                <h:commandLink  pt:uk-toggle="target: #modal-" >
-                                                    <span class="uk-icon-link uk-text-capitalize uk-text-primary" title="CSV" data-uk-tooltip="" data-uk-icon="icon: cloud-upload; ratio: 1.5"></span>
+                                                <h:commandLink  pt:uk-toggle="target: #modal" >
+                                                    <span class="uk-icon-link uk-text-capitalize uk-text-primary" title="CSV" data-uk-tooltip="" ></span>
 
                                                     <f:ajax/>
                                                 </h:commandLink>
@@ -55,25 +73,15 @@
                                          var="dato"
                                          first="0"
                                          rows="10"
-                                         styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover tabla-colonia-limite"
+                                         styleClass="uk-table uk-table-divider uk-table-middle uk-table-hover tabla-alumnos-limite"
                                          footerClass="uk-background-primary"
-                                         columnClasses=",uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center">
+                                         columnClasses=",uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center,uk-text-center">
 
                                 <h:column headerClass="uk-background-primary ">
                                     <f:facet name="header"><span class="letra-titulo ">Alumnos</span></f:facet>
                                     #{dato.nickname}
                                 </h:column>
-                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center uk-text-primary ">
-                                    <f:facet name="header"><span class="letra-titulo ">Estatus</span></f:facet>
-                                    <h:commandLink   pt:uk-toggle="target: #modal-bloqueo-catalogo">
-                                        <span class="uk-icon-button puntero uk-text-success" uk-icon="check" type="button"></span>
-                                        <f:ajax/>
-                                    </h:commandLink>
-                                </h:column>
-                                <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
-                                    <f:facet name="header"><span class="letra-titulo ">Nivel</span></f:facet>
-                                    #{dato.nivel}
-                                </h:column>
+
                                 <h:column headerClass="uk-background-primary uk-width-small uk-text-center">
                                     <f:facet name="header"><span class="letra-titulo ">Listen</span></f:facet>
                                     #{dato.listen}
@@ -106,7 +114,7 @@
 
                                     <div class=" uk-inline uk-text-left">
                                         <span class="uk-icon-button puntero uk-text-primary" uk-icon="more-vertical" type="button"></span>
-                                        <div uk-dropdown="boundary:.tabla-colonia-limite; mode: click" >
+                                        <div uk-dropdown="boundary:.tabla-alumnos-limite; mode: click" >
                                             <ul class="uk-nav uk-dropdown-nav">
                                                 <li>
                                                     <h:commandLink  pt:uk-toggle="target: #modal-colonia" >
